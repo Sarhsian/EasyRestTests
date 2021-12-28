@@ -15,9 +15,14 @@ namespace PageObjects
         }
         private IWebElement UserMenuButton => driver.FindElement(By.XPath("//*[@id='root']/header/div/div/div/button"));
 
-        public void ClickUserMenuButton() => UserMenuButton.Click();
-        public bool UserMenuDisplayed() => UserMenuButton.Displayed;
+        public void ClickUserMenuButton()
+        {
+            UserMenuButton.Click();
+        }
 
-
+        public bool UserMenuDisplayed()
+        {
+            return UserMenuButton.Displayed;
+        }
     }
 }
