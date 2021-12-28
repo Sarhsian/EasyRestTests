@@ -26,15 +26,32 @@ namespace PageObjects
         private IWebElement EmailOrPasswordIsNotValidErrorMessage => driver.FindElement(By.XPath("//p[text()='Email or password is invalid']"));
 
 
-        
 
 
-        public void SendTextToEmailTextField(string text) => EmailTextField.SendKeys(text);
-        public void SendTextToPasswordTextField(string text) => PasswordTextField.SendKeys(text);
 
-        public void ClickBackButton() => BackButton.Click();
-        public void ClickSubmitButton() => SubmitButton.Click();
-        public string GetEmailOrPasswordIsNotValidErrorMessage() => EmailOrPasswordIsNotValidErrorMessage.Text;
+        public void SendTextToEmailTextField(string text)
+        {
+            EmailTextField.SendKeys(text);
+        }
 
+        public void SendTextToPasswordTextField(string text)
+        {
+            PasswordTextField.SendKeys(text);
+        }
+
+        public void ClickBackButton()
+        {
+            BackButton.Click();
+        }
+
+        public void ClickSubmitButton()
+        {
+            SubmitButton.Click();
+        }
+
+        public string GetEmailOrPasswordIsNotValidErrorMessage()
+        {
+            return EmailOrPasswordIsNotValidErrorMessage.Text;
+        }
     }
 }
