@@ -3,13 +3,13 @@ using System;
 
 namespace PageObjects
 {
-    public class BaseHeaderPageObject : Driver
+    public class BaseHeaderPageObject
     {
-        
+        protected static IWebDriver driver;
 
-        public BaseHeaderPageObject(IWebDriver driver) : base(driver)
+        public BaseHeaderPageObject(IWebDriver webDriver)
         {
-            
+            driver = webDriver;
         }
 
         private IWebElement LogoButton => driver.FindElement(By.XPath("//a[text()='Easy-rest']"));

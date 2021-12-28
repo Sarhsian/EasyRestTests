@@ -5,11 +5,13 @@ using System.Text;
 
 namespace PageObjects
 {
-    public class UnloginedUserPartOfBaseHeader : BaseHeaderPageObject
+    public class UnloginedUserPartOfBaseHeaderPageObject 
     {
-        public UnloginedUserPartOfBaseHeader(IWebDriver driver) : base(driver)
-        {
+        protected static IWebDriver driver;
 
+        public UnloginedUserPartOfBaseHeaderPageObject(IWebDriver webDriver)
+        {
+            driver = webDriver;
         }
         private IWebElement SignInButton => driver.FindElement(By.XPath("//a[@href='/log-in']"));
         private IWebElement SignUpButton => driver.FindElement(By.XPath("//a[@href='/sign-up']"));

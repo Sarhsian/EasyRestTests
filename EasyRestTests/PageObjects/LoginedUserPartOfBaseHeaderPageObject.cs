@@ -5,11 +5,13 @@ using System.Text;
 
 namespace PageObjects
 {
-    public class LoginedUserPartOfHeaderPageObject : BaseHeaderPageObject
+    public class LoginedUserPartOfBaseHeaderPageObject
     {
-        public LoginedUserPartOfHeaderPageObject(IWebDriver driver) : base(driver)
-        {
+        protected static IWebDriver driver;
 
+        public LoginedUserPartOfBaseHeaderPageObject(IWebDriver webDriver)
+        {
+            driver = webDriver;
         }
         private IWebElement UserMenuButton => driver.FindElement(By.XPath("//*[@id='root']/header/div/div/div/button"));
 

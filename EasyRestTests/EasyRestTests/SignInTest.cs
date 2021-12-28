@@ -12,8 +12,8 @@ namespace Tests
         [Test]
         public void NegativeEmailAndPassword()
         {
-            UnloginedUserPartOfBaseHeader unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeader(driver);
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
             Thread.Sleep(3000);
             SignInPageObject signInPageObject = new SignInPageObject(driver);
 
@@ -34,7 +34,7 @@ namespace Tests
         public void PositiveSignInTest()
         {
            
-            UnloginedUserPartOfBaseHeader unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeader(driver);
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeader.ClickSignInButton();
             Thread.Sleep(3000);
             SignInPageObject signInPageObject = new SignInPageObject(driver);
@@ -44,8 +44,8 @@ namespace Tests
             Thread.Sleep(2000);
             signInPageObject.ClickSubmitButton();
             Thread.Sleep(2000);
-            LoginedUserPartOfHeaderPageObject loginedUserPartOfHeaderPageObject = new LoginedUserPartOfHeaderPageObject(driver);
-            Assert.IsTrue(loginedUserPartOfHeaderPageObject.UserMenuDisplayed());
+            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
 
 
 

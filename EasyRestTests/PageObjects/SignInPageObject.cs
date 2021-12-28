@@ -5,11 +5,13 @@ using System.Text;
 
 namespace PageObjects
 {
-    public class SignInPageObject : Driver
+    public class SignInPageObject 
     {
-        public SignInPageObject(IWebDriver driver) : base(driver)
-        {
+        protected static IWebDriver driver;
 
+        public SignInPageObject(IWebDriver webDriver)
+        {
+            driver = webDriver;
         }
         private IWebElement BackButton => driver.FindElement(By.TagName("svg"));
         private IWebElement SignUpButton => driver.FindElement(By.XPath("//span[text()='Sign Up']"));
