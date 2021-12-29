@@ -11,6 +11,7 @@ namespace PageObjects
         {
             driver = webDriver;
         }
+            
 
         private IWebElement LogoButton => driver.FindElement(By.XPath("//a[text()='Easy-rest']"));
         private IWebElement HomeButton => driver.FindElement(By.XPath("//span[text()='Home']"));
