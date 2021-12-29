@@ -1,15 +1,12 @@
 ﻿using NUnit.Framework;
 using PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 
 namespace Tests
 {
     public class SignInTest : BaseTest
     {
         [Test]
+        [Repeat(5)]
         public void NegativeEmailAndPassword()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -23,7 +20,8 @@ namespace Tests
             Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
         }
         [Test]
-        
+        [Repeat(5)]
+
         public void PositiveSignInTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);

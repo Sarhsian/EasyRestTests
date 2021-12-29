@@ -1,4 +1,8 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using System;
+using System.Threading;
 
 namespace PageObjects
 {
@@ -38,6 +42,8 @@ namespace PageObjects
         }
         public string GetEmailOrPasswordIsNotValidErrorMessage()
         {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='Email or password is invalid']")));
             return EmailOrPasswordIsNotValidErrorMessage.Text;
         }
     }
