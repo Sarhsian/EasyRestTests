@@ -12,8 +12,9 @@ namespace Tests
         public void SetUp()
         {
             driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://localhost:3000/");
-
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            driver.Navigate().GoToUrl("http://localhost:3000/");            
         }
         [TearDown]
         public void TearDown()

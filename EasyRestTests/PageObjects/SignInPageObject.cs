@@ -1,14 +1,10 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjects
 {
-    public class SignInPageObject 
+    public class SignInPageObject
     {
         protected static IWebDriver driver;
-
         public SignInPageObject(IWebDriver webDriver)
         {
             driver = webDriver;
@@ -24,31 +20,22 @@ namespace PageObjects
         private IWebElement PasswordRequiredErrorMessage => driver.FindElement(By.XPath("//p[text()='Password is required']"));
         private IWebElement EmailIsNotValidErrorMessage => driver.FindElement(By.XPath("//p[text()='Email is not valid']"));
         private IWebElement EmailOrPasswordIsNotValidErrorMessage => driver.FindElement(By.XPath("//p[text()='Email or password is invalid']"));
-
-
-
-
-
         public void SendTextToEmailTextField(string text)
         {
             EmailTextField.SendKeys(text);
         }
-
         public void SendTextToPasswordTextField(string text)
         {
             PasswordTextField.SendKeys(text);
         }
-
         public void ClickBackButton()
         {
             BackButton.Click();
         }
-
         public void ClickSubmitButton()
         {
             SubmitButton.Click();
         }
-
         public string GetEmailOrPasswordIsNotValidErrorMessage()
         {
             return EmailOrPasswordIsNotValidErrorMessage.Text;
