@@ -32,7 +32,89 @@ namespace PageObjects
         IWebElement BeerCategoryLink => driver.FindElement(By.XPath("//h6[text()='beer']"));
         IWebElement UkrainianCuisineCategoryLink => driver.FindElement(By.XPath("//h6[text()='ukrainian cuisine']"));
 
+        public void ClickPrevSlideButton()
+        {
+            PrevSlideButton.Click();
+        }
 
+        public void ClickNextSlideButton()
+        {
+            NextSlideButton.Click();
+        }
 
+        public void ClickFirstSlideResturantLink()
+        {
+            FirstSlideResturantLink.Click();
+        }
+
+        public void ClickSecondSlideResturantLink()
+        {
+            SecondSlideResturantLink.Click();
+        }
+
+        public void ClickThirdSlideResturantLink()
+        {
+            ThirdSlideResturantLink.Click();
+        }
+
+        public void ClickViewAllCategoryLink()
+        {
+            ViewAllCategoryLink.Click();
+        }
+
+        public void ClickPubCategoryLink()
+        {
+            PubCategoryLink.Click();
+        }
+
+        public void ClickFastFoodCategoryLink()
+        {
+            FastFoodCategoryLink.Click();
+        }
+
+        public void ClickVegatarianCategoryLink()
+        {
+            VegeterianCategoryLink.Click();
+        }
+
+        public void ClickPizzaCategoryLink()
+        {
+            PizzaCategoryLink.Click();
+        }
+
+        public void ClickSushiCategoryLink()
+        {
+            SushiCategoryLink.Click();
+        }
+
+        public void ClickGreelCategoryLink()
+        {
+            GreelCategoryLink.Click();
+        }
+
+        public void ClickBurgersCategoryLink()
+        {
+            BurgersCategoryLink.Click();
+        }
+
+        public void ClickKebabCategoryLink()
+        {
+            KebabCategoryLink.Click();
+        }
+
+        public void ClickJapaneseCuisineCategoryLink()
+        {
+            JapaneseCuisineCategoryLink.Click();
+        }
+
+        public void ClickBeerCategoryLink()
+        {
+            BeerCategoryLink.Click();
+        }
+
+        public void ClickUkrainianCuisineCategoryLink()
+        {
+            UkrainianCuisineCategoryLink.Click();
+        }
     }
 }
