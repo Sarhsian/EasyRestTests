@@ -12,7 +12,6 @@ namespace Tests
         [Test]
         public void NegativeEmailAndPassword()
         {
-
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
             SignInPageObject signInPageObject = new SignInPageObject(driver);
@@ -22,13 +21,11 @@ namespace Tests
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
             Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
-            
         }
         [Test]
         
         public void PositiveSignInTest()
         {
-           
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeader.ClickSignInButton();
             SignInPageObject signInPageObject = new SignInPageObject(driver);
@@ -37,7 +34,6 @@ namespace Tests
             signInPageObject.ClickSubmitButton();
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
             Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
-
         }
     }
 }
