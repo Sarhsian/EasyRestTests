@@ -1,11 +1,8 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjects
 {
-    public class UnloginedUserPartOfBaseHeaderPageObject 
+    public class UnloginedUserPartOfBaseHeaderPageObject
     {
         protected static IWebDriver driver;
         public UnloginedUserPartOfBaseHeaderPageObject(IWebDriver webDriver)

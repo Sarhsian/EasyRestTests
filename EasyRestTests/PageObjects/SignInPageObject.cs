@@ -1,11 +1,8 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjects
 {
-    public class SignInPageObject 
+    public class SignInPageObject
     {
         protected static IWebDriver driver;
         public SignInPageObject(IWebDriver webDriver)
