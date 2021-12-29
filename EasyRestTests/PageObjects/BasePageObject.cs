@@ -14,6 +14,7 @@ namespace PageObjects
             driver = webDriver;
         }
 
+
         IWebElement PrevSlideButton => driver.FindElement(By.XPath("//button[@class='MuiButtonBase-root-106 MuiFab-root-1972 MuiFab-primary-1974 AppSlider-sliderBtnPrev-1966']"));
         IWebElement NextSlideButton => driver.FindElement(By.XPath("//button[@class='MuiButtonBase-root-106 MuiFab-root-1972 MuiFab-primary-1974 AppSlider-sliderBtnNext-1965']"));
         IWebElement FirstSlideResturantLink => driver.FindElement(By.XPath("//a[text()='Johnson PLC']"));
