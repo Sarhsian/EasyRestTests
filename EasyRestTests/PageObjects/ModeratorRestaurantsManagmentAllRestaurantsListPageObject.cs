@@ -12,8 +12,9 @@ namespace PageObjects
         {
 
         }
-        List<IWebElement> allRestaurants = driver.FindElement(By.CssSelector(".MuiGrid-container-4193.MuiGrid-spacing-xs-16-4216")).FindElements(By.TagName("div")).ToList();
-        
 
+/*        private readonly List<IWebElement> allRestaurants = driver.FindElement(By.CssSelector(".MuiGrid-container-4193.MuiGrid-spacing-xs-16-4216")).FindElements(By.TagName("div")).ToList();
+*/
+        
     }
 }

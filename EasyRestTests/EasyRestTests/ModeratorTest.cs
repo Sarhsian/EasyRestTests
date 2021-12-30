@@ -1,7 +1,9 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using PageObjects;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Tests
@@ -71,11 +73,26 @@ namespace Tests
             moderatorRestaurantsManagmentPageObject.ClickRestaurantsManagmentPageButton();
             //PositiveModeratorRestaurantsManagmentTest
             
-            
+            //List<IWebElement> allRestaurants = driver.FindElements(By.CssSelector(".MuiGrid-item-4194.MuiGrid-grid-xs-12-4233")).ToList();
+            List<IWebElement> allRestaurants = driver.FindElements(By.XPath("//*[@id='root']/div/main/div[2]/div")).ToList();
+
+            bool foo;
+            int i = 11;
+            int count = allRestaurants.Count;
+            if (count == i)
+            {
+                foo = true;
+            }
+            else
+                foo = false;
+            Assert.IsTrue(foo,$"{count} is not equal for {i}");
+
+
+
         }
 
 
 
 
-    }
+}
 }
