@@ -2,12 +2,12 @@
 
 namespace PageObjects
 {
-    public class LoginedUserPartOfBaseHeaderPageObject
+    public class LoginedUserPartOfBaseHeaderPageObject : BaseHeaderPageObject
     {
-        protected static IWebDriver driver;
-        public LoginedUserPartOfBaseHeaderPageObject(IWebDriver webDriver)
+        
+        public LoginedUserPartOfBaseHeaderPageObject(IWebDriver driver) : base(driver)
         {
-            driver = webDriver;
+            
         }
         private IWebElement UserMenuButton => driver.FindElement(By.XPath("//header/div/div/div/button"));
         private IWebElement RolePanelButton => driver.FindElement(By.XPath("//*[@id='menu-appbar']/div[2]/ul/a"));
