@@ -1,4 +1,7 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using System;
 
 namespace PageObjects
 {
@@ -28,6 +31,12 @@ namespace PageObjects
         public bool UserMenuDisplayed()
         {
             return UserMenuButton.Displayed;
+        }
+        public string GetRolePanelText()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='menu-appbar']/div[2]/ul/a")));
+            return RolePanelButton.Text;
         }
     }
 }
