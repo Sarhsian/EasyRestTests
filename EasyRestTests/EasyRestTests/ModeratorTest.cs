@@ -136,6 +136,40 @@ namespace Tests
             //PositiveModeratorRestaurantsManagmentUnapprovedRestaurantsListTest
 
         }
+        [Test]
+        public void PositiveModeratorRestaurantsManagmentApprovedRestaurantsListTest()
+        {
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            signInPageObject.SendTextToEmailTextField("petermoderator@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
+            //PositiveSignInTest
+            loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
+            string actualRolePanelText = loginedUserPartOfBaseHeaderPageObject.GetRolePanelText();
+            string expectedRolePanelText = "Moderator panel";
+            Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
+            //PositiveModeratorSignInTest
+            loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
+            ModeratorRestaurantsManagmentPageObject moderatorRestaurantsManagmentPageObject
+                = new ModeratorRestaurantsManagmentPageObject(driver);
+            moderatorRestaurantsManagmentPageObject.ClickRestaurantsManagmentPageButton();
+            //PositiveModeratorRestaurantsManagmentTest
+            moderatorRestaurantsManagmentPageObject.ClickApprovedRestaurantsListButton();
+            ModeratorRestaurantsManagmentAllRestaurantsListPageObject moderatorRestaurantsManagmentAllRestaurantsListPageObject
+                = new ModeratorRestaurantsManagmentAllRestaurantsListPageObject(driver);
+            string expectedDisapprovedMessageText = "Disapproved";  
+   
+            moderatorRestaurantsManagmentAllRestaurantsListPageObject.ClickRandomRestaurantsButtonDelete();
+            string actualDisapprovedMessageText = moderatorRestaurantsManagmentAllRestaurantsListPageObject.GetDisapprovedMessageText();
+            Assert.AreEqual(expectedDisapprovedMessageText, actualDisapprovedMessageText, $"{expectedDisapprovedMessageText} is not equal for {actualDisapprovedMessageText}");
+
+            //PositiveModeratorRestaurantsManagmentApprovedRestaurantsListTest
+
+        }
 
 
 
