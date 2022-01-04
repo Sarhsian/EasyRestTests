@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,6 +27,8 @@ namespace PageObjects
         private IWebElement PrevTabButton => driver.FindElement(By.XPath("/html/body/div[1]/main/div/div/div/div[1]/div/header/div/div[2]/button"));
         private IWebElement OrderInfoArrowDownButton => driver.FindElement(By.XPath("/html/body/div/main/div/div/div/div[1]/div/div/div[1]/div[1]/div[2]"));
         private IWebElement WaitingForConfirmTabDeclineButton => driver.FindElement(By.XPath("//span[text()='Decline']"));
+        private IWebElement OrderDeclinedMessage => driver.FindElement(By.XPath("//p[text()='Order declined']"));
+
         public void ClickCurrentOrdersTab()
         {
             CurrentOrdersTab.Click();
@@ -69,8 +73,15 @@ namespace PageObjects
         }
         public void ClickWaitingForConfirmDeclineButton()
         {
-            ClickOrderInfoArrowDownButton();
             WaitingForConfirmTabDeclineButton.Click();
         }
+
+        public string GetOrderDeclinedMessage()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='Order declined']")));
+            return OrderDeclinedMessage.Text;
+        }
+
     }
 }
