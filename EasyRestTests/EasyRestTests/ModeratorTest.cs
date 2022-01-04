@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Tests
 {
@@ -69,23 +70,31 @@ namespace Tests
             Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
             //PositiveModeratorSignInTest
             loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
-            ModeratorRestaurantsManagmentPageObject moderatorRestaurantsManagmentPageObject = new ModeratorRestaurantsManagmentPageObject(driver);
+            ModeratorRestaurantsManagmentPageObject moderatorRestaurantsManagmentPageObject 
+                = new ModeratorRestaurantsManagmentPageObject(driver);
             moderatorRestaurantsManagmentPageObject.ClickRestaurantsManagmentPageButton();
-            //PositiveModeratorRestaurantsManagmentTest
+            //PositiveModeratorRestaurantsManagmentTest           
+            ModeratorRestaurantsManagmentAllRestaurantsListPageObject moderatorRestaurantsManagmentAllRestaurantsListPageObject
+                = new ModeratorRestaurantsManagmentAllRestaurantsListPageObject(driver);
+            string expectedDisapprovedMessageText = "Disapproved";
+            string expectedApprovedMessageText = "Approved";
+            moderatorRestaurantsManagmentAllRestaurantsListPageObject.ClickRandomRestaurantsButtonDisapprove();
+            string actualDisapprovedMessageText = moderatorRestaurantsManagmentAllRestaurantsListPageObject.GetDisapprovedMessageText();
+            Assert.AreEqual(expectedDisapprovedMessageText, actualDisapprovedMessageText, $"{expectedDisapprovedMessageText} is not equal for {actualDisapprovedMessageText}");
             
-            //List<IWebElement> allRestaurants = driver.FindElements(By.CssSelector(".MuiGrid-item-4194.MuiGrid-grid-xs-12-4233")).ToList();
-            List<IWebElement> allRestaurants = driver.FindElements(By.XPath("//*[@id='root']/div/main/div[2]/div")).ToList();
+            moderatorRestaurantsManagmentAllRestaurantsListPageObject.ClickRandomRestaurantsButtonApprove();
+            string actualApprovedMessageText = moderatorRestaurantsManagmentAllRestaurantsListPageObject.GetApprovedMessageText();
+            Assert.AreEqual(expectedApprovedMessageText, actualApprovedMessageText, $"{expectedApprovedMessageText} is not equal for {actualApprovedMessageText}");
+            
+            moderatorRestaurantsManagmentAllRestaurantsListPageObject.ClickRandomRestaurantsButtonDelete();
+            actualDisapprovedMessageText = moderatorRestaurantsManagmentAllRestaurantsListPageObject.GetDisapprovedMessageText();
+            Assert.AreEqual(expectedDisapprovedMessageText, actualDisapprovedMessageText, $"{expectedDisapprovedMessageText} is not equal for {actualDisapprovedMessageText}");
 
-            bool foo;
-            int i = 11;
-            int count = allRestaurants.Count;
-            if (count == i)
-            {
-                foo = true;
-            }
-            else
-                foo = false;
-            Assert.IsTrue(foo,$"{count} is not equal for {i}");
+            moderatorRestaurantsManagmentAllRestaurantsListPageObject.ClickRandomRestaurantsButtonRestore();
+            actualApprovedMessageText = moderatorRestaurantsManagmentAllRestaurantsListPageObject.GetApprovedMessageText();
+            Assert.AreEqual(expectedApprovedMessageText, actualApprovedMessageText, $"{expectedApprovedMessageText} is not equal for {actualApprovedMessageText}");
+
+
 
 
 
@@ -94,5 +103,5 @@ namespace Tests
 
 
 
-}
+    }
 }
