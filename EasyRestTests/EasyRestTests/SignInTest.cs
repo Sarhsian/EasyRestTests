@@ -5,7 +5,7 @@ namespace Tests
 {
     public class SignInTest : BaseTest
     {
-        [Test]
+        /*[Test]
         
         public void NegativeEmailAndPassword()
         {
@@ -19,7 +19,7 @@ namespace Tests
             string expectedErrorMessageText = "Email or password is invalid";
             Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
         }
-        [Test]
+        [Test]*/
         
 
         public void PositiveSignInTest()
