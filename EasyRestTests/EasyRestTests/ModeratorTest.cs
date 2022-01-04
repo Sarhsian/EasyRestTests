@@ -11,7 +11,7 @@ namespace Tests
 {
     public class ModeratorTest : BaseTest
     {
-        [Test]
+        /*[Test]
         public void PositiveModeratorTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -29,8 +29,8 @@ namespace Tests
             Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
             //PositiveModeratorSignInTest
 
-        }
-        [Test]
+        }*/
+        /*[Test]
         public void PositiveModeratorRestaurantsManagmentTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -51,7 +51,7 @@ namespace Tests
             ModeratorRestaurantsManagmentPageObject moderatorRestaurantsManagmentPageObject = new ModeratorRestaurantsManagmentPageObject(driver);
             moderatorRestaurantsManagmentPageObject.ClickRestaurantsManagmentPageButton();
             //PositiveModeratorRestaurantsManagmentTest
-        }
+        }*/
         [Test]
         public void PositiveModeratorRestaurantsManagmentAllRestaurantsListTest()
         {
