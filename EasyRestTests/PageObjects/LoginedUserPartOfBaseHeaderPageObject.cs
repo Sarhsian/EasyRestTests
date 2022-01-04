@@ -1,13 +1,16 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using System;
 
 namespace PageObjects
 {
-    public class LoginedUserPartOfBaseHeaderPageObject
+    public class LoginedUserPartOfBaseHeaderPageObject : BaseHeaderPageObject
     {
-        protected static IWebDriver driver;
-        public LoginedUserPartOfBaseHeaderPageObject(IWebDriver webDriver)
+        
+        public LoginedUserPartOfBaseHeaderPageObject(IWebDriver driver) : base(driver)
         {
-            driver = webDriver;
+            
         }
         private IWebElement UserMenuButton => driver.FindElement(By.XPath("//header/div/div/div/button"));
         private IWebElement RolePanelButton => driver.FindElement(By.XPath("//*[@id='menu-appbar']/div[2]/ul/a"));
@@ -28,6 +31,12 @@ namespace PageObjects
         public bool UserMenuDisplayed()
         {
             return UserMenuButton.Displayed;
+        }
+        public string GetRolePanelText()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='menu-appbar']/div[2]/ul/a")));
+            return RolePanelButton.Text;
         }
     }
 }

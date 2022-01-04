@@ -2,12 +2,12 @@
 
 namespace PageObjects
 {
-    public class UnloginedUserPartOfBaseHeaderPageObject
+    public class UnloginedUserPartOfBaseHeaderPageObject : BaseHeaderPageObject
     {
-        protected static IWebDriver driver;
-        public UnloginedUserPartOfBaseHeaderPageObject(IWebDriver webDriver)
+        
+        public UnloginedUserPartOfBaseHeaderPageObject(IWebDriver driver) : base(driver)
         {
-            driver = webDriver;
+           
         }
         private IWebElement SignInButton => driver.FindElement(By.XPath("//a[@href='/log-in']"));
         private IWebElement SignUpButton => driver.FindElement(By.XPath("//a[@href='/sign-up']"));

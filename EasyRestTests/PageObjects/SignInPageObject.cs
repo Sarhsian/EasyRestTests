@@ -42,7 +42,7 @@ namespace PageObjects
         }
         public string GetEmailOrPasswordIsNotValidErrorMessage()
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='Email or password is invalid']")));
             return EmailOrPasswordIsNotValidErrorMessage.Text;
         }
