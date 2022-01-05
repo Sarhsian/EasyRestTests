@@ -6,7 +6,7 @@ namespace Tests
     public class SignInTest : BaseTest
     {
         /*[Test]
-        
+
         public void NegativeEmailAndPassword()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -18,17 +18,23 @@ namespace Tests
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
             Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
-        }
-        [Test]*/
-        
+        }*/
+        [Test]
+        [TestCase("katiedoyle@test.com", "1111")]
+        [TestCase("jasonbrown@test.com", "1111")]
+        [TestCase("petermoderator@test.com", "1")]
+        [TestCase("steveadmin@test.com", "1")]
+        [TestCase("tanyasanchez@test.com", "1")]
+        [TestCase("karenperez@test.com", "1")]
 
-        public void PositiveSignInTest()
+
+        public void PositiveSignInTest(string email, string password)
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeader.ClickSignInButton();
             SignInPageObject signInPageObject = new SignInPageObject(driver);
-            signInPageObject.SendTextToEmailTextField("katiedoyle@test.com");
-            signInPageObject.SendTextToPasswordTextField("1111");
+            signInPageObject.SendTextToEmailTextField(email);
+            signInPageObject.SendTextToPasswordTextField(password);
             signInPageObject.ClickSubmitButton();
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
             Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
