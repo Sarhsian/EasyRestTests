@@ -207,7 +207,7 @@ namespace Tests
                 $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
 
 
-            //PositiveModeratorRestaurantsManagmentAllUsersListTest
+            //PositiveModeratorUsersManagmentAllUsersListTest
 
         }
         [Test]
@@ -243,7 +243,7 @@ namespace Tests
             string actualSuccesMessageText = moderatorUsersManagmentActiveUsersListPageObject.GetSuccessMessageText();
             Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
                 $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
-            //PositiveModeratorRestaurantsManagmentActiveUsersListTest
+            //PositiveModeratorUsersManagmentActiveUsersListTest
 
         }
         [Test]
@@ -279,7 +279,7 @@ namespace Tests
             string actualSuccesMessageText = moderatorUsersManagmentBannedUsersListPageObject.GetSuccessMessageText();
             Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
                 $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
-            //PositiveModeratorRestaurantsManagmentBannedUsersListTest
+            //PositiveModeratorUsersManagmentBannedUsersListTest
 
         }
         [Test]
@@ -320,7 +320,46 @@ namespace Tests
             actualSuccesMessageText = moderatorOwnersManagmentAllOwnersListPageObject.GetSuccessMessageText();
             Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
                 $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
-            //PositiveModeratorRestaurantsManagmentBannedUsersListTest
+            //PositiveModeratorOwnersManagmentAllOwnersListTest
+
+        }
+
+        [Test]
+        public void PositiveModeratorOwnersManagmentActiveOwnersListTest()
+        {
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            signInPageObject.SendTextToEmailTextField("petermoderator@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
+            //PositiveSignInTest
+            loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
+            string actualRolePanelText = loginedUserPartOfBaseHeaderPageObject.GetRolePanelText();
+            string expectedRolePanelText = "Moderator panel";
+            Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
+            //PositiveModeratorSignInTest
+            loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
+            ModeratorPanelPageObject moderatorPanelPageObject
+                = new ModeratorPanelPageObject(driver);
+            moderatorPanelPageObject.ClickOwnersManagmentPageButton();
+            //PositiveModeratorPanelTest
+            ModeratorOwnersManagmentPageObject moderatorOwnersManagmentPageObject
+                = new ModeratorOwnersManagmentPageObject(driver);
+            moderatorOwnersManagmentPageObject.ClickActiveOwnersListButton();
+            ModeratorOwnersManagmentActiveOwnersListPageObject moderatorOwnersManagmentActiveOwnersListPageObject
+                = new ModeratorOwnersManagmentActiveOwnersListPageObject(driver);
+            string expectedSuccessMessageText = "success";
+
+            moderatorOwnersManagmentActiveOwnersListPageObject.ClickRandomOwnersButtonBan();
+            string actualSuccesMessageText = moderatorOwnersManagmentActiveOwnersListPageObject.GetSuccessMessageText();
+            Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
+                $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
+
+
+            //PositiveModeratorOwnersManagmentActiveOwnersListTest
 
         }
 
