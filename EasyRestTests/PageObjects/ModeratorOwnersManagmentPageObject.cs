@@ -5,31 +5,31 @@ using System.Text;
 
 namespace PageObjects
 {
-    public class ModeratorUsersManagmentPageObject : ModeratorPanelPageObject
+    public class ModeratorOwnersManagmentPageObject : ModeratorPanelPageObject
     {
-        public ModeratorUsersManagmentPageObject(IWebDriver driver) : base(driver)
+        public ModeratorOwnersManagmentPageObject(IWebDriver driver) : base(driver)
         {
 
         }
         ////button[@class='MuiButtonBase-root-106 MuiIconButton-root-2549 MuiIconButton-colorSecondary-2552']
-        private IWebElement AllUsersListButton =>
+        private IWebElement AllOwnersListButton =>
             driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'All')]"));
-        private IWebElement ActiveUsersListButton =>
+        private IWebElement ActiveOwnersListButton =>
            driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'Active')]"));
-        private IWebElement BannedUsersListButton =>
+        private IWebElement BannedOwnersListButton =>
            driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'Banned')]"));
 
-        public void ClickAllUsersListButton()
+        public void ClickAllOwnersListButton()
         {
-            AllUsersListButton.Click();
+            AllOwnersListButton.Click();
         }
-        public void ClickActiveUsersListButton()
+        public void ClickActiveOwnersListButton()
         {
-            ActiveUsersListButton.Click();
+            ActiveOwnersListButton.Click();
         }
-        public void ClickBanndeUsersListButton()
+        public void ClickBanndeOwnersListButton()
         {
-            BannedUsersListButton.Click();
+            BannedOwnersListButton.Click();
         }
     }
 }
