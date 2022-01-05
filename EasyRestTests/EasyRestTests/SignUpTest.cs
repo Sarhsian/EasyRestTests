@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using PageObjects;
 using System;
+using System.Threading;
 
 namespace Tests
 {
@@ -27,7 +28,7 @@ namespace Tests
             string name = GetRandomString();
             string email = GetRandomString();
             string password = GetRandomString();
-
+            
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeader.ClickSignUpButton();
             SignUpPageObject signUpPageObject = new SignUpPageObject(driver);
@@ -37,6 +38,15 @@ namespace Tests
             signUpPageObject.SendTextToConfirmPasswordTextField(password);
             signUpPageObject.ClickSubmitButton();
             
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            
+            signInPageObject.SendTextToEmailTextField(email + "@test.com");
+            
+            signInPageObject.SendTextToPasswordTextField(password);
+            
+            signInPageObject.ClickSubmitButton();
+            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
 
         }
     }
