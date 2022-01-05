@@ -17,7 +17,19 @@ namespace PageObjects
         private IWebElement ActiveUsersListButton =>
            driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'Active')]"));
         private IWebElement BannedUsersListButton =>
-           driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'Approved')]"));
+           driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'Banned')]"));
 
+        public void ClickAllUsersListButton()
+        {
+            AllUsersListButton.Click();
+        }
+        public void ClickActiveRestaurantsListButton()
+        {
+            ActiveUsersListButton.Click();
+        }
+        public void ClickBanndeRestaurantsListButton()
+        {
+            BannedUsersListButton.Click();
+        }
     }
 }
