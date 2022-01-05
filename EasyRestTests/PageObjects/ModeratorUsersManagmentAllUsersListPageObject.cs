@@ -22,7 +22,8 @@ namespace PageObjects
 
         public void ClickRandomUsersButtonBan()
         {
-            List<IWebElement> allUsersButtonsBan = driver.FindElements(By.CssSelector("button.MuiIconButton-colorSecondary-2552")).ToList();
+            List<IWebElement> allUsersButtonsBan = driver.FindElements
+                (By.XPath("//button[contains(@class,'MuiIconButton-colorPrimary')]")).ToList();
             allUsersButtonsBan[rand.Next(allUsersButtonsBan.Count - 1)].Click();
         }
         public string GetSuccessMessageText()
@@ -34,7 +35,8 @@ namespace PageObjects
 
         public void ClickRandomUsersButtonUnban()
         {
-            List<IWebElement> allUsersButtonsUnban = driver.FindElements(By.CssSelector("button.MuiIconButton-colorPrimary-2551")).ToList();
+            List<IWebElement> allUsersButtonsUnban = driver.FindElements
+                (By.XPath("//button[contains(@class,'MuiIconButton-colorSecondary')]")).ToList();
             allUsersButtonsUnban[rand.Next(allUsersButtonsUnban.Count - 1)].Click();
         }
 
