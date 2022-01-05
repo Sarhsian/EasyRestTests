@@ -11,7 +11,6 @@ namespace PageObjects
         {
 
         }
-        ////button[@class='MuiButtonBase-root-106 MuiIconButton-root-2549 MuiIconButton-colorSecondary-2552']
         private IWebElement AllUsersListButton =>
             driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'All')]"));
         private IWebElement ActiveUsersListButton =>

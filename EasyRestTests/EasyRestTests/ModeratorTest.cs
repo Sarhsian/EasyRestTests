@@ -282,6 +282,47 @@ namespace Tests
             //PositiveModeratorRestaurantsManagmentBannedUsersListTest
 
         }
+        [Test]
+        public void PositiveModeratorOwnersManagmentAllOwnersListTest()
+        {
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            signInPageObject.SendTextToEmailTextField("petermoderator@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
+            //PositiveSignInTest
+            loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
+            string actualRolePanelText = loginedUserPartOfBaseHeaderPageObject.GetRolePanelText();
+            string expectedRolePanelText = "Moderator panel";
+            Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
+            //PositiveModeratorSignInTest
+            loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
+            ModeratorPanelPageObject moderatorPanelPageObject
+                = new ModeratorPanelPageObject(driver);
+            moderatorPanelPageObject.ClickOwnersManagmentPageButton();
+            //PositiveModeratorPanelTest
+            ModeratorOwnersManagmentPageObject moderatorOwnersManagmentPageObject
+                = new ModeratorOwnersManagmentPageObject(driver);
+            moderatorOwnersManagmentPageObject.ClickAllOwnersListButton();
+            ModeratorOwnersManagmentAllOwnersListPageObject moderatorOwnersManagmentAllOwnersListPageObject
+                = new ModeratorOwnersManagmentAllOwnersListPageObject(driver);
+            string expectedSuccessMessageText = "success";
+
+            moderatorOwnersManagmentAllOwnersListPageObject.ClickRandomOwnersButtonBan();
+            string actualSuccesMessageText = moderatorOwnersManagmentAllOwnersListPageObject.GetSuccessMessageText();
+            Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
+                $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
+            
+            moderatorOwnersManagmentAllOwnersListPageObject.ClickRandomOwnersButtonUnban();
+            actualSuccesMessageText = moderatorOwnersManagmentAllOwnersListPageObject.GetSuccessMessageText();
+            Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
+                $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
+            //PositiveModeratorRestaurantsManagmentBannedUsersListTest
+
+        }
 
 
 
