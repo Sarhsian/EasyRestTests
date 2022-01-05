@@ -11,7 +11,7 @@ namespace Tests
 {
     public class ModeratorTest : BaseTest
     {
-        
+
         [Test]
         public void PositiveModeratorRestaurantsManagmentAllRestaurantsListTest()
         {
@@ -30,7 +30,7 @@ namespace Tests
             Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
             //PositiveModeratorSignInTest
             loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
-            ModeratorRestaurantsManagmentPageObject moderatorRestaurantsManagmentPageObject 
+            ModeratorRestaurantsManagmentPageObject moderatorRestaurantsManagmentPageObject
                 = new ModeratorRestaurantsManagmentPageObject(driver);
             moderatorRestaurantsManagmentPageObject.ClickRestaurantsManagmentPageButton();
             //PositiveModeratorRestaurantsManagmentTest
@@ -42,11 +42,11 @@ namespace Tests
             moderatorRestaurantsManagmentAllRestaurantsListPageObject.ClickRandomRestaurantsButtonDisapprove();
             string actualDisapprovedMessageText = moderatorRestaurantsManagmentAllRestaurantsListPageObject.GetDisapprovedMessageText();
             Assert.AreEqual(expectedDisapprovedMessageText, actualDisapprovedMessageText, $"{expectedDisapprovedMessageText} is not equal for {actualDisapprovedMessageText}");
-            
+
             moderatorRestaurantsManagmentAllRestaurantsListPageObject.ClickRandomRestaurantsButtonApprove();
             string actualApprovedMessageText = moderatorRestaurantsManagmentAllRestaurantsListPageObject.GetApprovedMessageText();
             Assert.AreEqual(expectedApprovedMessageText, actualApprovedMessageText, $"{expectedApprovedMessageText} is not equal for {actualApprovedMessageText}");
-            
+
             moderatorRestaurantsManagmentAllRestaurantsListPageObject.ClickRandomRestaurantsButtonDelete();
             actualDisapprovedMessageText = moderatorRestaurantsManagmentAllRestaurantsListPageObject.GetDisapprovedMessageText();
             Assert.AreEqual(expectedDisapprovedMessageText, actualDisapprovedMessageText, $"{expectedDisapprovedMessageText} is not equal for {actualDisapprovedMessageText}");
@@ -121,8 +121,8 @@ namespace Tests
             moderatorRestaurantsManagmentPageObject.ClickApprovedRestaurantsListButton();
             ModeratorRestaurantsManagmentAllRestaurantsListPageObject moderatorRestaurantsManagmentAllRestaurantsListPageObject
                 = new ModeratorRestaurantsManagmentAllRestaurantsListPageObject(driver);
-            string expectedDisapprovedMessageText = "Disapproved";  
-   
+            string expectedDisapprovedMessageText = "Disapproved";
+
             moderatorRestaurantsManagmentAllRestaurantsListPageObject.ClickRandomRestaurantsButtonDelete();
             string actualDisapprovedMessageText = moderatorRestaurantsManagmentAllRestaurantsListPageObject.GetDisapprovedMessageText();
             Assert.AreEqual(expectedDisapprovedMessageText, actualDisapprovedMessageText, $"{expectedDisapprovedMessageText} is not equal for {actualDisapprovedMessageText}");
@@ -156,9 +156,9 @@ namespace Tests
             moderatorRestaurantsManagmentPageObject.ClickArchivedRestaurantsListButton();
             ModeratorRestaurantsManagmentAllRestaurantsListPageObject moderatorRestaurantsManagmentAllRestaurantsListPageObject
                 = new ModeratorRestaurantsManagmentAllRestaurantsListPageObject(driver);
-            
+
             string expectedApprovedMessageText = "Approved";
-               
+
             moderatorRestaurantsManagmentAllRestaurantsListPageObject.ClickRandomRestaurantsButtonRestore();
             string actualApprovedMessageText = moderatorRestaurantsManagmentAllRestaurantsListPageObject.GetApprovedMessageText();
             Assert.AreEqual(expectedApprovedMessageText, actualApprovedMessageText, $"{expectedApprovedMessageText} is not equal for {actualApprovedMessageText}");
@@ -195,7 +195,7 @@ namespace Tests
             ModeratorUsersManagmentAllUsersListPageObject moderatorUsersManagmentAllUsersListPageObject
                 = new ModeratorUsersManagmentAllUsersListPageObject(driver);
             string expectedSuccessMessageText = "success";
-            
+
             moderatorUsersManagmentAllUsersListPageObject.ClickRandomUsersButtonBan();
             string actualSuccesMessageText = moderatorUsersManagmentAllUsersListPageObject.GetSuccessMessageText();
             Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
@@ -315,7 +315,7 @@ namespace Tests
             string actualSuccesMessageText = moderatorOwnersManagmentAllOwnersListPageObject.GetSuccessMessageText();
             Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
                 $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
-            
+
             moderatorOwnersManagmentAllOwnersListPageObject.ClickRandomOwnersButtonUnban();
             actualSuccesMessageText = moderatorOwnersManagmentAllOwnersListPageObject.GetSuccessMessageText();
             Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
@@ -363,10 +363,47 @@ namespace Tests
 
         }
 
+        [Test]
+        public void PositiveModeratorOwnersManagmentBannedOwnersListTest()
+        {
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            signInPageObject.SendTextToEmailTextField("petermoderator@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
+            //PositiveSignInTest
+            loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
+            string actualRolePanelText = loginedUserPartOfBaseHeaderPageObject.GetRolePanelText();
+            string expectedRolePanelText = "Moderator panel";
+            Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
+            //PositiveModeratorSignInTest
+            loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
+            ModeratorPanelPageObject moderatorPanelPageObject
+                = new ModeratorPanelPageObject(driver);
+            moderatorPanelPageObject.ClickOwnersManagmentPageButton();
+            //PositiveModeratorPanelTest
+            ModeratorOwnersManagmentPageObject moderatorOwnersManagmentPageObject
+                = new ModeratorOwnersManagmentPageObject(driver);
+            moderatorOwnersManagmentPageObject.ClickBannedOwnersListButton();
+            ModeratorOwnersManagmentBannedOwnersListPageObject moderatorOwnersManagmentBannedOwnersListPageObject
+                = new ModeratorOwnersManagmentBannedOwnersListPageObject(driver);
+            string expectedSuccessMessageText = "success";
+
+            moderatorOwnersManagmentBannedOwnersListPageObject.ClickRandomOwnersButtonUnban();
+            string actualSuccesMessageText = moderatorOwnersManagmentBannedOwnersListPageObject.GetSuccessMessageText();
+            Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
+                $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
+            //PositiveModeratorOwnersManagmentAllOwnersListTest
+
+        }
 
 
     }
 }
+
 
 
 

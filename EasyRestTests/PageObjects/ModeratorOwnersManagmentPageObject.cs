@@ -26,7 +26,7 @@ namespace PageObjects
         {
             ActiveOwnersListButton.Click();
         }
-        public void ClickBanndeOwnersListButton()
+        public void ClickBannedOwnersListButton()
         {
             BannedOwnersListButton.Click();
         }
