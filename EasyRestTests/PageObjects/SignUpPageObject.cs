@@ -15,7 +15,7 @@ namespace PageObjects
         }
         private IWebElement BackButton => driver.FindElement(By.TagName("svg"));
         private IWebElement SignInButton => driver.FindElement(By.XPath("//span[text()='Sign In']"));
-        private IWebElement SignInInsteadButton => driver.FindElement(By.XPath("//span[text()='Sign in instead']"))
+        private IWebElement SignInInsteadButton => driver.FindElement(By.XPath("//span[text()='Sign in instead']"));
         private IWebElement NameTextField => driver.FindElement(By.XPath("//input[@name='name']"));
         private IWebElement EmailTextField => driver.FindElement(By.XPath("//input[@name='email']"));
         private IWebElement PasswordTextField => driver.FindElement(By.XPath("//input[@name='password']"));
