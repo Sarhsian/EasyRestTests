@@ -11,47 +11,7 @@ namespace Tests
 {
     public class ModeratorTest : BaseTest
     {
-        /*[Test]
-        public void PositiveModeratorTest()
-        {
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
-            signInPageObject.SendTextToEmailTextField("petermoderator@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
-            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-            Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
-            //PositiveSignInTest
-            loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
-            string actualRolePanelText = loginedUserPartOfBaseHeaderPageObject.GetRolePanelText();
-            string expectedRolePanelText = "Moderator panel";
-            Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
-            //PositiveModeratorSignInTest
-
-        }*/
-        /*[Test]
-        public void PositiveModeratorRestaurantsManagmentTest()
-        {
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
-            signInPageObject.SendTextToEmailTextField("petermoderator@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
-            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-            Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
-            //PositiveSignInTest
-            loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
-            string actualRolePanelText = loginedUserPartOfBaseHeaderPageObject.GetRolePanelText();
-            string expectedRolePanelText = "Moderator panel";
-            Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
-            //PositiveModeratorSignInTest
-            loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
-            ModeratorRestaurantsManagmentPageObject moderatorRestaurantsManagmentPageObject = new ModeratorRestaurantsManagmentPageObject(driver);
-            moderatorRestaurantsManagmentPageObject.ClickRestaurantsManagmentPageButton();
-            //PositiveModeratorRestaurantsManagmentTest
-        }*/
+        
         [Test]
         public void PositiveModeratorRestaurantsManagmentAllRestaurantsListTest()
         {
@@ -235,10 +195,7 @@ namespace Tests
             ModeratorUsersManagmentAllUsersListPageObject moderatorUsersManagmentAllUsersListPageObject
                 = new ModeratorUsersManagmentAllUsersListPageObject(driver);
             string expectedSuccessMessageText = "success";
-            /* List<IWebElement> allUsersButtonsBan = driver.FindElements
-                 (By.XPath("//button[contains(@class,'MuiIconButton-colorSecondary')]")).ToList();
-             Assert.IsTrue(false, $"{allUsersButtonsBan.Count}");
-            */
+            
             moderatorUsersManagmentAllUsersListPageObject.ClickRandomUsersButtonBan();
             string actualSuccesMessageText = moderatorUsersManagmentAllUsersListPageObject.GetSuccessMessageText();
             Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
@@ -330,3 +287,52 @@ namespace Tests
 
     }
 }
+
+
+
+/*[Test]
+        public void PositiveModeratorTest()
+        {
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            signInPageObject.SendTextToEmailTextField("petermoderator@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
+            //PositiveSignInTest
+            loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
+            string actualRolePanelText = loginedUserPartOfBaseHeaderPageObject.GetRolePanelText();
+            string expectedRolePanelText = "Moderator panel";
+            Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
+            //PositiveModeratorSignInTest
+
+        }*/
+/*[Test]
+public void PositiveModeratorRestaurantsManagmentTest()
+{
+    UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+    unloginedUserPartOfBaseHeader.ClickSignInButton();
+    SignInPageObject signInPageObject = new SignInPageObject(driver);
+    signInPageObject.SendTextToEmailTextField("petermoderator@test.com");
+    signInPageObject.SendTextToPasswordTextField("1");
+    signInPageObject.ClickSubmitButton();
+    LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+    Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
+    //PositiveSignInTest
+    loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
+    string actualRolePanelText = loginedUserPartOfBaseHeaderPageObject.GetRolePanelText();
+    string expectedRolePanelText = "Moderator panel";
+    Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
+    //PositiveModeratorSignInTest
+    loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
+    ModeratorRestaurantsManagmentPageObject moderatorRestaurantsManagmentPageObject = new ModeratorRestaurantsManagmentPageObject(driver);
+    moderatorRestaurantsManagmentPageObject.ClickRestaurantsManagmentPageButton();
+    //PositiveModeratorRestaurantsManagmentTest
+
+}*/
+/* List<IWebElement> allUsersButtonsBan = driver.FindElements
+         (By.XPath("//button[contains(@class,'MuiIconButton-colorSecondary')]")).ToList();
+     Assert.IsTrue(false, $"{allUsersButtonsBan.Count}");
+    */
