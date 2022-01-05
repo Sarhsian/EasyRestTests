@@ -253,7 +253,42 @@ namespace Tests
             //PositiveModeratorRestaurantsManagmentAllRestaurantsListTest
 
         }
-        
+        [Test]
+        public void PositiveModeratorUsersManagmentActiveUsersListTest()
+        {
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            signInPageObject.SendTextToEmailTextField("petermoderator@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
+            //PositiveSignInTest
+            loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
+            string actualRolePanelText = loginedUserPartOfBaseHeaderPageObject.GetRolePanelText();
+            string expectedRolePanelText = "Moderator panel";
+            Assert.AreEqual(expectedRolePanelText, actualRolePanelText, $"{expectedRolePanelText} is not equal for {actualRolePanelText}");
+            //PositiveModeratorSignInTest
+            loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
+            ModeratorPanelPageObject moderatorPanelPageObject
+                = new ModeratorPanelPageObject(driver);
+            moderatorPanelPageObject.ClickUsersManagmentPageButton();
+            //PositiveModeratorPanelTest
+            ModeratorUsersManagmentPageObject moderatorUsersManagmentPageObject
+                = new ModeratorUsersManagmentPageObject(driver);
+            moderatorUsersManagmentPageObject.ClickActiveRestaurantsListButton();
+            ModeratorUsersManagmentActiveUsersListPageObject moderatorUsersManagmentActiveUsersListPageObject
+                = new ModeratorUsersManagmentActiveUsersListPageObject(driver);
+            string expectedSuccessMessageText = "success";
+
+            moderatorUsersManagmentActiveUsersListPageObject.ClickRandomUsersButtonBan();
+            string actualSuccesMessageText = moderatorUsersManagmentActiveUsersListPageObject.GetSuccessMessageText();
+            Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
+                $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
+            //PositiveModeratorRestaurantsManagmentActiveRestaurantsListTest
+
+        }
 
 
 
