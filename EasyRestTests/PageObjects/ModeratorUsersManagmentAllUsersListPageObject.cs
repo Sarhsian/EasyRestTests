@@ -17,9 +17,16 @@ namespace PageObjects
         }
         Random rand = new Random();
 
-
+        //button[@aria-label='Close']
         private IWebElement SuccessMessage => driver.FindElement(By.XPath("//p[(text()='success')]"));
+        private IWebElement CloseMessageButton => driver.FindElement(By.XPath("//button[@aria-label='Close']"));
 
+        public void ClickCloseMessageButton()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.TextToBePresentInElement(SuccessMessage,"success"));
+            CloseMessageButton.Click();                      
+        }
         public void ClickRandomUsersButtonBan()
         {
             List<IWebElement> allUsersButtonsBan = driver.FindElements
@@ -35,6 +42,7 @@ namespace PageObjects
 
         public void ClickRandomUsersButtonUnban()
         {
+            
             List<IWebElement> allUsersButtonsUnban = driver.FindElements
                 (By.XPath("//button[contains(@class,'MuiIconButton-colorSecondary')]")).ToList();
             allUsersButtonsUnban[rand.Next(allUsersButtonsUnban.Count - 1)].Click();

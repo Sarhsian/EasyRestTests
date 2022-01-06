@@ -9,10 +9,11 @@ using System.Threading;
 
 namespace Tests
 {
+    
     public class ModeratorTest : BaseTest
     {
-
-        [Test]
+        
+        [Test,Order(1)]
         public void PositiveModeratorRestaurantsManagmentAllRestaurantsListTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -58,7 +59,7 @@ namespace Tests
             //PositiveModeratorRestaurantsManagmentAllRestaurantsListTest
 
         }
-        [Test]
+        [Test, Order(2)]
         public void PositiveModeratorRestaurantsManagmentUnapprovedRestaurantsListTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -96,7 +97,7 @@ namespace Tests
             //PositiveModeratorRestaurantsManagmentUnapprovedRestaurantsListTest
 
         }
-        [Test]
+        [Test, Order(3)]
         public void PositiveModeratorRestaurantsManagmentApprovedRestaurantsListTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -131,7 +132,7 @@ namespace Tests
 
         }
 
-        [Test]
+        [Test, Order(4)]
         public void PositiveModeratorRestaurantsManagmentArchivedRestaurantsListTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -167,7 +168,8 @@ namespace Tests
 
         }
 
-        [Test]
+        [Test, Order(5)]
+        
         public void PositiveModeratorUsersManagmentAllUsersListTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -200,17 +202,19 @@ namespace Tests
             string actualSuccesMessageText = moderatorUsersManagmentAllUsersListPageObject.GetSuccessMessageText();
             Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
                 $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
-
+            moderatorUsersManagmentAllUsersListPageObject.ClickCloseMessageButton();
+            
             moderatorUsersManagmentAllUsersListPageObject.ClickRandomUsersButtonUnban();
             actualSuccesMessageText = moderatorUsersManagmentAllUsersListPageObject.GetSuccessMessageText();
             Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
                 $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
+            moderatorUsersManagmentAllUsersListPageObject.ClickCloseMessageButton();
 
 
             //PositiveModeratorUsersManagmentAllUsersListTest
 
         }
-        [Test]
+        [Test, Order(6)]
         public void PositiveModeratorUsersManagmentActiveUsersListTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -246,7 +250,7 @@ namespace Tests
             //PositiveModeratorUsersManagmentActiveUsersListTest
 
         }
-        [Test]
+        [Test, Order(7)]
         public void PositiveModeratorUsersManagmentBannedUsersListTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -282,7 +286,7 @@ namespace Tests
             //PositiveModeratorUsersManagmentBannedUsersListTest
 
         }
-        [Test]
+        [Test, Order(8)]
         public void PositiveModeratorOwnersManagmentAllOwnersListTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -324,7 +328,7 @@ namespace Tests
 
         }
 
-        [Test]
+        [Test, Order(9)]
         public void PositiveModeratorOwnersManagmentActiveOwnersListTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -363,7 +367,7 @@ namespace Tests
 
         }
 
-        [Test]
+        [Test, Order(10)]
         public void PositiveModeratorOwnersManagmentBannedOwnersListTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -397,7 +401,8 @@ namespace Tests
             Assert.AreEqual(expectedSuccessMessageText, actualSuccesMessageText,
                 $"{expectedSuccessMessageText} is not equal for {actualSuccesMessageText}");
             //PositiveModeratorOwnersManagmentAllOwnersListTest
-
+            DataBaseHelper dataBaseHelper = new DataBaseHelper();
+            dataBaseHelper.ResetDB();
         }
 
 
