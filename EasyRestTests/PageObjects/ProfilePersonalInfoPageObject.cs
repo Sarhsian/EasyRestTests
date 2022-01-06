@@ -35,15 +35,15 @@ namespace PageObjects
 
         public void ClickCurrentOrdersTab()
         {
-            CurrentOrdersTab(.Click();
+            CurrentOrdersTab.Click();
         }
 
-        public void OrderHistoryTab()
+        public void ClickOrderHistoryTab()
         {
             OrderHistoryTab.Click();
         }
 
-        public void MyRestaurantTab()
+        public void ClickMyRestaurantTab()
         {
             MyRestaurantTab.Click();
         }
