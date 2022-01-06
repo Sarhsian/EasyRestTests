@@ -26,24 +26,20 @@ namespace Tests
         public void PositiveSignUpTest()
         {
             string name = GetRandomString();
-            string email = GetRandomString();
+            string email = GetRandomString()+ "@test.com";
             string password = GetRandomString();
             
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeader.ClickSignUpButton();
             SignUpPageObject signUpPageObject = new SignUpPageObject(driver);
             signUpPageObject.SendTextToNameTextField(name);
-            signUpPageObject.SendTextToEmailTextField(email+"@test.com");
+            signUpPageObject.SendTextToEmailTextField(email);
             signUpPageObject.SendTextToPasswordTextField(password);
             signUpPageObject.SendTextToConfirmPasswordTextField(password);
             signUpPageObject.ClickSubmitButton();
-            
             SignInPageObject signInPageObject = new SignInPageObject(driver);
-            
-            signInPageObject.SendTextToEmailTextField(email + "@test.com");
-            
+            signInPageObject.SendTextToEmailTextField(email);
             signInPageObject.SendTextToPasswordTextField(password);
-            
             signInPageObject.ClickSubmitButton();
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
             Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
