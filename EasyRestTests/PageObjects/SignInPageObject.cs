@@ -24,8 +24,12 @@ namespace PageObjects
         private IWebElement PasswordRequiredErrorMessage => driver.FindElement(By.XPath("//p[text()='Password is required']"));
         private IWebElement EmailIsNotValidErrorMessage => driver.FindElement(By.XPath("//p[text()='Email is not valid']"));
         private IWebElement EmailOrPasswordIsNotValidErrorMessage => driver.FindElement(By.XPath("//p[text()='Email or password is invalid']"));
+        private IWebElement SignInLabel => driver.FindElement(By.XPath("//h5[text()='Sign In']"));
+
         public void SendTextToEmailTextField(string text)
         {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h5[text()='Sign In']")));
             EmailTextField.SendKeys(text);
         }
         public void SendTextToPasswordTextField(string text)
