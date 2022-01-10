@@ -36,6 +36,8 @@ namespace PageObjects
         }
         public void ClickSubmitButton()
         {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button/span[text()='Submit']")));
             SubmitButton.Click();
         }
         public string GetOrderStatusMessage()
