@@ -63,5 +63,22 @@ namespace Tests
             //Assert
             Assert.AreNotEqual(actualText2, expectedText, $"{actualText2} is not equal for {expectedText}");
         }
+
+        [Test]
+        public void PositiveAdminInfoAboutBlockedModeratorsTest()
+        {
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            AdminModeratorsPage adminOwnersPage = new AdminModeratorsPage(driver);
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            adminOwnersPage.ClickModeratorsButton();
+            adminOwnersPage.ClickBannedModeratorsButton();
+            int actualResult = adminOwnersPage.GetModeratorsInfo();
+            Assert.That(actualResult > 0, $"There are {actualResult} banned users");
+        }
     }
 }
