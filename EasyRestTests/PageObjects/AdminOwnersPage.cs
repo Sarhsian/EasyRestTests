@@ -1,5 +1,9 @@
 ﻿using OpenQA.Selenium;
-
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PageObjects
 {
@@ -31,5 +35,18 @@ namespace PageObjects
         {
             OwnersButton.Click();
         }
+        public int GetOwnerNumber(string exceptedText)
+        {
+            List<IWebElement> allOwnersLockButtons = driver.FindElements(By.XPath("//table//tbody//tr//td//button")).ToList();            
+            int i = 1;
+            for (; i < allOwnersLockButtons.Count; i++)
+            {
+                if (string.Equals(GetActualStatus(i),exceptedText))
+                {                    
+                    break;
+                }
+            }
+            return i;
+        }       
     }
 }
