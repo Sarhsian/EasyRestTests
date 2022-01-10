@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Tests
 {
-    public class UsersFromAdminTest : BaseTest
+    public class AdminTest : BaseTest
     {
         [Test]
         public void BanUsersFromAllTab()
@@ -34,6 +34,31 @@ namespace Tests
             }
             driver.Navigate().Refresh();
             string actualText2 = adminUsersPage.GetActualStatus(actualUser);
+
+            //Assert
+            Assert.AreNotEqual(actualText2, expectedText, $"{actualText2} is not equal for {expectedText}");
+        }
+
+        [Test]
+        public void BanOwnersFromAllTab()
+        {
+            // Arrange            
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
+            string expectedText = "Active";
+            int actualOwnerNumber;
+
+            // Act            
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            adminOwnersPage.ClickOwnersButton();
+            actualOwnerNumber=adminOwnersPage.GetOwnerNumber(expectedText);
+            adminOwnersPage.ClickLockButton(actualOwnerNumber);
+            driver.Navigate().Refresh();
+            string actualText2 = adminOwnersPage.GetActualStatus(actualOwnerNumber);
 
             //Assert
             Assert.AreNotEqual(actualText2, expectedText, $"{actualText2} is not equal for {expectedText}");
