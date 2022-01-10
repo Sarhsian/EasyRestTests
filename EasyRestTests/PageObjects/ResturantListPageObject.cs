@@ -16,10 +16,10 @@ namespace PageObjects
             driver = webDriver;
         }
 
-        private IWebElement WatchMenuButton => driver.FindElement(By.XPath(""));
-        private IWebElement NextButton => driver.FindElement(By.XPath(""));
-        private IWebElement SubmitOrderButton => driver.FindElement(By.XPath(""));
-        private IWebElement SubmitButton => driver.FindElement(By.XPath(""));
+        private IWebElement WatchMenuButton => driver.FindElement(By.XPath("//span[text()='Watch Menu']"));
+        private IWebElement FirstProductNextButton => driver.FindElement(By.XPath("(//button[contains(@aria-label, 'Add to cart')])[1]"));
+        private IWebElement SubmitOrderButton => driver.FindElement(By.XPath("//button/span[text()='Submit order']"));
+        private IWebElement SubmitButton => driver.FindElement(By.XPath("//button/span[text()='Submit']"));
         private IWebElement OrderStatusMessage => driver.FindElement(By.XPath("//p[text()='Order status changed to Waiting for confirm']"));
 
         public void ClickWatchMenuButton()
@@ -28,7 +28,7 @@ namespace PageObjects
         }
         public void ClickNextButton()
         {
-            NextButton.Click();
+            FirstProductNextButton.Click();
         }
         public void ClickSubmitOrderButton()
         {
