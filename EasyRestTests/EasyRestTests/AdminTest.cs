@@ -55,7 +55,7 @@ namespace Tests
             signInPageObject.SendTextToPasswordTextField("1");
             signInPageObject.ClickSubmitButton();
             adminOwnersPage.ClickOwnersButton();            
-            Assert.AreEqual("good", adminOwnersPage.CheckAvailabilityUnbannedOwners(expectedText), $"{expectedText} not find");
+            Assert.AreEqual(true, adminOwnersPage.CheckAvailabilityUnbannedOwners(expectedText), $"{expectedText} not find");
             adminOwnersPage.CheckAvailabilityUnbannedOwners(expectedText);
             actualOwnerNumber=adminOwnersPage.GetOwnerNumber(expectedText);
             adminOwnersPage.ClickLockButton(actualOwnerNumber);
@@ -81,6 +81,32 @@ namespace Tests
             adminOwnersPage.ClickBannedModeratorsButton();
             int actualResult = adminOwnersPage.GetModeratorsInfo();
             Assert.That(actualResult > 0, $"There are {actualResult} banned users");
+        }
+
+        [Test]
+        public void BanOwnersFromActiveTab()
+        {
+            //Arrange
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
+            int num = 1;
+            string ownerName;
+
+            //Act
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            adminOwnersPage.ClickOwnersButton();
+            adminOwnersPage.ClickActiveOwnersButton();
+            Assert.AreEqual(true, adminOwnersPage.CheckAvailabilityAnyOwners(), "Owners not find on this page");
+            ownerName = adminOwnersPage.GetOwnerName(num);
+            adminOwnersPage.ClickLockButton(num);
+            adminOwnersPage.ClickBannedOwnersButton();
+
+            //Assert
+            Assert.AreEqual(true, adminOwnersPage.CheckOnOwnerName(ownerName), "Owner name not find");
         }
     }
 }
