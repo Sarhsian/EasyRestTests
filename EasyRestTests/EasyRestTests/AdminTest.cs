@@ -66,19 +66,19 @@ namespace Tests
         }
 
         [Test]
-        public void PositiveAdminInfoAboutBlockedModeratorsTest()
+        public void PositiveAdminInfoAboutBlockedUsersTest()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            AdminModeratorsPage adminOwnersPage = new AdminModeratorsPage(driver);
+            AdminUsersPage adminUsersPage = new AdminUsersPage(driver);
             unloginedUserPartOfBaseHeader.ClickSignInButton();
             SignInPageObject signInPageObject = new SignInPageObject(driver);
             signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
             signInPageObject.SendTextToPasswordTextField("1");
             signInPageObject.ClickSubmitButton();
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-            adminOwnersPage.ClickModeratorsButton();
-            adminOwnersPage.ClickBannedModeratorsButton();
-            int actualResult = adminOwnersPage.GetModeratorsInfo();
+            adminUsersPage.ClickUsersButton();
+            adminUsersPage.ClickBannedUsersButton();
+            int actualResult = adminUsersPage.GetUsersInfo();
             Assert.That(actualResult > 0, $"There are {actualResult} banned users");
         }
 

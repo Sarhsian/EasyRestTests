@@ -1,4 +1,9 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace PageObjects
@@ -26,6 +31,19 @@ namespace PageObjects
         public string GetActualStatus(int numOfStatus)
         {
             return ActualStatus(numOfStatus).Text;
-        }        
+        }
+        public void ClickUsersButton()
+        {
+            UsersButton.Click();
+        }
+        public void ClickBannedUsersButton()
+        {
+            BannedUsersButton.Click();
+        }
+        public int GetUsersInfo()
+        {
+            List<IWebElement> allUsersNames = driver.FindElements(By.XPath("//table//tbody//tr//th")).ToList();
+            return allUsersNames.Count;
+        }
     }
 }
