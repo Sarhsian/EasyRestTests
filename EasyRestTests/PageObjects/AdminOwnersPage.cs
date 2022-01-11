@@ -57,7 +57,7 @@ namespace PageObjects
             }
             else return false;
         }
-        public bool CheckAvailabilityUnbannedOwners(string exceptedText)
+        public bool CheckAvailabilityOwners(string exceptedText)
         {
             List<IWebElement> allOwnersLockButtons = driver.FindElements(By.XPath("//table//tbody//tr//td//button")).ToList();
             for (int i = 1; i <= allOwnersLockButtons.Count; i++)
