@@ -54,13 +54,15 @@ namespace Tests
             signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
             signInPageObject.SendTextToPasswordTextField("1");
             signInPageObject.ClickSubmitButton();
-            adminOwnersPage.ClickOwnersButton();
+            adminOwnersPage.ClickOwnersButton();            
+            Assert.AreEqual("good", adminOwnersPage.CheckAvailabilityUnbannedOwners(expectedText), $"{expectedText} not find");
+            adminOwnersPage.CheckAvailabilityUnbannedOwners(expectedText);
             actualOwnerNumber=adminOwnersPage.GetOwnerNumber(expectedText);
             adminOwnersPage.ClickLockButton(actualOwnerNumber);
             driver.Navigate().Refresh();
             string actualText2 = adminOwnersPage.GetActualStatus(actualOwnerNumber);
 
-            //Assert
+            //Assert            
             Assert.AreNotEqual(actualText2, expectedText, $"{actualText2} is not equal for {expectedText}");
         }
 

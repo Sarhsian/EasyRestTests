@@ -34,19 +34,31 @@ namespace PageObjects
         public void ClickOwnersButton()
         {
             OwnersButton.Click();
+        }        
+        public string CheckAvailabilityUnbannedOwners(string exceptedText)
+        {
+            List<IWebElement> allOwnersLockButtons = driver.FindElements(By.XPath("//table//tbody//tr//td//button")).ToList();
+            for (int i = 1; i <= allOwnersLockButtons.Count; i++)
+            {
+                if (string.Equals(GetActualStatus(i),exceptedText))
+                {
+                    return "good";
+                }
+            }
+            return "bad";
         }
         public int GetOwnerNumber(string exceptedText)
         {
             List<IWebElement> allOwnersLockButtons = driver.FindElements(By.XPath("//table//tbody//tr//td//button")).ToList();            
             int i = 1;
-            for (; i < allOwnersLockButtons.Count; i++)
+            for (; i <= allOwnersLockButtons.Count; i++)
             {
                 if (string.Equals(GetActualStatus(i),exceptedText))
-                {                    
-                    break;
+                {
+                    return i;
                 }
             }
-            return i;
+            return 0;
         }       
     }
 }
