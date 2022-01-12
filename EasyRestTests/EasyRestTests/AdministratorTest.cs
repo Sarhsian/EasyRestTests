@@ -28,5 +28,27 @@ namespace Tests
             //Assert
             Assert.AreEqual(exceptedText, actualText, $"{actualText} is not equal {exceptedText} ");
         }
+        [Test]
+        public void WaitingToConfirm()
+        {
+            //Arrange
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            AdministratorPanelPageObject administratorPanel = new AdministratorPanelPageObject(driver);
+            string exceptedText = "Accepted";
+            string actualText;
+
+            //Act
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            signInPageObject.SendTextToEmailTextField("tanyasanchez@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            administratorPanel.ClickWaitingForConfirmTabButton();
+            administratorPanel.ClickArrowDownButton(1);
+            administratorPanel.ClickAcceptButton();
+            actualText = administratorPanel.GetApprovedMessageText();
+            //Assert
+            Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} ");
+        }
     }
 }
