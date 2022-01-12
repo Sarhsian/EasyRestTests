@@ -81,7 +81,7 @@ namespace Tests
             clientProfileMyRestaurantPageObject.SendTextToNameTextField(name);
             clientProfileMyRestaurantPageObject.SendTextToAddressTextField(address);
             clientProfileMyRestaurantPageObject.ClickSubmitButton();
-            Thread.Sleep(5000);
+            driver.Navigate().Refresh();
             clientProfileMyRestaurantPageObject.ClickMoreInfoAboutRestaurantButton();
             clientProfileMyRestaurantPageObject.ClickManageButton();
             //PositiveManageRestaurantPage
