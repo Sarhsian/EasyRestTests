@@ -28,6 +28,7 @@ namespace Tests
             //Assert
             Assert.AreEqual(exceptedText, actualText, $"{actualText} is not equal {exceptedText} ");
         }
+
         [Test]
         public void WaitingToConfirm()
         {
@@ -50,6 +51,30 @@ namespace Tests
             //Assert
             Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} ");
         }
+
+        [Test]
+        public void WaitingToAssign()
+        {
+            //Arrange
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            AdministratorPanelPageObject administratorPanel = new AdministratorPanelPageObject(driver);
+            string exceptedText = "Assigned waiter";
+            string actualText;
+
+            //Act
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            signInPageObject.SendTextToEmailTextField("tanyasanchez@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            administratorPanel.ClickAcceptedTabButton();
+            administratorPanel.ClickArrowDownButton(1);
+            administratorPanel.ClickFirstWaiterButton();
+            administratorPanel.ClickAssignButton();
+            actualText = administratorPanel.GetAssignedMessageText();
+            //Assert
+            Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} ");
+
         [Test]
         public void Waiter()
         {
@@ -67,6 +92,8 @@ namespace Tests
             actualText = administratorPanel.GetOrderInfo();
             //Assert
             Assert.AreEqual(exceptedText, actualText, $"{actualText} is not equal {exceptedText} ");
+
         }
     }
+
 }
