@@ -20,7 +20,8 @@ namespace PageObjects
         private IWebElement WaitersTabButton => driver.FindElement(By.XPath("//span[text()='Waiters'][1]"));
         private IWebElement ArrowDownButton(int num) => driver.FindElement(By.XPath("(//div[contains(@class,'MuiButtonBase')]//span[contains(@class,'MuiIconButton')])[" + num + "]"));
         private IWebElement CheckWorking => driver.FindElement(By.XPath("//div[contains(@class,'MuiExpansionPanel-expanded')]//h6"));
-
+        private IWebElement AcceptedMessage => driver.FindElement(By.XPath("//p[contains(text(),'Accepted')]"));
+        private IWebElement AcceptButton => driver.FindElement(By.XPath("(//span[text()='Accept'])[1]"));
         public void ClickWaitingForConfirmTabButton()
         {
             WaitingForConfirmTabButton.Click();
@@ -30,7 +31,10 @@ namespace PageObjects
         {
             AcceptedTabButton.Click();
         }
-
+        public void ClickAcceptButton()
+        {
+            AcceptButton.Click();
+        }
         public void ClickAssignedWaiterButton()
         {
             AssignedWaiterButton.Click();
@@ -49,10 +53,6 @@ namespace PageObjects
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[contains(@class,'MuiExpansionPanel-expanded')]//h6")));
             return CheckWorking.Text;
-        }
-        public void ClickShowMoreButton(int numOfButton)
-        {
-            ShowMoreButton(numOfButton).Click();
         }
         public string GetApprovedMessageText()
         {
