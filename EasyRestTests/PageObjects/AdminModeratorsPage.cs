@@ -40,6 +40,14 @@ namespace PageObjects
         {
             ModeratorsButton.Click();
         }
+        public void ClickAllModeratorsButton()
+        {
+            AllModeratorsButton.Click();
+        }
+        public void ClickAddModerator()
+        {
+            AddModerator.Click();
+        }
 
         public int GetModeratorsNumber(string exceptedText)
         {
