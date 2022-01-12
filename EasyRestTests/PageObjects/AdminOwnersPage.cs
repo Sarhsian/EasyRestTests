@@ -94,6 +94,10 @@ namespace PageObjects
             }
             return false;
         }
-
+        public int GetUsersInfo()
+        {
+            List<IWebElement> allOwnersNames = driver.FindElements(By.XPath("//table//tbody//tr//th")).ToList();
+            return allOwnersNames.Count;
+        }
     }
 }
