@@ -21,10 +21,17 @@ namespace PageObjects
         private IWebElement ArrowDownButton(int num) => driver.FindElement(By.XPath("(//div[contains(@class,'MuiButtonBase')]//span[contains(@class,'MuiIconButton')])[" + num + "]"));
         private IWebElement CheckWorking => driver.FindElement(By.XPath("//div[contains(@class,'MuiExpansionPanel-expanded')]//h6"));
         private IWebElement AcceptedMessage => driver.FindElement(By.XPath("//p[contains(text(),'Accepted')]"));
+        private IWebElement AssignedMessage => driver.FindElement(By.XPath("//p[contains(text(),'Assigned')]"));
         private IWebElement AcceptButton => driver.FindElement(By.XPath("(//span[text()='Accept'])[1]"));
+        private IWebElement AssignButton => driver.FindElement(By.XPath("(//span[text()='Assign'])[1]"));
+        private IWebElement FirstWaiterButton => driver.FindElement(By.XPath("//input[@value='42'][1]"));
         public void ClickWaitingForConfirmTabButton()
         {
             WaitingForConfirmTabButton.Click();
+        }
+        public void ClickFirstWaiterButton()
+        {
+            FirstWaiterButton.Click();
         }
 
         public void ClickAcceptedTabButton()
@@ -34,6 +41,10 @@ namespace PageObjects
         public void ClickAcceptButton()
         {
             AcceptButton.Click();
+        }
+        public void ClickAssignButton()
+        {
+            AssignButton.Click();
         }
         public void ClickAssignedWaiterButton()
         {
@@ -59,6 +70,12 @@ namespace PageObjects
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[contains(text(),'Accepted')]")));
             return AcceptedMessage.Text;
+        }
+        public string GetAssignedMessageText()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[contains(text(),'Assigned')]")));
+            return AssignedMessage.Text;
         }
     }
 }
