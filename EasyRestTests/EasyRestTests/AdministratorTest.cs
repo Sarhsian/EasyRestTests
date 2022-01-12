@@ -74,6 +74,25 @@ namespace Tests
             actualText = administratorPanel.GetAssignedMessageText();
             //Assert
             Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} ");
+
+        [Test]
+        public void Waiter()
+        {
+            //Arrange            
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            AdministratorPanelPageObject administratorPanel = new AdministratorPanelPageObject(driver);
+            string exceptedText = "Order summary";
+            string actualText;
+
+            //Act
+            signInPageObject.SignIn("tanyasanchez@test.com","1");
+            administratorPanel.ClickWaitersTabButton();
+            administratorPanel.ClickArrowDownButton(1);
+            administratorPanel.ClickArrowDownSubButton(1);
+            actualText = administratorPanel.GetOrderInfo();
+            //Assert
+            Assert.AreEqual(exceptedText, actualText, $"{actualText} is not equal {exceptedText} ");
+
         }
     }
 

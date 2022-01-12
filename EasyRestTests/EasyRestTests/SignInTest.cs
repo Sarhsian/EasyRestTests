@@ -27,16 +27,20 @@ namespace Tests
         [TestCase("tanyasanchez@test.com", "1")]
         [TestCase("karenperez@test.com", "1")]
 
-
         public void PositiveSignInTest(string email, string password)
         {
+            // Arrange
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
             SignInPageObject signInPageObject = new SignInPageObject(driver);
+            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            
+            // Act
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
             signInPageObject.SendTextToEmailTextField(email);
             signInPageObject.SendTextToPasswordTextField(password);
             signInPageObject.ClickSubmitButton();
-            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            
+            // Assert
             Assert.IsTrue(loginedUserPartOfBaseHeaderPageObject.UserMenuDisplayed());
         }
     }
