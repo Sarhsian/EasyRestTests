@@ -50,5 +50,15 @@ namespace PageObjects
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[contains(@class,'MuiExpansionPanel-expanded')]//h6")));
             return CheckWorking.Text;
         }
+        public void ClickShowMoreButton(int numOfButton)
+        {
+            ShowMoreButton(numOfButton).Click();
+        }
+        public string GetApprovedMessageText()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[contains(text(),'Accepted')]")));
+            return AcceptedMessage.Text;
+        }
     }
 }
