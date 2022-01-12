@@ -24,7 +24,7 @@ namespace PageObjects
         private IWebElement RemoveProductFromCartButton(int numOfButton) => driver.FindElement(By.XPath("(//span[contains(@class,'MuiFab')])["+numOfButton+"]"));
         private IWebElement InputQuantityFieldInCart(int numOfButton) => driver.FindElement(By.XPath("(//div[contains(@class,'OrderCartItem')]//div//input)[" + numOfButton + "]"));
         
-        public int ShorcutsQuantity()
+        public int ShortcutsQuantity()
         {
             List<IWebElement> allShorcuts = driver.FindElements(By.XPath("//div//div//div//div//div//a")).ToList();
             return allShorcuts.Count()-1;

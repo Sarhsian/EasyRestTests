@@ -22,11 +22,12 @@ namespace PageObjects
         private IWebElement CheckWorking => driver.FindElement(By.XPath("//div[contains(@class,'MuiExpansionPanel-expanded')]//h6"));
         private IWebElement AcceptedMessage => driver.FindElement(By.XPath("//p[contains(text(),'Accepted')]"));
         private IWebElement AcceptButton => driver.FindElement(By.XPath("(//span[text()='Accept'])[1]"));
+        private IWebElement ArrowDownSubButton(int num) => driver.FindElement(By.XPath("(//div[contains(@class,'MuiGrid')]//div//div//span[contains(@class,'MuiIcon')])["+num+"]"));
+        
         public void ClickWaitingForConfirmTabButton()
         {
             WaitingForConfirmTabButton.Click();
         }
-
         public void ClickAcceptedTabButton()
         {
             AcceptedTabButton.Click();
@@ -39,7 +40,6 @@ namespace PageObjects
         {
             AssignedWaiterButton.Click();
         }
-
         public void ClickWaitersTabButton()
         {
             WaitersTabButton.Click();
@@ -47,6 +47,10 @@ namespace PageObjects
         public void ClickArrowDownButton(int num)
         {
             ArrowDownButton(num).Click();
+        }
+        public void ClickArrowDownSubButton(int num)
+        {
+            ArrowDownSubButton(num).Click();
         }
         public string GetOrderInfo()
         {
