@@ -26,6 +26,14 @@ namespace PageObjects
         private IWebElement EmailOrPasswordIsNotValidErrorMessage => driver.FindElement(By.XPath("//p[text()='Email or password is invalid']"));
         private IWebElement SignInLabel => driver.FindElement(By.XPath("//h5[text()='Sign In']"));
 
+        public void SignIn(string email, string password)
+        {
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
+            SendTextToEmailTextField(email);
+            SendTextToPasswordTextField(password);
+            ClickSubmitButton();
+        }
         public void SendTextToEmailTextField(string text)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));

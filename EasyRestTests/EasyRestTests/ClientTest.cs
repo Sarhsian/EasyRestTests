@@ -15,17 +15,13 @@ namespace Tests
         public void PositiveCurrentOrdersTabDeclineOrderTest()
         {
             // Arrange
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             SignInPageObject signInPageObject = new SignInPageObject(driver);
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
             ProfileCurrentOrdersPageObject profileCurrentOrdersPageObject = new ProfileCurrentOrdersPageObject(driver);
             string expectedDeclineMessage = "Order declined";
 
             // Act
-            unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("katiedoyle@test.com");
-            signInPageObject.SendTextToPasswordTextField("1111");
-            signInPageObject.ClickSubmitButton();
+            signInPageObject.SignIn("katiedoyle@test.com", "1111");                                   
             loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
             loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
             profileCurrentOrdersPageObject.ClickCurrentOrdersTab();
@@ -42,17 +38,13 @@ namespace Tests
         public void PositiveOrderHistoryTabReorderTest()
         {
             // Arrange
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             SignInPageObject signInPageObject = new SignInPageObject(driver);
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
             ProfileOrderHistoryPageObject profileOrderHistoryPageObject = new ProfileOrderHistoryPageObject(driver);
             string expectedStatusMessage = "Order status changed to Waiting for confirm";
 
             // Act                        
-            unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("katiedoyle@test.com");
-            signInPageObject.SendTextToPasswordTextField("1111");
-            signInPageObject.ClickSubmitButton();
+            signInPageObject.SignIn("katiedoyle@test.com", "1111");
             loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
             loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
             profileOrderHistoryPageObject.ClickOrderHistoryTab();
@@ -70,17 +62,13 @@ namespace Tests
         public void ClientMakingOrderOneItemTest()
         {
             // Arrange
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             SignInPageObject signInPageObject = new SignInPageObject(driver);
             BaseHeaderPageObject baseHeaderPageObject = new BaseHeaderPageObject(driver);
             ResturantListPageObject resturantListPageObject = new ResturantListPageObject(driver);
             string expectedStatusMessage = "Order status changed to Waiting for confirm";
 
             // Act
-            unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("katiedoyle@test.com");
-            signInPageObject.SendTextToPasswordTextField("1111");
-            signInPageObject.ClickSubmitButton();
+            signInPageObject.SignIn("katiedoyle@test.com", "1111");
             baseHeaderPageObject.ClickRestaurantsListButton();
             resturantListPageObject.ClickWatchMenuButton();
             resturantListPageObject.ClickNextButton();
