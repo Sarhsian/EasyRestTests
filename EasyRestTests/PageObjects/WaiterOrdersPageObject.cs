@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PageObjects
@@ -25,7 +26,6 @@ namespace PageObjects
 		private IWebElement CloseOrderButton => driver.FindElement(By.XPath("//span[text()='Close order']"));
 		private IWebElement StartOrderMessage => driver.FindElement(By.XPath("//p[text()='success']"));
 		private IWebElement CloseOrderMessage => driver.FindElement(By.XPath("//p[text()='success']"));
-
 
 
 		public void ClickAllTab()
@@ -68,6 +68,11 @@ namespace PageObjects
 			WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
 			wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='success']")));
 			return CloseOrderMessage.Text;
+		}
+		public int GetOrdersTabCount()
+		{
+			List<IWebElement> getListOfOrders = driver.FindElements(By.XPath("//button[contains(@aria-label, 'Show more')]")).ToList();
+			return getListOfOrders.Count;
 		}
 
 	}
