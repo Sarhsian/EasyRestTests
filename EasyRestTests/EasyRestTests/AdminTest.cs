@@ -175,6 +175,22 @@ namespace Tests
             //Assert
             Assert.AreEqual(true, adminOwnersPage.CheckOnOwnerName(ownerName), "Owner name not find");
         }
+        [Test]
+        public void PositiveAdminInfoAboutBlockedOwnersTest()
+        {
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
+            unloginedUserPartOfBaseHeader.ClickSignInButton();
+            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
+            signInPageObject.SendTextToPasswordTextField("1");
+            signInPageObject.ClickSubmitButton();
+            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            adminOwnersPage.ClickOwnersButton();
+            adminOwnersPage.ClickBannedOwnersButton();
+            int actualResult = adminOwnersPage.GetUsersInfo();
+            Assert.That(actualResult > 0, $"There are {actualResult} banned users");
+        }
 
         [Test]
         public void UnbanOwnersFromAllTab()
