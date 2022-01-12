@@ -23,7 +23,8 @@ namespace PageObjects
         private IWebElement ActiveUsersButton => driver.FindElement(By.XPath("//span[starts-with(text(),'Active')]"));
         private IWebElement BannedUsersButton => driver.FindElement(By.XPath("//span[starts-with(text(),'Banned')]"));
         private IWebElement LockButton(int numOfLock) => driver.FindElement(By.XPath("//table//tbody//tr[" + numOfLock + "]//td//button"));
-        private IWebElement ActualStatus(int numOfStatus) => driver.FindElement(By.XPath("//table//tbody//tr[" + numOfStatus + "]//td//p"));       
+        private IWebElement ActualStatus(int numOfStatus) => driver.FindElement(By.XPath("//table//tbody//tr[" + numOfStatus + "]//td//p"));
+        private IWebElement UserName(int numOfName) => driver.FindElement(By.XPath("//table//tbody//tr[" + numOfName + "]//th"));
         public void ClickLockButton(int numOfLock)
         {
             LockButton(numOfLock).Click();
@@ -32,13 +33,67 @@ namespace PageObjects
         {
             return ActualStatus(numOfStatus).Text;
         }
+        public string GetUserName(int numOfName)
+        {
+            return UserName(numOfName).Text;
+        }
         public void ClickUsersButton()
         {
             UsersButton.Click();
         }
+        public void ClickActiveUsersButton()
+        {
+            ActiveUsersButton.Click();
+        }
         public void ClickBannedUsersButton()
         {
             BannedUsersButton.Click();
+        }
+        public bool CheckAvailabilityAnyUsers()
+        {
+            List<IWebElement> allUsersLockButtons = driver.FindElements(By.XPath("//table//tbody//tr//td//button")).ToList();
+            if (allUsersLockButtons.Count > 0)
+            {
+                return true;
+            }
+            else return false;
+        }
+        public bool CheckAvailabilityUsers(string exceptedText)
+        {
+            List<IWebElement> allUsersLockButtons = driver.FindElements(By.XPath("//table//tbody//tr//td//button")).ToList();
+            for (int i = 1; i <= allUsersLockButtons.Count; i++)
+            {
+                if (string.Equals(GetActualStatus(i), exceptedText))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public int GetUserNumber(string exceptedText)
+        {
+            List<IWebElement> allUsersLockButtons = driver.FindElements(By.XPath("//table//tbody//tr//td//button")).ToList();
+            int i = 1;
+            for (; i <= allUsersLockButtons.Count; i++)
+            {
+                if (string.Equals(GetActualStatus(i), exceptedText))
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
+        public bool CheckOnUserName(string ownerName)
+        {
+            List<IWebElement> allUsersLockButtons = driver.FindElements(By.XPath("//table//tbody//tr//th")).ToList();
+            for (int i = 1; i <= allUsersLockButtons.Count; i++)
+            {
+                if (string.Equals(GetUserName(i), ownerName))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         public int GetUsersInfo()
         {
