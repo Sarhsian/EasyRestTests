@@ -109,7 +109,7 @@ namespace Tests
             manageRestaurantPageObject.SendWaiterPasswordTextField(password);
             manageRestaurantPageObject.SendWaiterPhoneNumberTextField(phoneNumber);
             Thread.Sleep(3000);
-            manageRestaurantPageObject.ClickbmitCreateNewWaiterButton();
+            manageRestaurantPageObject.ClickSubmitCreateNewWaiterButton();
             Thread.Sleep(2000);
             //PositiveCreateNewWaiter
             manageRestaurantPageObject.ClickAdministratorTab();
