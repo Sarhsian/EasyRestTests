@@ -117,8 +117,7 @@ namespace PageObjects
         public void SendAdministratorPhoneNumberTextField(string text)
         {
             AdministratorPhoneNumberTextField.SendKeys(text);
-        }
-        //SendTextField
+        }//SendTextField
 
         public void ClickDetailsTab()
         {
@@ -195,8 +194,7 @@ namespace PageObjects
         public void ClickSubmitCreateNewAdministratorButton()
         {
             SubmitCreateNewAdministratorButton.Click();
-        }
-        //ButtonsClick
+        }//ButtonsClick
         public string GetCreateMenuNameIsRequiredErrorMessage()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
@@ -268,7 +266,6 @@ namespace PageObjects
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='Something went wrong']")));
             return CreateNewAdministratorSomethingWentWrongErrorMessage.Text;
-        }
-        //GetErrorMassages
+        } //GetErrorMassages
     }
 }
