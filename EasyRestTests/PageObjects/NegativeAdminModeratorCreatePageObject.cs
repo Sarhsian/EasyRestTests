@@ -6,11 +6,11 @@ using System.Threading;
 
 namespace PageObjects
 {
-    public class AdminModeratorCreatePageObject
+    public class NegativeAdminModeratorCreatePageObject
     {
         protected static IWebDriver driver;
 
-        public AdminModeratorCreatePageObject(IWebDriver webDriver)
+        public NegativeAdminModeratorCreatePageObject(IWebDriver webDriver)
         {
             driver = webDriver;
         }
@@ -76,4 +76,5 @@ namespace PageObjects
             return PasswordMismatchErrorMessage.Text;
         }
     }
+
 }

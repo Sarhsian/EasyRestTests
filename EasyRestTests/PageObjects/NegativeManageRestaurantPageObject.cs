@@ -7,11 +7,11 @@ using System.Text;
 
 namespace PageObjects
 {
-    public class ManageRestaurantPageObject
+    public class NegativeManageRestaurantPageObject
     {
         protected static IWebDriver driver;
 
-        public ManageRestaurantPageObject(IWebDriver webDriver)
+        public NegativeManageRestaurantPageObject(IWebDriver webDriver)
         {
             driver = webDriver;
         }

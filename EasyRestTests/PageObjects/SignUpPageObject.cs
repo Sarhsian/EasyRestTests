@@ -1,7 +1,9 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading;
+
 
 namespace PageObjects
 {
@@ -56,6 +58,24 @@ namespace PageObjects
         public void ClickSubmitButton()
         {
             SubmitButton.Click();
+        }
+        public string GetEmailIsNotValidErrorMessage()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='Email is not valid']")));
+            return EmailIsNotValidErrorMessage.Text;
+        }
+        public string GetPasswordErrorMessage()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='Password must have at least 8 characters']")));
+            return PasswordErrorMessage.Text;
+        }
+        public string GetPasswordMismatchErrorMessage()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='Password mismatch']")));
+            return PasswordMismatchErrorMessage.Text;
         }
     }
 
