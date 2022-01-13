@@ -54,23 +54,23 @@ namespace Tests
             adminModeratorsPage.ClickAllModeratorsButton();
             adminModeratorsPage.ClickAddModerator();
             //PositiveAddModedratorPage
-            NegativeAdminModeratorCreatePageObject negativeAdminModeratorCreatePageObject
-                = new NegativeAdminModeratorCreatePageObject(driver);
-            negativeAdminModeratorCreatePageObject.SendTextToNameTextField(invalidName);
-            negativeAdminModeratorCreatePageObject.SendTextToEmailTextField(invalidEmail);
-            negativeAdminModeratorCreatePageObject.SendTextToPasswordTextField(invalidPassword);
-            negativeAdminModeratorCreatePageObject.SendTextToConfirmPasswordTextField("11111111");
+           AdminModeratorCreatePageObject adminModeratorCreatePageObject
+                = new AdminModeratorCreatePageObject(driver);
+            adminModeratorCreatePageObject.SendTextToNameTextField(invalidName);
+            adminModeratorCreatePageObject.SendTextToEmailTextField(invalidEmail);
+            adminModeratorCreatePageObject.SendTextToPasswordTextField(invalidPassword);
+            adminModeratorCreatePageObject.SendTextToConfirmPasswordTextField("11111111");
             Thread.Sleep(1000);
-            negativeAdminModeratorCreatePageObject.ClickSubmitButton();
+            adminModeratorCreatePageObject.ClickSubmitButton();
             Thread.Sleep(2000);
             //NegativeModeratorCreating
-            string actualEmailErrorMessageText = negativeAdminModeratorCreatePageObject.GetEmailIsNotValidErrorMessage();
+            string actualEmailErrorMessageText = adminModeratorCreatePageObject.GetEmailIsNotValidErrorMessage();
             string expectedEmailErrorMessageText = "Email is not valid";
             Assert.AreEqual(expectedEmailErrorMessageText, actualEmailErrorMessageText, $"{expectedEmailErrorMessageText} is not equal for {actualEmailErrorMessageText}");
-            string actualPasswordErrorMessageText = negativeAdminModeratorCreatePageObject.GetPasswordErrorMessage();
+            string actualPasswordErrorMessageText = adminModeratorCreatePageObject.GetPasswordErrorMessage();
             string expectedPasswordErrorMessageText = "Password must have at least 8 characters";
             Assert.AreEqual(expectedPasswordErrorMessageText, actualPasswordErrorMessageText, $"{expectedPasswordErrorMessageText} is not equal for {actualPasswordErrorMessageText}");
-            string actualConfirmPasswordErrorMessageText = negativeAdminModeratorCreatePageObject.GetPasswordMismatchErrorMessage();
+            string actualConfirmPasswordErrorMessageText = adminModeratorCreatePageObject.GetPasswordMismatchErrorMessage();
             string expectedConfirmPasswordErrorMessageText = "Password mismatch";
             Assert.AreEqual(expectedConfirmPasswordErrorMessageText, actualConfirmPasswordErrorMessageText, $"{expectedConfirmPasswordErrorMessageText} is not equal for {actualConfirmPasswordErrorMessageText}");
         }

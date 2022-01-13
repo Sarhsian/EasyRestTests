@@ -183,6 +183,5 @@ namespace Tests
             clientProfileMyRestaurantPageObject.ClickArchiveButton();
             //PositiveArchiveRestaurant
         }
-
     }
 } 

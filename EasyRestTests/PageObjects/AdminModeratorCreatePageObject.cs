@@ -2,7 +2,6 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
-using System.Threading;
 
 namespace PageObjects
 {
