@@ -24,11 +24,14 @@ namespace PageObjects
         private IWebElement CancelButton => driver.FindElement(By.XPath("//span[text()='Cancel']"));
         private IWebElement DetailsAboutRestaurantButton => driver.FindElement(By.XPath("//a[@href='/profile/restaurants/11']"));
         private IWebElement MoreInfoAboutRestaurantButton => driver.FindElement(By.XPath("//button[@aria-label='More']//span[1]"));
+        private IWebElement MoreInfoAboutNegativeRestaurantButton => driver.FindElement(By.XPath("(//button[@aria-label='More'])[2]"));
         private IWebElement ArchiveButton => driver.FindElement(By.XPath("//li[@role='menuitem']"));
         private IWebElement ManageButton => driver.FindElement(By.XPath("//a[@href='/profile/restaurants/11/edit/info']"));
+        private IWebElement ManageNegativeRestaurantButton => driver.FindElement(By.XPath("//a[@href='/profile/restaurants/12/edit/info']"));
+        private IWebElement ManageButtonForOwner => driver.FindElement(By.XPath("//a[@href='/profile/restaurants/8/edit/info']"));
 
 
-
+        //(//button[@aria-label='More'])[2]
 
         public void SendTextToNameTextField(string text)
         {
@@ -64,7 +67,15 @@ namespace PageObjects
         {
             ManageButton.Click();
         }
-
+        public void ClickManageButtonForOwner()
+        {
+            ManageButtonForOwner.Click();
+        }
+        public void ClickManageNegativeRestaurantButton()
+        {
+            ManageNegativeRestaurantButton.Click();
+        }
+       
         public void ClickArchiveButton()
         {
             ArchiveButton.Click();
@@ -79,5 +90,10 @@ namespace PageObjects
         {
             MoreInfoAboutRestaurantButton.Click();
         }
+        public void ClickMoreInfoAboutNegativeRestaurantButton()
+        {
+            MoreInfoAboutNegativeRestaurantButton.Click();
+        }
+        
     }
 }
