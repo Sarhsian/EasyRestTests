@@ -92,16 +92,15 @@ namespace Tests
             //AssertForCreateRestaurant
             clientProfileMyRestaurantPageObject.SendTextToNameTextField(name);
             clientProfileMyRestaurantPageObject.SendTextToAddressTextField(address);
-            Thread.Sleep(2000);
             clientProfileMyRestaurantPageObject.ClickSubmitButton();
+            Thread.Sleep(2000);
             //NegativeAndThanPositiveCreateRestaurant
             driver.Navigate().Refresh();
-            clientProfileMyRestaurantPageObject.ClickMoreInfoAboutRestaurantButton();
-            clientProfileMyRestaurantPageObject.ClickManageButton();
+            clientProfileMyRestaurantPageObject.ClickMoreInfoAboutNegativeRestaurantButton();
+            clientProfileMyRestaurantPageObject.ClickManageNegativeRestaurantButton();
             //PositiveManageRestaurantPage
-            manageRestaurantPageObject.ClickDetailsTab();
-            manageRestaurantPageObject.ClickMenuesTab();
-            manageRestaurantPageObject.ClickCreateMenuTab();
+            manageRestaurantPageObject.ClickMenuNeagtiveRestaurantTab();
+            manageRestaurantPageObject.ClickCreateMenuNeagtiveRestaurantTab();
             manageRestaurantPageObject.SendMenuNameTextField(menuname);
             manageRestaurantPageObject.ClickNextCreateMenuNameButton();
             manageRestaurantPageObject.SendGroupProductNameTextfield(groupProductName);
@@ -114,7 +113,7 @@ namespace Tests
             Thread.Sleep(2000);
             manageRestaurantPageObject.ClickFinishCreateMuneButton();
             //PositiveCreateMenu
-            manageRestaurantPageObject.ClickWaitersTab();
+            manageRestaurantPageObject.ClickWaitersNegativeTab();
             manageRestaurantPageObject.ClickAddWaiterButton();
             Thread.Sleep(2000);
             manageRestaurantPageObject.ClickSubmitCreateNewWaiterButton();
@@ -145,7 +144,7 @@ namespace Tests
             string expectedNewWaiterSomethingWentWrongErrorMessageText = "Something went wrong";
             Assert.AreEqual(expectedNewWaiterSomethingWentWrongErrorMessageText, actualNewWaiterSomethingWentWrongErrorMessageText, $"{expectedNewWaiterSomethingWentWrongErrorMessageText} is not equal for {actualNewWaiterSomethingWentWrongErrorMessageText}");
             //NegativePositiveCreateNewWaiter
-            manageRestaurantPageObject.ClickAdministratorTab();
+            manageRestaurantPageObject.ClickAdministratorNegativeTab();
             manageRestaurantPageObject.ClickAddAdministratorButton();
             Thread.Sleep(2000);
             manageRestaurantPageObject.ClickSubmitCreateNewAdministratorButton();
@@ -179,7 +178,7 @@ namespace Tests
             manageRestaurantPageObject.ClickMyRestaurantsButton();
             //PositiveRestaurantCreatAndBackToMyRestaurantTab
             Thread.Sleep(3000);
-            clientProfileMyRestaurantPageObject.ClickMoreInfoAboutRestaurantButton();
+            clientProfileMyRestaurantPageObject.ClickMoreInfoAboutNegativeRestaurantButton();
             clientProfileMyRestaurantPageObject.ClickArchiveButton();
             //PositiveArchiveRestaurant
         }
