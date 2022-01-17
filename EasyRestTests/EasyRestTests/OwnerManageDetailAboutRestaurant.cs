@@ -11,7 +11,7 @@ namespace Tests
 {
     public class OwnerManageDetailAboutRestaurantTest : BaseTest
     {
-        public string GetRandomManageDetailAboutString()
+        public string GetRandomManageDetailAboutRestaurantString()
         {
             var chars = "abcdefghijklmnopqrstuvwxyz";
             var stringChars = new char[5];
@@ -31,9 +31,8 @@ namespace Tests
         public void PositiveManageDetailAboutRestaurantTest()
         {
 
-            string name = GetRandomManageDetailAboutString();
-            string address = GetRandomManageDetailAboutString();
-            string phoneNumber = GetRandomManageDetailAboutString();
+            string name = GetRandomManageDetailAboutRestaurantString();
+            string address = GetRandomManageDetailAboutRestaurantString();
             //OurInformationForPositiveEditDetailsOfRestaurant
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader
                 = new UnloginedUserPartOfBaseHeaderPageObject(driver);
@@ -43,7 +42,7 @@ namespace Tests
             signInPageObject.SendTextToEmailTextField("jasonbrown@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
-            //PositiveClientSignIn
+            //PositiveOwnerSignIn
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject
                 = new LoginedUserPartOfBaseHeaderPageObject(driver);
             loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
@@ -82,7 +81,7 @@ namespace Tests
             signInPageObject.SendTextToEmailTextField("jasonbrown@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
-            //PositiveClientSignIn
+            //PositiveOwnerSignIn
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject
                 = new LoginedUserPartOfBaseHeaderPageObject(driver);
             loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
@@ -101,7 +100,6 @@ namespace Tests
             //PositiveEditInformationPageAboutRestaurantPage
             manageRestaurantPageObject.SendRestaurantPhoneTextField("456");
             manageRestaurantPageObject.SendRestaurantDescriptionTextField(" Yes of course!))");
-            //manageRestaurantPageObject.RestaurantAddress.Text = String.Empty;
             manageRestaurantPageObject.ClearRestaurantAddress();
             Thread.Sleep(2000);
             //Delete address
