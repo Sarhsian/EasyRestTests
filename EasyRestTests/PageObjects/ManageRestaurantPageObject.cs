@@ -11,12 +11,10 @@ namespace PageObjects
     public class ManageRestaurantPageObject
     {
         protected static IWebDriver driver;
-
         public ManageRestaurantPageObject(IWebDriver webDriver)
         {
             driver = webDriver;
         }
-
         private IWebElement ProfileLogoButton => driver.FindElement(By.XPath("//div[text()='K']"));
         private IWebElement MyRestaurantsButton => driver.FindElement(By.XPath("//a[@href='/profile/restaurants']"));
         private IWebElement DetailsTab => driver.FindElement(By.XPath("//a[@href='/profile/restaurants/11/edit/info']"));
@@ -75,7 +73,6 @@ namespace PageObjects
         private IWebElement RestaurantNameCannotBeEmptyErrorMessage => driver.FindElement(By.XPath("//p[text()='Restaurant name cannot be empty']"));
         private IWebElement RestaurantAddressCannotBeEmptyErrorMessage => driver.FindElement(By.XPath("//p[text()='Restaurant address cannot be empty']"));
         //xpath 
-        
         public void SendRestaurantNameTextField(string text)
         {
             RestaurantNameTextField.SendKeys(text);
@@ -181,7 +178,6 @@ namespace PageObjects
         {
             MenuesTab.Click();
         }
-
         public void ClickCreateMenuTab()
         {
             CreateMenuTab.Click();
@@ -198,22 +194,18 @@ namespace PageObjects
         {
             NextCreateMenuNameButton.Click();
         }
-
         public void ClickGroupProductCategoryButton()
         {
             GroupProductCategoryButton.Click();
         }
-
         public void ClickSelectMeatProductCategory()
         {
             SelectMeatProductCategory.Click();
         }
-
         public void ClickNextCreateMuneButtonStepTwo()
         {
             NextCreateMuneButtonStepTwo.Click();
         }
-
         public void ClickWaitersTab()
         {
             WaitersTab.Click();
@@ -226,7 +218,6 @@ namespace PageObjects
         {
             AddWaiterButton.Click();
         }
-
         public void ClickAdministratorTab()
         {
             AdministratorTab.Click();
@@ -235,12 +226,10 @@ namespace PageObjects
         {
             AdministratorNegativeTab.Click();
         }
-
         public void ClickAddAdministratorButton()
         {
             AddAdministratorButton.Click();
         }
-
         public void ClickProfileLogoButton()
         {
             ProfileLogoButton.Click();
@@ -249,17 +238,14 @@ namespace PageObjects
         {
             MyRestaurantsButton.Click();
         }
-
         public void ClickFinishCreateMuneButton()
         {
             FinishCreateMuneButton.Click();
         }
-
         public void ClickSubmitCreateNewWaiterButton()
         {
             SubmitCreateNewWaiterButton.Click();
         }
-
         public void ClickSubmitCreateNewAdministratorButton()
         {
             SubmitCreateNewAdministratorButton.Click();
