@@ -3,7 +3,6 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
 
-
 namespace PageObjects
 {
     public class SignUpPage
