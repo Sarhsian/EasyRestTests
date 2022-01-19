@@ -54,9 +54,13 @@ namespace PageObjects
         {
             SignIn("tanyasanchez@test.com", "1");
         }
-        public void SignInAsWaiter()
+        public void SignInAsWaiter1()
         {
             SignIn("karenperez@test.com", "1");
+        }
+        public void SignInAsWaiter2()
+        {
+            SignIn("heatherdalton@test.com", "1");
         }
         public void SendTextToEmailTextField(string text)
         {
