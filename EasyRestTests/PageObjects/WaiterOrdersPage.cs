@@ -4,19 +4,16 @@ using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PageObjects
 {
-	public class WaiterOrdersPageObject
+	public class WaiterOrdersPage
 	{
 		protected static IWebDriver driver;
-
-		public WaiterOrdersPageObject(IWebDriver webDriver)
+		public WaiterOrdersPage(IWebDriver webDriver)
 		{
 			driver = webDriver;
 		}
-
 		private IWebElement AllTab => driver.FindElement(By.XPath("//span[contains(@class, 'MuiTab') and contains(text(), 'All')]"));
 		private IWebElement AssignedWaiterTab => driver.FindElement(By.XPath("//span[contains(@class, 'MuiTab') and contains(text(), 'Assigned waiter')]"));
 		private IWebElement InProgressTab => driver.FindElement(By.XPath("//span[contains(@class, 'MuiTab') and contains(text(), 'In progress')]"));
@@ -24,9 +21,7 @@ namespace PageObjects
 		private IWebElement ShowMoreButton => driver.FindElement(By.XPath("//button[contains(@aria-label, 'Show more')][1]"));
 		private IWebElement StartOrderButton => driver.FindElement(By.XPath("//span[text()='Start order']"));
 		private IWebElement CloseOrderButton => driver.FindElement(By.XPath("//span[text()='Close order']"));
-		private IWebElement StartOrderMessage => driver.FindElement(By.XPath("//p[text()='success']"));
-		private IWebElement CloseOrderMessage => driver.FindElement(By.XPath("//p[text()='success']"));
-
+		private IWebElement SuccessOrderMessage => driver.FindElement(By.XPath("//p[text()='success']"));
 
 		public void ClickAllTab()
 		{
@@ -56,24 +51,16 @@ namespace PageObjects
 		{
 			CloseOrderButton.Click();
 		}
-
-		public string GetStartOrderMessage()
+		public string GetSuccessOrderMessage()
 		{
-			WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
 			wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='success']")));
-			return StartOrderMessage.Text;
-		}
-		public string GetCloseOrderMessage()
-		{
-			WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-			wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='success']")));
-			return CloseOrderMessage.Text;
+			return SuccessOrderMessage.Text;
 		}
 		public int GetOrdersTabCount()
 		{
 			List<IWebElement> getListOfOrders = driver.FindElements(By.XPath("//button[contains(@aria-label, 'Show more')]")).ToList();
 			return getListOfOrders.Count;
 		}
-
 	}
 }

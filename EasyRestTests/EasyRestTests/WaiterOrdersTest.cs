@@ -1,77 +1,59 @@
 ﻿using NUnit.Framework;
 using PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Tests
 {
 	public class WaiterOrdersTest : BaseTest
 	{
 		[Test]
-
 		public void StartOrder()
 		{
 			//Arrange
-			LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-			SignInPage signInPageObject = new SignInPage(driver);
-			WaiterOrdersPageObject waiterOrdersPageObject = new WaiterOrdersPageObject(driver);
+			var signInPageObject = new SignInPage(driver);
+			var waiterOrdersPageObject = new WaiterOrdersPage(driver);
 			string expectedString = "success";
 
 			//Act
-			signInPageObject.SignIn("alexandriawright@test.com", "1");
-			//loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
-			//loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
+			signInPageObject.SignInAsWaiter2();
 			waiterOrdersPageObject.ClickAssignedWaiterTab();
 			waiterOrdersPageObject.ClickShowMoreButton();
 			waiterOrdersPageObject.ClickStartOrderButton();
-			string actualString = waiterOrdersPageObject.GetStartOrderMessage();
-
+			string actualString = waiterOrdersPageObject.GetSuccessOrderMessage();
 
 			// Assert
 			Assert.AreEqual(expectedString, actualString, $"{expectedString} is not equal {actualString}");
-
 		}
 
 		[Test]
 		public void CloseOrder()
 		{
 			//Arrange
-			LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-			SignInPage signInPageObject = new SignInPage(driver);
-			WaiterOrdersPageObject waiterOrdersPageObject = new WaiterOrdersPageObject(driver);
+			var signInPageObject = new SignInPage(driver);
+			var waiterOrdersPageObject = new WaiterOrdersPage(driver);
 			string expectedString = "success";
 
 			//Act
-			signInPageObject.SignIn("alexandriawright@test.com", "1");
-			//loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
-			//loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
+			signInPageObject.SignInAsWaiter2();
 			waiterOrdersPageObject.ClickInProgressTab();
 			waiterOrdersPageObject.ClickShowMoreButton();
 			waiterOrdersPageObject.ClickCloseOrderButton();
-			string actualString = waiterOrdersPageObject.GetStartOrderMessage();
-
+			string actualString = waiterOrdersPageObject.GetSuccessOrderMessage();
 
 			// Assert
 			Assert.AreEqual(expectedString, actualString, $"{expectedString} is not equal {actualString}");
-
 		}
 
 		[Test]
-
 		public void GetAllOrderStatus()
 		{
 			//Arrange
-			LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-			SignInPage signInPageObject = new SignInPage(driver);
-			WaiterOrdersPageObject waiterOrdersPageObject = new WaiterOrdersPageObject(driver);
+			var signInPageObject = new SignInPage(driver);
+			var waiterOrdersPageObject = new WaiterOrdersPage(driver);
 			int allOrdersCount;
 			int actualOrdersCount = 0;
 
 			//Act
-			signInPageObject.SignIn("alexandriawright@test.com", "1");
-			//loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
-			//loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
+			signInPageObject.SignInAsWaiter2();
 			waiterOrdersPageObject.ClickAllTab();
 			allOrdersCount = waiterOrdersPageObject.GetOrdersTabCount();
 			waiterOrdersPageObject.ClickAssignedWaiterTab();
@@ -84,6 +66,5 @@ namespace Tests
 			// Assert
 			Assert.AreEqual(allOrdersCount, actualOrdersCount, $"{allOrdersCount} is not equal {actualOrdersCount}");
 		}
-
 	}
 }
