@@ -31,7 +31,7 @@ namespace Tests
         {
             // Arrange
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
             
             // Act

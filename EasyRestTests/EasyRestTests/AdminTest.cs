@@ -12,7 +12,7 @@ namespace Tests
         {
             // Arrange            
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdminUsersPage adminUsersPage = new AdminUsersPage(driver);
             string expectedText = "Active";
             int actualUserNumber;
@@ -37,7 +37,7 @@ namespace Tests
         {
             //Arrange
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdminUsersPage adminUsersPage = new AdminUsersPage(driver);
             int num = 1;
             string userName;
@@ -62,7 +62,7 @@ namespace Tests
         {
             // Arrange            
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdminUsersPage adminUsersPage = new AdminUsersPage(driver);
             string expectedText = "Banned";
             int actualUserNumber;
@@ -87,7 +87,7 @@ namespace Tests
         {
             //Arrange
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdminUsersPage adminUsersPage = new AdminUsersPage(driver);
             int num = 1;
             string userName;
@@ -113,7 +113,7 @@ namespace Tests
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             AdminUsersPage adminUsersPage = new AdminUsersPage(driver);
             unloginedUserPartOfBaseHeader.ClickSignInButton();
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
             signInPageObject.SendTextToPasswordTextField("1");
             signInPageObject.ClickSubmitButton();
@@ -129,7 +129,7 @@ namespace Tests
         {
             // Arrange            
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
             string expectedText = "Active";
             int actualOwnerNumber;
@@ -155,7 +155,7 @@ namespace Tests
         {
             //Arrange
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
             int num = 1;
             string ownerName;
@@ -181,7 +181,7 @@ namespace Tests
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
             unloginedUserPartOfBaseHeader.ClickSignInButton();
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
             signInPageObject.SendTextToPasswordTextField("1");
             signInPageObject.ClickSubmitButton();
@@ -197,7 +197,7 @@ namespace Tests
         {
             //Arrange
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
             string expectedText = "Banned";
             int actualOwnerNumber;
@@ -223,7 +223,7 @@ namespace Tests
         {
             //Arrange
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
             int num = 1;
             string ownerName;

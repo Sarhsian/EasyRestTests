@@ -12,7 +12,7 @@ namespace Tests
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("katedoyle@test.com");
             signInPageObject.SendTextToPasswordTextField("1");
             signInPageObject.ClickSubmitButton();
@@ -28,7 +28,7 @@ namespace Tests
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("jasoonbrown@test.com");
             signInPageObject.SendTextToPasswordTextField("1");
             signInPageObject.ClickSubmitButton();
@@ -44,7 +44,7 @@ namespace Tests
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("petermoder@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
@@ -60,7 +60,7 @@ namespace Tests
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("stevadmin@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
@@ -76,7 +76,7 @@ namespace Tests
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("tanyasanch@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
@@ -92,7 +92,7 @@ namespace Tests
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("kareperez@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
