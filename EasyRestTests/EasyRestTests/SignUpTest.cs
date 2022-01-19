@@ -37,7 +37,7 @@ namespace Tests
             signUpPageObject.SendTextToPasswordTextField(password);
             signUpPageObject.SendTextToConfirmPasswordTextField(password);
             signUpPageObject.ClickSubmitButton();
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField(email);
             signInPageObject.SendTextToPasswordTextField(password);
             signInPageObject.ClickSubmitButton();

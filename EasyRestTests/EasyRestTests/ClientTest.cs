@@ -15,7 +15,7 @@ namespace Tests
         public void PositiveCurrentOrdersTabDeclineOrderTest()
         {
             // Arrange
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
             ProfileCurrentOrdersPageObject profileCurrentOrdersPageObject = new ProfileCurrentOrdersPageObject(driver);
             string expectedDeclineMessage = "Order declined";
@@ -38,7 +38,7 @@ namespace Tests
         public void PositiveOrderHistoryTabReorderTest()
         {
             // Arrange
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
             ProfileOrderHistoryPageObject profileOrderHistoryPageObject = new ProfileOrderHistoryPageObject(driver);
             string expectedStatusMessage = "Order status changed to Waiting for confirm";
@@ -62,7 +62,7 @@ namespace Tests
         public void ClientMakingOrderOneItemTest()
         {
             // Arrange
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             BaseHeaderPageObject baseHeaderPageObject = new BaseHeaderPageObject(driver);
             ResturantListPageObject resturantListPageObject = new ResturantListPageObject(driver);
             string expectedStatusMessage = "Order status changed to Waiting for confirm";

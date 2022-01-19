@@ -39,8 +39,8 @@ namespace Tests
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader
                 = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeader.ClickSignInButton();
-            SignInPageObject signInPageObject
-                = new SignInPageObject(driver);
+            SignInPage signInPageObject
+                = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
             signInPageObject.SendTextToPasswordTextField("1");
             signInPageObject.ClickSubmitButton();

@@ -14,7 +14,7 @@ namespace Tests
 		{
 			//Arrange
 			LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-			SignInPageObject signInPageObject = new SignInPageObject(driver);
+			SignInPage signInPageObject = new SignInPage(driver);
 			WaiterOrdersPageObject waiterOrdersPageObject = new WaiterOrdersPageObject(driver);
 			string expectedString = "success";
 
@@ -38,7 +38,7 @@ namespace Tests
 		{
 			//Arrange
 			LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-			SignInPageObject signInPageObject = new SignInPageObject(driver);
+			SignInPage signInPageObject = new SignInPage(driver);
 			WaiterOrdersPageObject waiterOrdersPageObject = new WaiterOrdersPageObject(driver);
 			string expectedString = "success";
 
@@ -63,7 +63,7 @@ namespace Tests
 		{
 			//Arrange
 			LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-			SignInPageObject signInPageObject = new SignInPageObject(driver);
+			SignInPage signInPageObject = new SignInPage(driver);
 			WaiterOrdersPageObject waiterOrdersPageObject = new WaiterOrdersPageObject(driver);
 			int allOrdersCount;
 			int actualOrdersCount = 0;

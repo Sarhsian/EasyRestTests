@@ -12,7 +12,7 @@ namespace Tests
         {
             //Arrange
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdministratorPanelPageObject administratorPanel = new AdministratorPanelPageObject(driver);
             string exceptedText = "Order summary";
             string actualText;
@@ -34,7 +34,7 @@ namespace Tests
         {
             //Arrange
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdministratorPanelPageObject administratorPanel = new AdministratorPanelPageObject(driver);
             string exceptedText = "Accepted";
             string actualText;
@@ -57,7 +57,7 @@ namespace Tests
         {
             //Arrange
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdministratorPanelPageObject administratorPanel = new AdministratorPanelPageObject(driver);
             string exceptedText = "Assigned waiter";
             string actualText;
@@ -81,7 +81,7 @@ namespace Tests
         public void Waiter()
         {
             //Arrange            
-            SignInPageObject signInPageObject = new SignInPageObject(driver);
+            SignInPage signInPageObject = new SignInPage(driver);
             AdministratorPanelPageObject administratorPanel = new AdministratorPanelPageObject(driver);
             string exceptedText = "Order summary";
             string actualText;

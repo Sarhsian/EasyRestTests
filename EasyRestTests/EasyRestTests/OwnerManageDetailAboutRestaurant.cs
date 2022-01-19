@@ -37,8 +37,8 @@ namespace Tests
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader
                 = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeader.ClickSignInButton();
-            SignInPageObject signInPageObject
-                = new SignInPageObject(driver);
+            SignInPage signInPageObject
+                = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("jasonbrown@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
@@ -76,8 +76,8 @@ namespace Tests
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader
                 = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeader.ClickSignInButton();
-            SignInPageObject signInPageObject
-                = new SignInPageObject(driver);
+            SignInPage signInPageObject
+                = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("jasonbrown@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
