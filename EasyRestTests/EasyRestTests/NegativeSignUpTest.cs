@@ -33,7 +33,7 @@ namespace Tests
             //OurInformationForNegativeSignUp
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeader.ClickSignUpButton();
-            SignUpPageObject signUpPageObject = new SignUpPageObject(driver);
+            SignUpPage signUpPageObject = new SignUpPage(driver);
             signUpPageObject.SendTextToNameTextField(name);
             signUpPageObject.SendTextToEmailTextField(email);
             signUpPageObject.SendTextToPasswordTextField(password);
