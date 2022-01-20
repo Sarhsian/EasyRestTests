@@ -46,7 +46,6 @@ namespace PageObjects
         public void ClickPrevButton() => PrevTabButton.Click();
         public void ClickOrderInfoArrowDownButton() => OrderInfoArrowDownButton.Click();
         public void ClickWaitingForConfirmDeclineButton() => WaitingForConfirmTabDeclineButton.Click();
-
         public string GetOrderDeclinedMessage()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));

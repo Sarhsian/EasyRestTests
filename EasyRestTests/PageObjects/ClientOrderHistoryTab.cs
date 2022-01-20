@@ -41,7 +41,6 @@ namespace PageObjects
             SubmitButton.Click();
         }
         public void CancelButtonClick() => CancelButton.Click();
-
         public string GetOrderStatusMessage()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));

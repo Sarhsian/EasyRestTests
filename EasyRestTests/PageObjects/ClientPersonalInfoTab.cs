@@ -1,17 +1,12 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjects
 {
-    public class ProfilePersonalInfoPageObject
+    public class ClientPersonalInfoTab
     {
         protected static IWebDriver driver;
 
-        public ProfilePersonalInfoPageObject(IWebDriver webDriver)
+        public ClientPersonalInfoTab(IWebDriver webDriver)
         {
             driver = webDriver;
         }
@@ -24,44 +19,12 @@ namespace PageObjects
         private IWebElement RestaurantListButton => driver.FindElement(By.XPath("//span[text()='Restaurants List']"));
         private IWebElement EasyRestButton => driver.FindElement(By.XPath("//a[@class='MuiTypography-root-41 MuiTypography-button-52 MuiTypography-colorInherit-70']"));
 
-
-
-
-
-        public void ClickPersonalInfoTab()
-        {
-            PersonalInfoTab.Click();
-        }
-
-        public void ClickCurrentOrdersTab()
-        {
-            CurrentOrdersTab.Click();
-        }
-
-        public void ClickOrderHistoryTab()
-        {
-            OrderHistoryTab.Click();
-        }
-
-        public void ClickMyRestaurantTab()
-        {
-            MyRestaurantTab.Click();
-        }
-
-        public void ClickHomeButton()
-        {
-            HomeButton.Click();
-        }
-
-        public void ClickRestaurantListButton()
-        {
-            RestaurantListButton.Click();
-        }
-
-        public void ClickEasyRestButton()
-        {
-            EasyRestButton.Click();
-        }
-
+        public void ClickPersonalInfoTab() => PersonalInfoTab.Click();
+        public void ClickCurrentOrdersTab() => CurrentOrdersTab.Click();
+        public void ClickOrderHistoryTab() => OrderHistoryTab.Click();
+        public void ClickMyRestaurantTab() => MyRestaurantTab.Click();
+        public void ClickHomeButton() => HomeButton.Click();
+        public void ClickRestaurantListButton() => RestaurantListButton.Click();
+        public void ClickEasyRestButton() => EasyRestButton.Click();
     }
 }
