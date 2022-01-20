@@ -72,8 +72,8 @@ namespace Tests
                 = new LoginedUserPartOfBaseHeaderPageObject(driver);
             loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
             loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
-            ProfileCurrentOrdersPageObject profileCurrentOrdersPageObject
-                = new ProfileCurrentOrdersPageObject(driver);
+            ClientCurrentOrdersTab profileCurrentOrdersPageObject
+                = new ClientCurrentOrdersTab(driver);
             ClientProfileMyRestaurantPageObject clientProfileMyRestaurantPageObject
                 = new ClientProfileMyRestaurantPageObject(driver);
             clientProfileMyRestaurantPageObject.ClickMyRestaurantTab();

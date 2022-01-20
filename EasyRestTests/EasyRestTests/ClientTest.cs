@@ -1,27 +1,21 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 
 namespace Tests
 {
     public class ClientTest : BaseTest
     {
         [Test]
-        public void PositiveCurrentOrdersTabDeclineOrderTest()
+        public void ClientDeclinesOrder_WhenLoggedIn_ShouldShowMessage()
         {
             // Arrange
-            SignInPage signInPageObject = new SignInPage(driver);
-            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-            ProfileCurrentOrdersPageObject profileCurrentOrdersPageObject = new ProfileCurrentOrdersPageObject(driver);
+            var signInPageObject = new SignInPage(driver);
+            var loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            var profileCurrentOrdersPageObject = new ClientCurrentOrdersTab(driver);
             string expectedDeclineMessage = "Order declined";
 
             // Act
-            signInPageObject.SignIn("katiedoyle@test.com", "1111");                                   
+            signInPageObject.SignInAsClient();
             loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
             loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
             profileCurrentOrdersPageObject.ClickCurrentOrdersTab();
@@ -35,20 +29,20 @@ namespace Tests
         }
 
         [Test]
-        public void PositiveOrderHistoryTabReorderTest()
+        public void ClientReordersOrder_WhenLoggedIn_ShouldShowMessage()
         {
             // Arrange
-            SignInPage signInPageObject = new SignInPage(driver);
-            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-            ProfileOrderHistoryPageObject profileOrderHistoryPageObject = new ProfileOrderHistoryPageObject(driver);
+            var signInPageObject = new SignInPage(driver);
+            var loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+            var profileOrderHistoryPageObject = new ClientOrderHistoryTab(driver);
             string expectedStatusMessage = "Order status changed to Waiting for confirm";
 
             // Act                        
-            signInPageObject.SignIn("katiedoyle@test.com", "1111");
+            signInPageObject.SignInAsClient();
             loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
             loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
             profileOrderHistoryPageObject.ClickOrderHistoryTab();
-            profileOrderHistoryPageObject.ClickHiscotyTab();
+            profileOrderHistoryPageObject.ClickHistotyTab();
             profileOrderHistoryPageObject.FirstOrderInfoArrowDownButtonClick();
             profileOrderHistoryPageObject.ReorderButtonClick();
             profileOrderHistoryPageObject.SubmitButtonClick();
@@ -59,16 +53,16 @@ namespace Tests
         }
 
         [Test]
-        public void ClientMakingOrderOneItemTest()
+        public void ClientMakesOrderOfOneItem_WhenLoggedIn_ShouldShowMessage()
         {
             // Arrange
-            SignInPage signInPageObject = new SignInPage(driver);
-            BaseHeaderPageObject baseHeaderPageObject = new BaseHeaderPageObject(driver);
-            ResturantListPageObject resturantListPageObject = new ResturantListPageObject(driver);
+            var signInPageObject = new SignInPage(driver);
+            var baseHeaderPageObject = new BaseHeaderPageObject(driver);
+            var resturantListPageObject = new ResturantListPage(driver);
             string expectedStatusMessage = "Order status changed to Waiting for confirm";
 
             // Act
-            signInPageObject.SignIn("katiedoyle@test.com", "1111");
+            signInPageObject.SignInAsClient();
             baseHeaderPageObject.ClickRestaurantsListButton();
             resturantListPageObject.ClickWatchMenuButton();
             resturantListPageObject.ClickNextButton();
