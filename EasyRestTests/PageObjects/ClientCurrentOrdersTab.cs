@@ -5,11 +5,11 @@ using System;
 
 namespace PageObjects
 {
-    public class ClientTabCurrentOrders
+    public class ClientCurrentOrdersTab
     {
         protected static IWebDriver driver;
 
-        public ClientTabCurrentOrders(IWebDriver webDriver)
+        public ClientCurrentOrdersTab(IWebDriver webDriver)
         {
             driver = webDriver;
         }

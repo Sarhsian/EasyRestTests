@@ -2,16 +2,14 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjects
 {
-    public class ProfileOrderHistoryPageObject
+    public class ClientOrderHistoryTab
     {
         protected static IWebDriver driver;
 
-        public ProfileOrderHistoryPageObject(IWebDriver webDriver)
+        public ClientOrderHistoryTab(IWebDriver webDriver)
         {
             driver = webDriver;
         }
@@ -27,49 +25,22 @@ namespace PageObjects
         private IWebElement SubmitButton => driver.FindElement(By.XPath("//button/span[text()='Submit']"));
         private IWebElement CancelButton => driver.FindElement(By.XPath("//span[text()='Cancel']"));
         private IWebElement OrderStatusMessage => driver.FindElement(By.XPath("//p[text()='Order status changed to Waiting for confirm']"));
-        
-        public void ClickOrderHistoryTab()
-        {
-            OrderHistoryTab.Click();
-        }
-        public void ClickAllTab()
-        {
-            AllTab.Click();
-        }
-        public void ClickHiscotyTab()
-        {
-            HistoryTab.Click();
-        }
-        public void ClickDeclinedTab()
-        {
-            DeclinedTab.Click();
-        }
-        public void ClickRemovedTab()
-        {
-            RemovedTab.Click();
-        }
-        public void ClickFailedTab()
-        {
-            FailedTab.Click();
-        }
-        public void FirstOrderInfoArrowDownButtonClick()
-        {
-            FirstOrderInfoArrowDownButton.Click();
-        }
-        public void ReorderButtonClick()
-        {
-            ReorderButton.Click();
-        }
+
+        public void ClickOrderHistoryTab() => OrderHistoryTab.Click();
+        public void ClickAllTab() => AllTab.Click();
+        public void ClickHistotyTab() => HistoryTab.Click();
+        public void ClickDeclinedTab() => DeclinedTab.Click();
+        public void ClickRemovedTab() => RemovedTab.Click();
+        public void ClickFailedTab() => FailedTab.Click();
+        public void FirstOrderInfoArrowDownButtonClick() => FirstOrderInfoArrowDownButton.Click();
+        public void ReorderButtonClick() => ReorderButton.Click();
         public void SubmitButtonClick()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button/span[text()='Submit']")));
             SubmitButton.Click();
         }
-        public void CancelButtonClick()
-        {
-            CancelButton.Click();
-        }
+        public void CancelButtonClick() => CancelButton.Click();
 
         public string GetOrderStatusMessage()
         {
@@ -77,6 +48,5 @@ namespace PageObjects
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='Order status changed to Waiting for confirm']")));
             return OrderStatusMessage.Text;
         }
-
     }
 }

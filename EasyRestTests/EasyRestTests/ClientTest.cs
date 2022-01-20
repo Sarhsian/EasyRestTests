@@ -17,7 +17,7 @@ namespace Tests
             // Arrange
             SignInPage signInPageObject = new SignInPage(driver);
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-            ClientTabCurrentOrders profileCurrentOrdersPageObject = new ClientTabCurrentOrders(driver);
+            ClientCurrentOrdersTab profileCurrentOrdersPageObject = new ClientCurrentOrdersTab(driver);
             string expectedDeclineMessage = "Order declined";
 
             // Act
@@ -40,7 +40,7 @@ namespace Tests
             // Arrange
             SignInPage signInPageObject = new SignInPage(driver);
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-            ProfileOrderHistoryPageObject profileOrderHistoryPageObject = new ProfileOrderHistoryPageObject(driver);
+            ClientOrderHistoryTab profileOrderHistoryPageObject = new ClientOrderHistoryTab(driver);
             string expectedStatusMessage = "Order status changed to Waiting for confirm";
 
             // Act                        
@@ -48,7 +48,7 @@ namespace Tests
             loginedUserPartOfBaseHeaderPageObject.ClickUserMenuButton();
             loginedUserPartOfBaseHeaderPageObject.ClickRolePanelButton();
             profileOrderHistoryPageObject.ClickOrderHistoryTab();
-            profileOrderHistoryPageObject.ClickHiscotyTab();
+            profileOrderHistoryPageObject.ClickHistotyTab();
             profileOrderHistoryPageObject.FirstOrderInfoArrowDownButtonClick();
             profileOrderHistoryPageObject.ReorderButtonClick();
             profileOrderHistoryPageObject.SubmitButtonClick();
