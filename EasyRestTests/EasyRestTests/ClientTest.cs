@@ -64,7 +64,7 @@ namespace Tests
             // Arrange
             SignInPage signInPageObject = new SignInPage(driver);
             BaseHeaderPageObject baseHeaderPageObject = new BaseHeaderPageObject(driver);
-            ResturantListPageObject resturantListPageObject = new ResturantListPageObject(driver);
+            ResturantListPage resturantListPageObject = new ResturantListPage(driver);
             string expectedStatusMessage = "Order status changed to Waiting for confirm";
 
             // Act

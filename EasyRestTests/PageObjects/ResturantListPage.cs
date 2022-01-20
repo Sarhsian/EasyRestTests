@@ -2,16 +2,14 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjects
 {
-    public class ResturantListPageObject
+    public class ResturantListPage
     {
         protected static IWebDriver driver;
 
-        public ResturantListPageObject(IWebDriver webDriver)
+        public ResturantListPage(IWebDriver webDriver)
         {
             driver = webDriver;
         }
@@ -22,18 +20,9 @@ namespace PageObjects
         private IWebElement SubmitButton => driver.FindElement(By.XPath("//button/span[text()='Submit']"));
         private IWebElement OrderStatusMessage => driver.FindElement(By.XPath("//p[text()='Order status changed to Waiting for confirm']"));
 
-        public void ClickWatchMenuButton()
-        {
-            WatchMenuButton.Click();
-        }
-        public void ClickNextButton()
-        {
-            FirstProductNextButton.Click();
-        }
-        public void ClickSubmitOrderButton()
-        {
-            SubmitOrderButton.Click();
-        }
+        public void ClickWatchMenuButton() => WatchMenuButton.Click();
+        public void ClickNextButton() => FirstProductNextButton.Click();
+        public void ClickSubmitOrderButton() => SubmitOrderButton.Click();
         public void ClickSubmitButton()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
