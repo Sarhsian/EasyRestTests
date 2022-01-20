@@ -5,11 +5,11 @@ using System;
 
 namespace PageObjects
 {
-    public class AdminModeratorCreatePageObject
+    public class AdminModeratorCreatePage
     {
         protected static IWebDriver driver;
 
-        public AdminModeratorCreatePageObject(IWebDriver webDriver)
+        public AdminModeratorCreatePage(IWebDriver webDriver)
         {
             driver = webDriver;
         }
@@ -27,35 +27,17 @@ namespace PageObjects
 
 
 
-        public void SendTextToNameTextField(string text)
-        {
-            NameTextField.SendKeys(text);
-        }
+        public void SendTextToNameTextField(string text) => NameTextField.SendKeys(text);
 
-        public void SendTextToEmailTextField(string text)
-        {
-            EmailTextField.SendKeys(text);
-        }
+        public void SendTextToEmailTextField(string text) => EmailTextField.SendKeys(text);
 
-        public void SendTextToPasswordTextField(string text)
-        {
-            PasswordTextField.SendKeys(text);
-        }
+        public void SendTextToPasswordTextField(string text) => PasswordTextField.SendKeys(text);
 
-        public void SendTextToConfirmPasswordTextField(string text)
-        {
-            ConfirmPasswordTextField.SendKeys(text);
-        }
+        public void SendTextToConfirmPasswordTextField(string text) => ConfirmPasswordTextField.SendKeys(text);
 
-        public void ClickCancelButton()
-        {
-            CancelButton.Click();
-        }
+        public void ClickCancelButton() => CancelButton.Click();
 
-        public void ClickSubmitButton()
-        {
-            SubmitButton.Click();
-        }
+        public void ClickSubmitButton() => SubmitButton.Click();
         public string GetEmailIsNotValidErrorMessage()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));

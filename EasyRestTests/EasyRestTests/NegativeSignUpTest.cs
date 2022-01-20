@@ -12,35 +12,34 @@ namespace Tests
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             var stringChars = new char[7];
             var random = new Random();
-
             for (int i = 0; i < stringChars.Length; i++)
             {
                 stringChars[i] = chars[random.Next(chars.Length)];
             }
-
             var finalString = new String(stringChars);
             return finalString;
         }
-
         [Test]
-
-        public void negativeSignUpTest()
-        {
+        public void WhenUnLoggedUp_ShoulNotSignUp()
+        { 
+            //OurInformationForNegativeSignUp
             string name = GetRandomString();
             string email = GetRandomString() + "@testcom";
             string password = GetRandomString();
             string confirmPassword = GetRandomString();
-            //OurInformationForNegativeSignUp
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            //Arrange
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader
+                = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            SignUpPage signUpPageObject
+                = new SignUpPage(driver);
             unloginedUserPartOfBaseHeader.ClickSignUpButton();
-            SignUpPage signUpPageObject = new SignUpPage(driver);
             signUpPageObject.SendTextToNameTextField(name);
             signUpPageObject.SendTextToEmailTextField(email);
             signUpPageObject.SendTextToPasswordTextField(password);
             signUpPageObject.SendTextToConfirmPasswordTextField(confirmPassword);
             Thread.Sleep(1000);
             signUpPageObject.ClickSubmitButton();
-            Thread.Sleep(2000);
+            //Assert
             string actualEmailErrorMessageText = signUpPageObject.GetEmailIsNotValidErrorMessage();
             string expectedEmailErrorMessageText = "Email is not valid";
             Assert.AreEqual(expectedEmailErrorMessageText, actualEmailErrorMessageText, $"{expectedEmailErrorMessageText} is not equal for {actualEmailErrorMessageText}");

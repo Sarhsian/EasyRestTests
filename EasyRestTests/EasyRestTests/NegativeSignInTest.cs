@@ -7,96 +7,114 @@ namespace Tests
     public class NegativeSignInTest : BaseTest
     {
         [Test]
-
-        public void NegativeEmailAndPasswordForClient()
+        public void WhenUnLoggedIn_ShoulNotSignInHowClient()
         {
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            //Arrange
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject
+                = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            SignInPage signInPageObject
+                = new SignInPage(driver);
+            //Act
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("katedoyle@test.com");
             signInPageObject.SendTextToPasswordTextField("1");
             signInPageObject.ClickSubmitButton();
             Thread.Sleep(2000);
+            //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
             Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
         }
-
         [Test]
-
-        public void NegativeEmailAndPasswordForOwner()
+        public void WhenUnLoggedIn_ShoulNotSignInHowOwner()
         {
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            //Arrange
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject
+                = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            SignInPage signInPageObject 
+                = new SignInPage(driver);
+            //Act
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("jasoonbrown@test.com");
             signInPageObject.SendTextToPasswordTextField("1");
             signInPageObject.ClickSubmitButton();
             Thread.Sleep(2000);
+            //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
             Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
         }
-
         [Test]
-
-        public void NegativeEmailAndPasswordForModerator()
+        public void WhenUnLoggedIn_ShoulNotSignInHowModerator()
         {
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            //Arrange
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject
+                = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            SignInPage signInPageObject
+                = new SignInPage(driver);
+            //Acr
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("petermoder@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
             Thread.Sleep(2000);
+            //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
             Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
         }
-
         [Test]
-
-        public void NegativeEmailAndPasswordForAdmin()
+        public void WhenUnLoggedIn_ShoulNotSignInHowAdmin()
         {
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            //Arrange
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject
+                = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            SignInPage signInPageObject
+                = new SignInPage(driver);
+            //Act
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("stevadmin@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
             Thread.Sleep(2000);
+            //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
             Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
         }
-
         [Test]
-
-        public void NegativeEmailAndPasswordForAdministrator()
+        public void WhenUnLoggedIn_ShoulNotSignInHowAdministrator()
         {
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject
+                = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            SignInPage signInPageObject
+                = new SignInPage(driver);
+            //Act
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("tanyasanch@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
             Thread.Sleep(2000);
+            //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
             Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
         }
-
         [Test]
-
-        public void NegativeEmailAndPasswordForWaiter()
+        public void WhenUnLoggedIn_ShoulNotSignInHowWaiter()
         {
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            //Arrange
+            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject
+                = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            SignInPage signInPageObject
+                = new SignInPage(driver);
+            //Act
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
-            SignInPage signInPageObject = new SignInPage(driver);
             signInPageObject.SendTextToEmailTextField("kareperez@test.com");
             signInPageObject.SendTextToPasswordTextField("1111");
             signInPageObject.ClickSubmitButton();
             Thread.Sleep(2000);
+            //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
             Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
