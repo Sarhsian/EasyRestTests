@@ -17,7 +17,7 @@ namespace Tests
             // Arrange
             SignInPage signInPageObject = new SignInPage(driver);
             LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
-            ProfileCurrentOrdersPageObject profileCurrentOrdersPageObject = new ProfileCurrentOrdersPageObject(driver);
+            ClientTabCurrentOrders profileCurrentOrdersPageObject = new ClientTabCurrentOrders(driver);
             string expectedDeclineMessage = "Order declined";
 
             // Act

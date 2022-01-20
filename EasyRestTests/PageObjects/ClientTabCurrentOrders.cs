@@ -2,16 +2,14 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjects
 {
-    public class ProfileCurrentOrdersPageObject
+    public class ClientTabCurrentOrders
     {
         protected static IWebDriver driver;
 
-        public ProfileCurrentOrdersPageObject(IWebDriver webDriver)
+        public ClientTabCurrentOrders(IWebDriver webDriver)
         {
             driver = webDriver;
         }
@@ -29,26 +27,11 @@ namespace PageObjects
         private IWebElement WaitingForConfirmTabDeclineButton => driver.FindElement(By.XPath("//span[text()='Decline']"));
         private IWebElement OrderDeclinedMessage => driver.FindElement(By.XPath("//p[text()='Order declined']"));
 
-        public void ClickCurrentOrdersTab()
-        {
-            CurrentOrdersTab.Click();
-        }
-        public void ClickAllTab()
-        {
-            AllTab.Click();
-        }
-        public void ClickDraftTab()
-        {
-            DraftTab.Click();
-        }
-        public void ClickWaitingForConfirmTab()
-        {
-            WaitingForConfirmTab.Click();
-        }
-        public void ClickAcceptedTab()
-        {
-            AcceptedTab.Click();
-        }
+        public void ClickCurrentOrdersTab() => CurrentOrdersTab.Click();
+        public void ClickAllTab() => AllTab.Click();
+        public void ClickDraftTab() => DraftTab.Click();
+        public void ClickWaitingForConfirmTab() => WaitingForConfirmTab.Click();
+        public void ClickAcceptedTab() => AcceptedTab.Click();
         public void ClickAssignedWaiterTab()
         {
             ClickNextButton();
@@ -59,22 +42,10 @@ namespace PageObjects
             ClickNextButton();
             InProgressTab.Click();
         }
-        public void ClickNextButton()
-        {
-            NextTabButton.Click();
-        }
-        public void ClickPrevButton()
-        {
-            PrevTabButton.Click();
-        }
-        public void ClickOrderInfoArrowDownButton()
-        {
-            OrderInfoArrowDownButton.Click();
-        }
-        public void ClickWaitingForConfirmDeclineButton()
-        {
-            WaitingForConfirmTabDeclineButton.Click();
-        }
+        public void ClickNextButton() => NextTabButton.Click();
+        public void ClickPrevButton() => PrevTabButton.Click();
+        public void ClickOrderInfoArrowDownButton() => OrderInfoArrowDownButton.Click();
+        public void ClickWaitingForConfirmDeclineButton() => WaitingForConfirmTabDeclineButton.Click();
 
         public string GetOrderDeclinedMessage()
         {
@@ -82,6 +53,5 @@ namespace PageObjects
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//p[text()='Order declined']")));
             return OrderDeclinedMessage.Text;
         }
-
     }
 }
