@@ -20,7 +20,7 @@ namespace PageObjects
 
         public void SignIn(string email, string password)
         {
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            var unloginedUserPartOfBaseHeaderPageObject = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             unloginedUserPartOfBaseHeaderPageObject.ClickSignInButton();
             SendTextToEmailTextField(email);
             SendTextToPasswordTextField(password);
