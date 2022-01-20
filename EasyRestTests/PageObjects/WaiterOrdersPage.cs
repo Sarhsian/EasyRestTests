@@ -23,34 +23,14 @@ namespace PageObjects
 		private IWebElement CloseOrderButton => driver.FindElement(By.XPath("//span[text()='Close order']"));
 		private IWebElement SuccessOrderMessage => driver.FindElement(By.XPath("//p[text()='success']"));
 
-		public void ClickAllTab()
-		{
-			AllTab.Click();
-		}
-		public void ClickAssignedWaiterTab()
-		{
-			AssignedWaiterTab.Click();
-		}
-		public void ClickInProgressTab()
-		{
-			InProgressTab.Click();
-		}
-		public void ClickHistoryTab()
-		{
-			HistoryTab.Click();
-		}
-		public void ClickShowMoreButton()
-		{
-			ShowMoreButton.Click();
-		}
-		public void ClickStartOrderButton()
-		{
-			StartOrderButton.Click();
-		}
-		public void ClickCloseOrderButton()
-		{
-			CloseOrderButton.Click();
-		}
+		public void ClickAllTab() => AllTab.Click();
+		public void ClickAssignedWaiterTab() =>	AssignedWaiterTab.Click();
+		public void ClickInProgressTab() => InProgressTab.Click();
+		public void ClickHistoryTab() => HistoryTab.Click();
+		public void ClickShowMoreButton() => ShowMoreButton.Click();
+		public void ClickStartOrderButton() => StartOrderButton.Click();
+		public void ClickCloseOrderButton() => CloseOrderButton.Click();
+	
 		public string GetSuccessOrderMessage()
 		{
 			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
