@@ -1,7 +1,5 @@
 ﻿using NUnit.Framework;
 using PageObjects;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Tests
 {
@@ -13,7 +11,7 @@ namespace Tests
             //Arrange
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             SignInPage signInPageObject = new SignInPage(driver);
-            AdministratorPanelPageObject administratorPanel = new AdministratorPanelPageObject(driver);
+            AdministratorPanel administratorPanel = new AdministratorPanel(driver);
             string exceptedText = "Order summary";
             string actualText;
 
@@ -30,12 +28,12 @@ namespace Tests
         }
 
         [Test]
-        public void WaitingToConfirm()
+        public void WaitingToConfirm_WhenLoggedIn_ShouldShowMessage_Accepted()
         {
             //Arrange
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPage signInPageObject = new SignInPage(driver);
-            AdministratorPanelPageObject administratorPanel = new AdministratorPanelPageObject(driver);
+            var unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            var signInPageObject = new SignInPage(driver);
+            var administratorPanel = new AdministratorPanel(driver);
             string exceptedText = "Accepted";
             string actualText;
 
@@ -53,12 +51,12 @@ namespace Tests
         }
 
         [Test]
-        public void WaitingToAssign()
+        public void WaitingToAssign_WhenLoggedIn_ShouldShowMessage_AssignedWaiter() 
         {
             //Arrange
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPage signInPageObject = new SignInPage(driver);
-            AdministratorPanelPageObject administratorPanel = new AdministratorPanelPageObject(driver);
+            var unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            var signInPageObject = new SignInPage(driver);
+            var administratorPanel = new AdministratorPanel(driver);
             string exceptedText = "Assigned waiter";
             string actualText;
 
@@ -82,7 +80,7 @@ namespace Tests
         {
             //Arrange            
             SignInPage signInPageObject = new SignInPage(driver);
-            AdministratorPanelPageObject administratorPanel = new AdministratorPanelPageObject(driver);
+            AdministratorPanel administratorPanel = new AdministratorPanel(driver);
             string exceptedText = "Order summary";
             string actualText;
 
