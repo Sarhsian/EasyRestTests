@@ -1,27 +1,21 @@
 ﻿using NUnit.Framework;
 using PageObjects;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Tests
 {
-    public class AdminTest : BaseTest
+    public class AdminTest : BaseTest //https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=298696230
     {
-        [Test]
+        [Test, Order(1)]
         public void BanUsersFromAllTab()
         {
-            // Arrange            
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            // Arrange
             SignInPage signInPageObject = new SignInPage(driver);
             AdminUsersPage adminUsersPage = new AdminUsersPage(driver);
             string expectedText = "Active";
             int actualUserNumber;
 
-            // Act            
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
+            // Act   
+            signInPageObject.SignInAsAdmin();
             Assert.AreEqual(true, adminUsersPage.CheckAvailabilityUsers(expectedText), $"{expectedText} users not find");
             actualUserNumber = adminUsersPage.GetUserNumber(expectedText);
             adminUsersPage.ClickLockButton(actualUserNumber);
@@ -32,21 +26,17 @@ namespace Tests
             Assert.AreNotEqual(actualText2, expectedText, $"{actualText2} is not equal for {expectedText}");
         }
 
-        [Test]
+        [Test, Order(2)]
         public void BanUsersFromActiveTab()
         {
-            //Arrange
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            //Arrange;
             SignInPage signInPageObject = new SignInPage(driver);
             AdminUsersPage adminUsersPage = new AdminUsersPage(driver);
             int num = 1;
             string userName;
 
             //Act
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
+            signInPageObject.SignInAsAdmin();
             adminUsersPage.ClickActiveUsersButton();
             Assert.AreEqual(true, adminUsersPage.CheckAvailabilityAnyUsers(), "Users not find on this page");
             userName = adminUsersPage.GetUserName(num);
@@ -57,21 +47,17 @@ namespace Tests
             Assert.AreEqual(true, adminUsersPage.CheckOnUserName(userName), "User name not find");
         }
 
-        [Test]
+        [Test, Order(3)]
         public void UnBanUsersFromAllTab()
         {
-            // Arrange            
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            // Arrange  
             SignInPage signInPageObject = new SignInPage(driver);
             AdminUsersPage adminUsersPage = new AdminUsersPage(driver);
             string expectedText = "Banned";
             int actualUserNumber;
 
-            // Act            
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
+            // Act  ;
+            signInPageObject.SignInAsAdmin();
             Assert.AreEqual(true, adminUsersPage.CheckAvailabilityUsers(expectedText), $"{expectedText} users not find");
             actualUserNumber = adminUsersPage.GetUserNumber(expectedText);
             adminUsersPage.ClickLockButton(actualUserNumber);
@@ -82,21 +68,17 @@ namespace Tests
             Assert.AreNotEqual(actualText2, expectedText, $"{actualText2} is not equal for {expectedText}");
         }
 
-        [Test]
+        [Test, Order(5)]
         public void UnBanUsersFromBannedTab()
         {
             //Arrange
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             SignInPage signInPageObject = new SignInPage(driver);
             AdminUsersPage adminUsersPage = new AdminUsersPage(driver);
             int num = 1;
             string userName;
 
             //Act
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
+            signInPageObject.SignInAsAdmin();
             adminUsersPage.ClickBannedUsersButton();
             Assert.AreEqual(true, adminUsersPage.CheckAvailabilityAnyUsers(), "Users not find on this page");
             userName = adminUsersPage.GetUserName(num);
@@ -107,38 +89,34 @@ namespace Tests
             Assert.AreEqual(true, adminUsersPage.CheckOnUserName(userName), "User name not find");
         }
 
-        [Test]
+        [Test, Order(4)]
         public void PositiveAdminInfoAboutBlockedUsersTest()
         {
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            //Arrange
             AdminUsersPage adminUsersPage = new AdminUsersPage(driver);
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
             SignInPage signInPageObject = new SignInPage(driver);
-            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
-            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+
+            //Act
+            signInPageObject.SignInAsAdmin();
             adminUsersPage.ClickUsersButton();
             adminUsersPage.ClickBannedUsersButton();
+
+            //Assert
             int actualResult = adminUsersPage.GetUsersInfo();
             Assert.That(actualResult > 0, $"There are {actualResult} banned users");
         }
 
-        [Test]
+        [Test, Order(7)]
         public void BanOwnersFromAllTab()
         {
-            // Arrange            
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            // Arrange  
             SignInPage signInPageObject = new SignInPage(driver);
             AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
             string expectedText = "Active";
             int actualOwnerNumber;
 
-            // Act            
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
+            // Act  
+            signInPageObject.SignInAsAdmin();
             adminOwnersPage.ClickOwnersButton();
             Assert.AreEqual(true, adminOwnersPage.CheckAvailabilityOwners(expectedText), $"{expectedText} owners not find");
             actualOwnerNumber = adminOwnersPage.GetOwnerNumber(expectedText);
@@ -150,21 +128,17 @@ namespace Tests
             Assert.AreNotEqual(actualText2, expectedText, $"{actualText2} is not equal for {expectedText}");
         }
 
-        [Test]
+        [Test, Order(6)]
         public void BanOwnersFromActiveTab()
         {
             //Arrange
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             SignInPage signInPageObject = new SignInPage(driver);
             AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
             int num = 1;
             string ownerName;
 
             //Act
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
+            signInPageObject.SignInAsAdmin();
             adminOwnersPage.ClickOwnersButton();
             adminOwnersPage.ClickActiveOwnersButton();
             Assert.AreEqual(true, adminOwnersPage.CheckAvailabilityAnyOwners(), "Owners not find on this page");
@@ -175,38 +149,34 @@ namespace Tests
             //Assert
             Assert.AreEqual(true, adminOwnersPage.CheckOnOwnerName(ownerName), "Owner name not find");
         }
-        [Test]
+        [Test, Order(8)]
         public void PositiveAdminInfoAboutBlockedOwnersTest()
         {
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
+            //Arrange
             AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
             SignInPage signInPageObject = new SignInPage(driver);
-            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
-            LoginedUserPartOfBaseHeaderPageObject loginedUserPartOfBaseHeaderPageObject = new LoginedUserPartOfBaseHeaderPageObject(driver);
+
+            //Act
+            signInPageObject.SignInAsAdmin();
             adminOwnersPage.ClickOwnersButton();
             adminOwnersPage.ClickBannedOwnersButton();
+
+            //Assert
             int actualResult = adminOwnersPage.GetUsersInfo();
             Assert.That(actualResult > 0, $"There are {actualResult} banned users");
         }
 
-        [Test]
+        [Test, Order(9)]
         public void UnbanOwnersFromAllTab()
         {
             //Arrange
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             SignInPage signInPageObject = new SignInPage(driver);
             AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
             string expectedText = "Banned";
             int actualOwnerNumber;
 
-            // Act            
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
+            // Act  
+            signInPageObject.SignInAsAdmin();
             adminOwnersPage.ClickOwnersButton();
             Assert.AreEqual(true, adminOwnersPage.CheckAvailabilityOwners(expectedText), $"{expectedText} owners not find");
             actualOwnerNumber = adminOwnersPage.GetOwnerNumber(expectedText);
@@ -218,21 +188,17 @@ namespace Tests
             Assert.AreNotEqual(actualText2, expectedText, $"{actualText2} is not equal for {expectedText}");
         }
 
-        [Test]
+        [Test, Order(10)]
         public void UnbanOwnersFromBannedTab()
         {
             //Arrange
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
             SignInPage signInPageObject = new SignInPage(driver);
             AdminOwnersPage adminOwnersPage = new AdminOwnersPage(driver);
             int num = 1;
             string ownerName;
 
             //Act
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("steveadmin@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
+            signInPageObject.SignInAsAdmin();
             adminOwnersPage.ClickOwnersButton();
             adminOwnersPage.ClickBannedOwnersButton();
             Assert.AreEqual(true, adminOwnersPage.CheckAvailabilityAnyOwners(), "Owners not find on this page");
@@ -242,6 +208,75 @@ namespace Tests
 
             //Assert
             Assert.AreEqual(true, adminOwnersPage.CheckOnOwnerName(ownerName), "Owner name not find");
+        }
+
+        [Test, Order(11)]
+        public void AdminRestaurantTab_WnehLoggedIn_ShouldShowInfoAboutAllRestaurant()
+        {
+            //Arrange
+            SignInPage signInPageObject
+                = new SignInPage(driver);
+            AdminPanelPage adminPanelPageObject
+                = new AdminPanelPage(driver);
+
+            //Act
+            signInPageObject.SignInAsAdmin(); //PositiveAdminSignIn
+            adminPanelPageObject.ClickRestaurantsManagmentPageButton(); //PositiveRestaurantManagment
+            adminPanelPageObject.ClickAllRestaurantsListButton(); //PositiveInfoAboutAllRestaurants 
+            //Assert
+            int actualResult = adminPanelPageObject.GetRestaurantInfo();
+            Assert.That(actualResult > 0, $"There are {actualResult} All restaurants");
+        }
+        [Test, Order(12)]
+        public void AdminRestaurantTab_WnehLoggedIn_ShouldShowInfoAboutUnapprovedRestaurant()
+        {
+            //Arrange
+            SignInPage signInPageObject
+                = new SignInPage(driver);
+            AdminPanelPage adminPanelPageObject
+                = new AdminPanelPage(driver);
+
+            //Act
+            signInPageObject.SignInAsAdmin(); //PositiveAdminSignIn
+            adminPanelPageObject.ClickRestaurantsManagmentPageButton(); //PositiveRestaurantManagment
+            adminPanelPageObject.ClickUnapprovedRestaurantsListButton(); //PositiveInfoAboutUnapprovedRestaurants 
+                                                                         //Assert
+            int actualResult = adminPanelPageObject.GetRestaurantInfo();
+            Assert.That(actualResult > 0, $"There are {actualResult} Unapproved restaurants");
+        }
+        [Test, Order(13)]
+        public void AdminRestaurantTab_WnehLoggedIn_ShouldShowInfoAboutApprovedRestaurant()
+        {
+            //Arrange
+            SignInPage signInPageObject
+                = new SignInPage(driver);
+            AdminPanelPage adminPanelPageObject
+                = new AdminPanelPage(driver);
+
+            //Act);
+            signInPageObject.SignInAsAdmin(); //PositiveAdminSignIn
+            adminPanelPageObject.ClickRestaurantsManagmentPageButton(); //PositiveRestaurantManagment
+            adminPanelPageObject.ClickApprovedRestaurantsListButton(); ; //PositiveInfoAboutApprovedRestaurants 
+            //Assert
+            int actualResult = adminPanelPageObject.GetRestaurantInfo();
+            Assert.That(actualResult > 0, $"There are {actualResult} Approved restaurants");
+        }
+        [Test, Order(14)]
+        public void AdminRestaurantTab_WnehLoggedIn_ShouldShowInfoAboutArchivedRestaurant()
+        {
+            //Arrange
+            SignInPage signInPageObject
+                = new SignInPage(driver);
+            AdminPanelPage adminPanelPageObject
+                = new AdminPanelPage(driver);
+
+            //Act
+            signInPageObject.SignInAsAdmin(); //PositiveAdminSignIn
+            adminPanelPageObject.ClickRestaurantsManagmentPageButton(); //PositiveRestaurantManagment
+            adminPanelPageObject.ClickArchivedRestaurantsListButton(); //PositiveInfoAboutArchivedRestaurants 
+            //Assert
+            int actualResult = adminPanelPageObject.GetRestaurantInfo();
+            Assert.That(actualResult > 0, $"There are {actualResult} Archived restaurants");
         }
     }
 }
