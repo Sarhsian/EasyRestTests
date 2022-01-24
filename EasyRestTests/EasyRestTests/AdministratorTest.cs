@@ -6,20 +6,16 @@ namespace Tests
     class AdministratorTest : BaseTest
     {
         [Test]
-        public void AssignedWaiter()
+        public void AssignedWaiterTab_WhenLoggedIn_ShouldShowInfoAboutSelectedOrder()
         {
-            //Arrange
-            UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            SignInPage signInPageObject = new SignInPage(driver);
-            AdministratorPanel administratorPanel = new AdministratorPanel(driver);
+            //Arrange            
+            var signInPage = new SignInPage(driver);
+            var administratorPanel = new AdministratorPanel(driver);
             string exceptedText = "Order summary";
             string actualText;
 
             //Act
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("tanyasanchez@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
+            signInPage.SignInAsAdministrator();            
             administratorPanel.ClickAssignedWaiterButton();
             administratorPanel.ClickArrowDownButton(1);           
             actualText = administratorPanel.GetOrderInfo();
@@ -30,18 +26,14 @@ namespace Tests
         [Test]
         public void WaitingToConfirm_WhenLoggedIn_ShouldShowMessage_Accepted()
         {
-            //Arrange
-            var unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            var signInPageObject = new SignInPage(driver);
+            //Arrange            
+            var signInPage = new SignInPage(driver);
             var administratorPanel = new AdministratorPanel(driver);
             string exceptedText = "Accepted";
             string actualText;
 
             //Act
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("tanyasanchez@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
+            signInPage.SignInAsAdministrator();
             administratorPanel.ClickWaitingForConfirmTabButton();
             administratorPanel.ClickArrowDownButton(1);
             administratorPanel.ClickAcceptButton();
@@ -53,18 +45,14 @@ namespace Tests
         [Test]
         public void WaitingToAssign_WhenLoggedIn_ShouldShowMessage_AssignedWaiter() 
         {
-            //Arrange
-            var unloginedUserPartOfBaseHeader = new UnloginedUserPartOfBaseHeaderPageObject(driver);
-            var signInPageObject = new SignInPage(driver);
+            //Arrange            
+            var signInPage = new SignInPage(driver);
             var administratorPanel = new AdministratorPanel(driver);
             string exceptedText = "Assigned waiter";
             string actualText;
 
             //Act
-            unloginedUserPartOfBaseHeader.ClickSignInButton();
-            signInPageObject.SendTextToEmailTextField("tanyasanchez@test.com");
-            signInPageObject.SendTextToPasswordTextField("1");
-            signInPageObject.ClickSubmitButton();
+            signInPage.SignInAsAdministrator();
             administratorPanel.ClickAcceptedTabButton();
             administratorPanel.ClickArrowDownButton(1);
             administratorPanel.ClickFirstWaiterButton();
@@ -76,16 +64,16 @@ namespace Tests
         }
 
         [Test]
-        public void Waiter()
+        public void WaiterTab_WhenLoggedIn_ShouldShowInfoAboutOrder()
         {
             //Arrange            
-            SignInPage signInPageObject = new SignInPage(driver);
-            AdministratorPanel administratorPanel = new AdministratorPanel(driver);
+            var signInPage = new SignInPage(driver);
+            var administratorPanel = new AdministratorPanel(driver);
             string exceptedText = "Order summary";
             string actualText;
 
             //Act
-            signInPageObject.SignIn("tanyasanchez@test.com", "1");
+            signInPage.SignInAsAdministrator();
             administratorPanel.ClickWaitersTabButton();
             administratorPanel.ClickArrowDownButton(1);
             administratorPanel.ClickArrowDownSubButton(1);
