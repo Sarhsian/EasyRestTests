@@ -24,30 +24,12 @@ namespace PageObjects
         private IWebElement AddModerator => driver.FindElement(By.XPath("//span[text()='Add moderator']"));
         private IWebElement LockButton(int numOfLock) => driver.FindElement(By.XPath("//table//tbody//tr[" + numOfLock + "]//td//button"));
         private IWebElement ActualStatus(int numOfStatus) => driver.FindElement(By.XPath("//table//tbody//tr[" + numOfStatus + "]//td//p"));
-        public void ClickLockButton(int numOfLock)
-        {
-            LockButton(numOfLock).Click();
-        }
-        public string GetActualStatus(int numOfStatus)
-        {
-            return ActualStatus(numOfStatus).Text;
-        }
-        public void ClickBannedModeratorsButton()
-        {
-            BannedModeratorsButton.Click();
-        }
-        public void ClickModeratorsButton()
-        {
-            ModeratorsButton.Click();
-        }
-        public void ClickAllModeratorsButton()
-        {
-            AllModeratorsButton.Click();
-        }
-        public void ClickAddModerator()
-        {
-            AddModerator.Click();
-        }
+        public void ClickLockButton(int numOfLock) => LockButton(numOfLock).Click();
+        public string GetActualStatus(int numOfStatus) => ActualStatus(numOfStatus).Text;
+        public void ClickBannedModeratorsButton() => BannedModeratorsButton.Click();
+        public void ClickModeratorsButton() => ModeratorsButton.Click();
+        public void ClickAllModeratorsButton() => AllModeratorsButton.Click();
+        public void ClickAddModerator() => AddModerator.Click();
 
         public int GetModeratorsNumber(string exceptedText)
         {
