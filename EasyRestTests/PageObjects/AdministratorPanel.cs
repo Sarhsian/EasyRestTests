@@ -2,6 +2,7 @@
 using System;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using NUnit.Allure.Attributes;
 
 namespace PageObjects
 {
@@ -30,11 +31,13 @@ namespace PageObjects
         public void ClickAcceptedTabButton() => AcceptedTabButton.Click();
         public void ClickAcceptButton() => AcceptButton.Click();
         public void ClickAssignButton() => AssignButton.Click();
+        [AllureStep("Click on AssignedWaiter button")]
         public void ClickAssignedWaiterButton() => AssignedWaiterButton.Click();
         public void ClickWaitersTabButton() => WaitersTabButton.Click();
+        [AllureStep("Click on ArrowDown button, which will be show info")]
         public void ClickArrowDownButton(int num) => ArrowDownButton(num).Click();
         public void ClickArrowDownSubButton(int num) => ArrowDownSubButton(num).Click();
-
+        [AllureStep("Its find text: 'Order summary'")]
         public string GetOrderInfo()
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));

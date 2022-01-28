@@ -1,11 +1,20 @@
-﻿using NUnit.Framework;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using PageObjects;
 
 namespace Tests
 {
+    [AllureNUnit]
+    [TestFixture(Author = "Vitalii", Description = "Tests for administrator role")]
+    [AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=737541119")]
     class AdministratorTest : BaseTest
     {
-        [Test]
+        [Test]       
+        [AllureTag("NUnit", "Administator")]
+        [AllureFeature("Administrator")]
+        [AllureSeverity(SeverityLevel.normal)]
         public void AssignedWaiterTab_WhenLoggedIn_ShouldShowInfoAboutSelectedOrder()
         {
             //Arrange            
@@ -19,8 +28,11 @@ namespace Tests
             administratorPanel.ClickAssignedWaiterButton();
             administratorPanel.ClickArrowDownButton(1);           
             actualText = administratorPanel.GetOrderInfo();
+
             //Assert
-            Assert.AreEqual(exceptedText, actualText, $"{actualText} is not equal {exceptedText} ");
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.AreEqual(exceptedText, actualText, $"{actualText} is not equal {exceptedText} "); },
+                 "Check for text");
         }
 
         [Test]

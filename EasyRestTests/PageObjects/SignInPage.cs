@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Allure.Attributes;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
@@ -30,6 +31,7 @@ namespace PageObjects
         public void SignInAsOwner() => SignIn("jasonbrown@test.com", "1111");
         public void SignInAsModerator() => SignIn("petermoderator@test.com", "1");
         public void SignInAsAdmin() => SignIn("steveadmin@test.com", "1");
+        [AllureStep("Login from administator role")]
         public void SignInAsAdministrator() => SignIn("tanyasanchez@test.com", "1");
         public void SignInAsWaiter1() => SignIn("karenperez@test.com", "1");
         public void SignInAsWaiter2() => SignIn("heatherdalton@test.com", "1");
