@@ -1,12 +1,21 @@
-﻿using NUnit.Framework;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using PageObjects;
 
 namespace Tests
 {
+	[AllureNUnit]
+	[TestFixture(Author = "Vadym", Description = "Tests for waiter role")]
+	[AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=1420718935")]
 	public class WaiterOrdersTest : BaseTest
 	{
-		[Test]
-		public void StartOrder()
+		[Test(Description = "Start order as waiter when logged in")]
+		[AllureTag("Test-Case#00002")]
+		[AllureTms("https://app.clickup.com/t/1ptgcx2")]
+		[AllureSeverity(SeverityLevel.normal)]
+		public void WaiterStartOrder_WhenLoggedIn_ShouldShowSuccessMessage()
 		{
 			//Arrange
 			var signInPage = new SignInPage(driver);
@@ -24,8 +33,11 @@ namespace Tests
 			Assert.AreEqual(expectedString, actualString, $"{expectedString} is not equal {actualString}");
 		}
 
-		[Test]
-		public void CloseOrder()
+		[Test(Description = "Close order as waiter when logged in")]
+		[AllureTag("Test-Case#00001")]
+		[AllureTms("https://app.clickup.com/t/1ptgcwd")]
+		[AllureSeverity(SeverityLevel.normal)]
+		public void WaiterCloseOrder_WhenLoggedIn_ShouldShowSuccessMessage()
 		{
 			//Arrange
 			var signInPage = new SignInPage(driver);
@@ -43,8 +55,11 @@ namespace Tests
 			Assert.AreEqual(expectedString, actualString, $"{expectedString} is not equal {actualString}");
 		}
 
-		[Test]
-		public void GetAllOrderStatus()
+		[Test(Description = "Compare orders from all tab with assigned waiter, in progress and history tabs")]
+		[AllureTag("Test-Case#00003")]
+		[AllureSeverity(SeverityLevel.normal)]
+		[AllureTms("https://app.clickup.com/t/1ptgcx6")]
+		public void WaiterCompareCountOfAllOrders_WhenLoggedIn_OrdersShouldBeListedOnAllTab()
 		{
 			//Arrange
 			var signInPage = new SignInPage(driver);
