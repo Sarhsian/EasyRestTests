@@ -16,6 +16,9 @@ namespace Tests
         [AllureOwner("Vitalii")]
         [AllureTag("Administator","TestCase ID#00003")]
         [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Administator")]
+        [AllureFeature("Assigned waiter")]
+        [AllureStory("Check info about order")]
         public void AssignedWaiterTab_WhenLoggedIn_ShouldShowInfoAboutSelectedOrder()
         {
             //Arrange            
@@ -82,6 +85,9 @@ namespace Tests
         [AllureOwner("Vitalii")]
         [AllureTag("Administator", "TestCase ID#00004")]
         [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Administator")]
+        [AllureFeature("Waiter")]
+        [AllureStory("Check info about order")]
         public void WaiterTab_WhenLoggedIn_ShouldShowInfoAboutOrder()
         {
             //Arrange            
@@ -100,8 +106,7 @@ namespace Tests
             //Assert
             AllureLifecycle.Instance.WrapInStep(
                 () => { Assert.AreEqual(exceptedText, actualText, $"{actualText} is not equal {exceptedText} "); },
-                "Check for text");
-            
+                "Check for text");            
         }
     }
 }
