@@ -6,15 +6,19 @@ using PageObjects;
 
 namespace Tests
 {
-    [AllureNUnit]
-    [TestFixture(Author = "Vitalii", Description = "Tests for administrator role")]
+    [AllureNUnit]    
     [AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=737541119")]
     class AdministratorTest : BaseTest
     {
-        [Test]       
-        [AllureTag("NUnit", "Administator")]
-        [AllureFeature("Administrator")]
+
+        [Test]
+        [AllureDescription("Test for administator role, to check posibility to see information about assigned waiter order")]
+        [AllureOwner("Vitalii")]
+        [AllureTag("Administator","TestCase ID#00003")]
         [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Administator")]
+        [AllureFeature("Assigned waiter")]
+        [AllureStory("Check info about order")]
         public void AssignedWaiterTab_WhenLoggedIn_ShouldShowInfoAboutSelectedOrder()
         {
             //Arrange            
@@ -24,8 +28,9 @@ namespace Tests
             string actualText;
 
             //Act
+            
             signInPage.SignInAsAdministrator();            
-            administratorPanel.ClickAssignedWaiterButton();
+            administratorPanel.ClickAssignedWaiterTabButton();
             administratorPanel.ClickArrowDownButton(1);           
             actualText = administratorPanel.GetOrderInfo();
 
@@ -76,6 +81,13 @@ namespace Tests
         }
 
         [Test]
+        [AllureDescription("Test for administator role, to check posibility to see the information about waiter's orders")]
+        [AllureOwner("Vitalii")]
+        [AllureTag("Administator", "TestCase ID#00004")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Administator")]
+        [AllureFeature("Waiter")]
+        [AllureStory("Check info about order")]
         public void WaiterTab_WhenLoggedIn_ShouldShowInfoAboutOrder()
         {
             //Arrange            
@@ -90,8 +102,11 @@ namespace Tests
             administratorPanel.ClickArrowDownButton(1);
             administratorPanel.ClickArrowDownSubButton(1);
             actualText = administratorPanel.GetOrderInfo();
+
             //Assert
-            Assert.AreEqual(exceptedText, actualText, $"{actualText} is not equal {exceptedText} ");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.AreEqual(exceptedText, actualText, $"{actualText} is not equal {exceptedText} "); },
+                "Check for text");            
         }
     }
 }
