@@ -2,9 +2,13 @@
 using PageObjects;
 using System;
 using System.Threading;
+using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 
 namespace Tests
 {
+    [AllureNUnit]
     public class AdminCreateModeratorTest : BaseTest
     { 
         public string GetRandomString() //RandomPositiveStringForCreatingModerator
