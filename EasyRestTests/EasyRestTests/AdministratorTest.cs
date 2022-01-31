@@ -7,7 +7,7 @@ using PageObjects;
 namespace Tests
 {
     [AllureNUnit]    
-    [AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=737541119")]
+    [AllureLink("Administrator TestCases","https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=737541119")]
     class AdministratorTest : BaseTest
     {
 
