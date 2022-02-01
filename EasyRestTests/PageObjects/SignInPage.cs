@@ -30,6 +30,7 @@ namespace PageObjects
         public void SignInAsClient() => SignIn("katiedoyle@test.com", "1111");
         public void SignInAsOwner() => SignIn("jasonbrown@test.com", "1111");
         public void SignInAsModerator() => SignIn("petermoderator@test.com", "1");
+        [AllureStep("Login from admin role")]
         public void SignInAsAdmin() => SignIn("steveadmin@test.com", "1");
         [AllureStep("Login from administator role")]
         public void SignInAsAdministrator() => SignIn("tanyasanchez@test.com", "1");

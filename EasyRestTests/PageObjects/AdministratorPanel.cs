@@ -32,10 +32,12 @@ namespace PageObjects
         public void ClickAcceptButton() => AcceptButton.Click();
         public void ClickAssignButton() => AssignButton.Click();
         [AllureStep("Click on AssignedWaiter button")]
-        public void ClickAssignedWaiterButton() => AssignedWaiterButton.Click();
+        public void ClickAssignedWaiterTabButton() => AssignedWaiterButton.Click();
+        [AllureStep("Click on Waiter button")]
         public void ClickWaitersTabButton() => WaitersTabButton.Click();
         [AllureStep("Click on ArrowDown button, which will be show info")]
         public void ClickArrowDownButton(int num) => ArrowDownButton(num).Click();
+        [AllureStep("Click on ArrowDown button, which will be show info about order")]
         public void ClickArrowDownSubButton(int num) => ArrowDownSubButton(num).Click();
         [AllureStep("Its find text: 'Order summary'")]
         public string GetOrderInfo()
