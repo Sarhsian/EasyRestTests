@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Allure.Attributes;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
@@ -26,26 +27,37 @@ namespace PageObjects
         private IWebElement OrderInfoArrowDownButton => driver.FindElement(By.XPath("/html/body/div/main/div/div/div/div[1]/div/div/div[1]/div[1]/div[2]"));
         private IWebElement WaitingForConfirmTabDeclineButton => driver.FindElement(By.XPath("//span[text()='Decline']"));
         private IWebElement OrderDeclinedMessage => driver.FindElement(By.XPath("//p[text()='Order declined']"));
-
+        [AllureStep("Click on 'Current Orders' tab")]
         public void ClickCurrentOrdersTab() => CurrentOrdersTab.Click();
+        [AllureStep("Click on 'All' tab")]
         public void ClickAllTab() => AllTab.Click();
+        [AllureStep("Click on 'Draft' tab")]
         public void ClickDraftTab() => DraftTab.Click();
+        [AllureStep("Click on 'Waiting to Confirm' tab")]
         public void ClickWaitingForConfirmTab() => WaitingForConfirmTab.Click();
+        [AllureStep("Click on 'Accepted' tab")]
         public void ClickAcceptedTab() => AcceptedTab.Click();
+        [AllureStep("Click on 'Assigned Waiter' tab")]
         public void ClickAssignedWaiterTab()
         {
             ClickNextButton();
             AssignedWaiterTab.Click();
         }
+        [AllureStep("Click on 'In Progress' tab")]
         public void ClickInProgressTab()
         {
             ClickNextButton();
             InProgressTab.Click();
         }
+        [AllureStep("Click on next button near list of tabs")]
         public void ClickNextButton() => NextTabButton.Click();
+        [AllureStep("Click on prev button near list of tabs")]
         public void ClickPrevButton() => PrevTabButton.Click();
+        [AllureStep("Click on order info, arrow down button")]
         public void ClickOrderInfoArrowDownButton() => OrderInfoArrowDownButton.Click();
+        [AllureStep("Click on 'Decline' button in 'Waiting to Confirm' tab")]
         public void ClickWaitingForConfirmDeclineButton() => WaitingForConfirmTabDeclineButton.Click();
+
         public string GetOrderDeclinedMessage()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
