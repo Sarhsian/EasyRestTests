@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Allure.Attributes;
+using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,19 +20,29 @@ namespace PageObjects
         private IWebElement ApprovedRestaurantsListButton => driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'Approved')]"));
         private IWebElement ArchivedRestaurantsListButton => driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'Archived')]"));
         //Our elements on AdminPanelPage
+        [AllureStep("Click on all restaurants button")]
         public void ClickAllRestaurantsListButton() => AllRestaurantsListButton.Click();
+        [AllureStep("Click on unapproved restaurants button")]
         public void ClickUnapprovedRestaurantsListButton() => UnapprovedRestaurantsListButton.Click();
+        [AllureStep("Click on approved restaurants button")]
         public void ClickApprovedRestaurantsListButton() => ApprovedRestaurantsListButton.Click();
+        [AllureStep("Click on archived restaurants button")]
         public void ClickArchivedRestaurantsListButton() => ArchivedRestaurantsListButton.Click();
+        [AllureStep("Click on users tab button")]
         public void ClickUsersManagmentPageButton() => UsersManagmentPageButton.Click();
+        [AllureStep("Click on owners tab button")]
         public void ClickOwnersManagmentPageButton() => OwnersManagmentPageButton.Click();
+        [AllureStep("Click on moderators tab button")]
         public void ClickModeratorsManagmentPageButton() => UsersManagmentPageButton.Click();
+        [AllureStep("Click on restaurants tab button")]
         public void ClickRestaurantsManagmentPageButton() => RestaurantsManagmentPageButton.Click();
+        [AllureStep("Get restaurants names")]
         public int GetRestaurantInfo()
         {
             List<IWebElement> allUsersNames = driver.FindElements(By.XPath("//table//tbody//tr//th")).ToList();
             return allUsersNames.Count;
         }
+        [AllureStep("Get moderators names")]
         public int GetModeratorInfo()
         {
             List<IWebElement> allUsersNames = driver.FindElements(By.XPath("//table//tbody//tr//th")).ToList();

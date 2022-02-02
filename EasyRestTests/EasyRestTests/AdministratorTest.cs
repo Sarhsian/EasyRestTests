@@ -41,6 +41,13 @@ namespace Tests
         }
 
         [Test]
+        [AllureDescription("Test for administator role, to check posibility to accept waiting to confirm orders")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Administator", "TestCase ID#00001")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Administator")]
+        [AllureFeature("Waiting to confirm")]
+        [AllureStory("Confirm order")]
         public void WaitingToConfirm_WhenLoggedIn_ShouldShowMessage_Accepted()
         {
             //Arrange            
@@ -56,10 +63,19 @@ namespace Tests
             administratorPanel.ClickAcceptButton();
             actualText = administratorPanel.GetApprovedMessageText();
             //Assert
-            Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} ");
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} "); },
+                 "Check the text");
         }
 
         [Test]
+        [AllureDescription("Test for administator role, to check posibility to assign accepted orders")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Administator", "TestCase ID#00001")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Administator")]
+        [AllureFeature("Accepted")]
+        [AllureStory("Assign order")]
         public void WaitingToAssign_WhenLoggedIn_ShouldShowMessage_AssignedWaiter() 
         {
             //Arrange            
@@ -76,8 +92,9 @@ namespace Tests
             administratorPanel.ClickAssignButton();
             actualText = administratorPanel.GetAssignedMessageText();
             //Assert
-            Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} ");
-
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} "); },
+                 "Check the text");
         }
 
         [Test]
