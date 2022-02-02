@@ -1,12 +1,24 @@
-﻿using NUnit.Framework;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using PageObjects;
 using System.Threading;
 
 namespace Tests
 {
+    [AllureNUnit]
+    [AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=1686602044")]
     public class NegativeSignInTest : BaseTest
     {
         [Test]
+        [AllureDescription("Test for unlogined user, to check negative  possibility to login with role 1")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Unlogined user", "TestCase ID#00003")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("User")]
+        [AllureFeature("SignIn Page")]
+        [AllureStory("Login")]
         public void WhenUnLoggedIn_ShoulNotSignInHowClient()
         {
             //Arrange
@@ -23,9 +35,18 @@ namespace Tests
             //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
-            Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}"); },
+                 "Check error message about email or password is invalid");
         }
         [Test]
+        [AllureDescription("Test for unlogined user, to check possibility to login with role 2")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Unlogined user", "TestCase ID#00003")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Owner")]
+        [AllureFeature("SignIn Page")]
+        [AllureStory("Login")]
         public void WhenUnLoggedIn_ShoulNotSignInHowOwner()
         {
             //Arrange
@@ -42,9 +63,18 @@ namespace Tests
             //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
-            Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}"); },
+                 "Check error message about email or password is invalid");
         }
         [Test]
+        [AllureDescription("Test for unlogined user, to check possibility to login with role 3")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Unlogined user", "TestCase ID#00003")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Moderator")]
+        [AllureFeature("SignIn Page")]
+        [AllureStory("Login")]
         public void WhenUnLoggedIn_ShoulNotSignInHowModerator()
         {
             //Arrange
@@ -61,9 +91,18 @@ namespace Tests
             //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
-            Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+                  () => { Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}"); },
+                  "Check error message about email or password is invalid");
         }
         [Test]
+        [AllureDescription("Test for unlogined user, to check possibility to login with role 4")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Unlogined user", "TestCase ID#00003")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Admin")]
+        [AllureFeature("SignIn Page")]
+        [AllureStory("Login")]
         public void WhenUnLoggedIn_ShoulNotSignInHowAdmin()
         {
             //Arrange
@@ -80,9 +119,18 @@ namespace Tests
             //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
-            Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}"); },
+                 "Check error message about email or password is invalid");
         }
         [Test]
+        [AllureDescription("Test for unlogined user, to check possibility to login with role 5")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Unlogined user", "TestCase ID#00003")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Administrator")]
+        [AllureFeature("SignIn Page")]
+        [AllureStory("Login")]
         public void WhenUnLoggedIn_ShoulNotSignInHowAdministrator()
         {
             UnloginedUserPartOfBaseHeaderPageObject unloginedUserPartOfBaseHeaderPageObject
@@ -98,9 +146,18 @@ namespace Tests
             //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
-            Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}"); },
+                 "Check error message about email or password is invalid");
         }
         [Test]
+        [AllureDescription("Test for unlogined user, to check possibility to login with role 6")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Unlogined user", "TestCase ID#00003")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Waiter")]
+        [AllureFeature("SignIn Page")]
+        [AllureStory("Login")]
         public void WhenUnLoggedIn_ShoulNotSignInHowWaiter()
         {
             //Arrange
@@ -117,7 +174,9 @@ namespace Tests
             //Assert
             string actualErrorMessageText = signInPageObject.GetEmailOrPasswordIsNotValidErrorMessage();
             string expectedErrorMessageText = "Email or password is invalid";
-            Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.AreEqual(expectedErrorMessageText, actualErrorMessageText, $"{expectedErrorMessageText} is not equal for {actualErrorMessageText}"); },
+                 "Check error message about email or password is invalid");
         }
     }
 }

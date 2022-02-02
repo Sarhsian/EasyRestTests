@@ -1,10 +1,15 @@
-﻿using NUnit.Framework;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using PageObjects;
 using System;
 using System.Threading;
 
 namespace Tests
 {
+    [AllureNUnit]
+    [AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=1134371499")]
     public class CreatingRestaurantTest : BaseTest
     {
         public string GetRandomString() //DateForCreateRestaurant
@@ -50,7 +55,14 @@ namespace Tests
             return finalString;
         }
 
-        [Test, Order(1)] //https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=1134371499
+        [Test, Order(1)]
+        [AllureDescription("Test for client role, create new restaurant")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Client", "TestCase ID#00001")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Client")]
+        [AllureFeature("My restaurant")]
+        [AllureStory("Create")]
         public void ClientMyRestaurant_WhenLoggedIn_ShouldCreateNewRestaurant()
         {
             //DateForCreatingRestaurant
@@ -73,9 +85,18 @@ namespace Tests
             clientProfileMyRestaurantPageObject.SendTextToAddressTextField(address);
             clientProfileMyRestaurantPageObject.ClickSubmitButton(); //PositiveCreatingRestaurant
             int actualResult = clientProfileMyRestaurantPageObject.GetMyRestaurantInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} My restaurants");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.That(actualResult > 0, $"There are {actualResult} My restaurants"); },
+                "Check new restaurant");
         }
-        [Test, Order(2)] 
+        [Test, Order(2)]
+        [AllureDescription("Test for client role, create new restaurant menu")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Client", "TestCase ID#00002")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Client")]
+        [AllureFeature("Menu of restaurant")]
+        [AllureStory("Create")]
         public void ClientManageRestaurant_MenueTab_WhenLoggedIn_ShouldCreateNewMenu()
         {
             //DateForCreatingRestaurantMenu
@@ -117,9 +138,18 @@ namespace Tests
             manageRestaurantMenu.ClickFinishCreateMenuButton(); //PositiveCreateMenu
             //Assert 
             int actualResult = manageRestaurant.GetMenuRestaurantInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} Restaurant menu");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.That(actualResult > 0, $"There are {actualResult} Restaurant menu"); },
+                "Check new restaurant menu");
         }
-        [Test, Order(3)] 
+        [Test, Order(3)]
+        [AllureDescription("Test for client role, create new waiter for restaurant")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Client", "TestCase ID#00003")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Client")]
+        [AllureFeature("Waiter of restaurant")]
+        [AllureStory("Create")]
         public void ClientManageRestaurant_WaiterTab_WhenLoggedIn_ShouldCreateNewWaiter()
         {
             //OurDateForCreatingNewWaiter
@@ -155,9 +185,18 @@ namespace Tests
             Thread.Sleep(2000);
             //Assert 
             int actualResult = manageRestaurantWaiters.GetRestaurantWaiterInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} Restaurant Waiter");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.That(actualResult > 0, $"There are {actualResult} Restaurant Waiter"); },
+                "Check new restaurant waiter");
         }
         [Test, Order(4)]
+        [AllureDescription("Test for client role, create new Administrator for restaurant")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Client", "TestCase ID#00004")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Client")]
+        [AllureFeature("Administrator of restaurant")]
+        [AllureStory("Create")]
         public void ClientManageRestaurant_AdministratorTab_WhenLoggedIn_ShouldCreateNewAdministrator()
         {
             //OurDateForCreatingNewAdministrator
@@ -193,9 +232,18 @@ namespace Tests
             Thread.Sleep(2000); //GetRestaurantAdministratorInfo
             //Assert 
             int actualResult = manageRestaurantAdministrators.GetRestaurantAdministratorInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} Restaurant Administrator");
+            AllureLifecycle.Instance.WrapInStep(
+               () => { Assert.That(actualResult > 0, $"There are {actualResult} Restaurant Administrator"); },
+               "Check new restaurant administrator");
         }
         [Test, Order(5)]
+        [AllureDescription("Test for client role, archive restaurant")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Client", "TestCase ID#00005")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Client")]
+        [AllureFeature("My restaurant")]
+        [AllureStory("Archive")]
         public void ClientMyRestaurant_WhenLoggedIn_ShouldArchiveOurRestaurant()
         {
             //Arrange
@@ -214,7 +262,14 @@ namespace Tests
             clientProfileMyRestaurantPageObject.ClickArchiveButton(); //PositiveArchiveRestaurant
             Thread.Sleep(2000);
         }
-        [Test, Order(6)] //https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=1134371499
+        [Test, Order(6)]
+        [AllureDescription("Test for client role, create new restaurant with errors in proccess")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Client", "TestCase ID#00006")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Client")]
+        [AllureFeature("My restaurant")]
+        [AllureStory("Create")]
         public void ClientMyRestaurant_WhenLoggedIn_ShouldNotCreateNewRestaurant()
         {
             //OurDateForCreatingRestautant
@@ -248,9 +303,18 @@ namespace Tests
             clientProfileMyRestaurantPageObject.ClickSubmitButton();
             Thread.Sleep(2000);
             int actualResult = clientProfileMyRestaurantPageObject.GetMyRestaurantInfo();
-            Assert.That(actualResult > 1, $"There are {actualResult} My restaurants");
+            AllureLifecycle.Instance.WrapInStep(
+              () => { Assert.That(actualResult > 1, $"There are {actualResult} My restaurants"); },
+              "Check new restaurant");
         }
         [Test, Order(7)]
+        [AllureDescription("Test for client role, create new restaurant menu with empty date")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Client", "TestCase ID#00007")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Client")]
+        [AllureFeature("Menu of restaurant")]
+        [AllureStory("Create")]
         public void ClientManageRestaurant_MenueTab_WhenLoggedIn_ShouldNotCreateNewMenu()
         {
             //OurInformationForCreatingRestautantMenu
@@ -282,9 +346,18 @@ namespace Tests
             Thread.Sleep(2000);
             manageRestaurantMenu.ClickFinishCreateMenuButton(); //PositiveCreateMenu
             int actualResult = manageRestaurant.GetMenuRestaurantInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} Restaurant menu");
+            AllureLifecycle.Instance.WrapInStep(
+              () => { Assert.That(actualResult > 0, $"There are {actualResult} Restaurant menu"); },
+              "Check new restaurant menu");
         }
         [Test, Order(8)]
+        [AllureDescription("Test for client role, create new waiter for restaurant with errors in process")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Client", "TestCase ID#00008")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Client")]
+        [AllureFeature("Waiter of restaurant")]
+        [AllureStory("Create")]
         public void ClientManageRestaurant_WaiterTab_WhenLoggedIn_ShouldNotCreateNewWaiter()
         {
             //OurDateForCreatingNewWaiter
@@ -319,16 +392,24 @@ namespace Tests
             //AssertForNewWaiter
             string actualNewWaiterNameIsRequiredErrorMessageText = manageRestaurantWaiters.GetCreateNewWaiterNameIsRequiredErrorMessage();
             string expectedNewWaiterNameIsRequiredErrorMessageText = "Name is required";
-            Assert.AreEqual(expectedNewWaiterNameIsRequiredErrorMessageText, actualNewWaiterNameIsRequiredErrorMessageText, $"{expectedNewWaiterNameIsRequiredErrorMessageText} is not equal for {actualNewWaiterNameIsRequiredErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+              () => { Assert.AreEqual(expectedNewWaiterNameIsRequiredErrorMessageText, actualNewWaiterNameIsRequiredErrorMessageText, $"{expectedNewWaiterNameIsRequiredErrorMessageText} is not equal for {actualNewWaiterNameIsRequiredErrorMessageText}"); },
+              "Check error message about name of waiter");
             string actualNewWaiterMailIsRequiredErrorMessageText = manageRestaurantWaiters.GetCreateNewWaiterMailIsRequiredErrorMessage();
             string expectedNewWaiterMailIsRequiredErrorMessageText = "Mail is required";
-            Assert.AreEqual(expectedNewWaiterMailIsRequiredErrorMessageText, actualNewWaiterMailIsRequiredErrorMessageText, $"{expectedNewWaiterMailIsRequiredErrorMessageText} is not equal for {actualNewWaiterMailIsRequiredErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+              () => { Assert.AreEqual(expectedNewWaiterMailIsRequiredErrorMessageText, actualNewWaiterMailIsRequiredErrorMessageText, $"{expectedNewWaiterMailIsRequiredErrorMessageText} is not equal for {actualNewWaiterMailIsRequiredErrorMessageText}"); },
+              "Check error message about mail of  waiter");
             string actualNewWaiterPasswordIsRequiredErrorMessageText = manageRestaurantWaiters.GetCreateNewWaiterPasswordIsRequiredErrorMessage();
             string expectedNewWaiterPasswordIsRequiredErrorMessageText = "Password is required";
-            Assert.AreEqual(expectedNewWaiterPasswordIsRequiredErrorMessageText, actualNewWaiterPasswordIsRequiredErrorMessageText, $"{expectedNewWaiterPasswordIsRequiredErrorMessageText} is not equal for {actualNewWaiterPasswordIsRequiredErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+              () => { Assert.AreEqual(expectedNewWaiterPasswordIsRequiredErrorMessageText, actualNewWaiterPasswordIsRequiredErrorMessageText, $"{expectedNewWaiterPasswordIsRequiredErrorMessageText} is not equal for {actualNewWaiterPasswordIsRequiredErrorMessageText}"); },
+              "Check error message about password of  waiter");
             string actualNewWaiterPhoneNumberIsRequiredErrorMessageText = manageRestaurantWaiters.GetCreateNewWaiterPhoneNumberIsRequiredErrorMessage();
             string expectedNewWaiterPhoneNumberIsRequiredErrorMessageText = "Phone number is required";
-            Assert.AreEqual(expectedNewWaiterPhoneNumberIsRequiredErrorMessageText, actualNewWaiterPhoneNumberIsRequiredErrorMessageText, $"{expectedNewWaiterPhoneNumberIsRequiredErrorMessageText} is not equal for {actualNewWaiterPhoneNumberIsRequiredErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+              () => { Assert.AreEqual(expectedNewWaiterPhoneNumberIsRequiredErrorMessageText, actualNewWaiterPhoneNumberIsRequiredErrorMessageText, $"{expectedNewWaiterPhoneNumberIsRequiredErrorMessageText} is not equal for {actualNewWaiterPhoneNumberIsRequiredErrorMessageText}"); },
+              "Check error message about phone number of  waiter");
             Thread.Sleep(2000);
             manageRestaurantWaiters.SendWaiterNameTextField(name);
             manageRestaurantWaiters.SendWaiterEmailTextField(negativeWaiterEmail);
@@ -339,10 +420,19 @@ namespace Tests
             //AssertForSubmitCreateNewWaiterButton
             string actualNewWaiterSomethingWentWrongErrorMessageText = manageRestaurantWaiters.GetCreateNewWaiterSomethingWentWrongErrorMessage();
             string expectedNewWaiterSomethingWentWrongErrorMessageText = "Something went wrong";
-            Assert.AreEqual(expectedNewWaiterSomethingWentWrongErrorMessageText, actualNewWaiterSomethingWentWrongErrorMessageText, $"{expectedNewWaiterSomethingWentWrongErrorMessageText} is not equal for {actualNewWaiterSomethingWentWrongErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+              () => { Assert.AreEqual(expectedNewWaiterSomethingWentWrongErrorMessageText, actualNewWaiterSomethingWentWrongErrorMessageText, $"{expectedNewWaiterSomethingWentWrongErrorMessageText} is not equal for {actualNewWaiterSomethingWentWrongErrorMessageText}"); },
+              "Check error message thay something went wrong in create process");
             Thread.Sleep(2000);
         }
         [Test, Order(9)]
+        [AllureDescription("Test for client role, create new waiter for restaurant with errors in process and archive")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Client", "TestCase ID#00009")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Client")]
+        [AllureFeature("administrator of restaurant, my restaurant")]
+        [AllureStory("Create administrator, archive restaurant")]
         public void ClientManageRestaurant_AdministratorTab_WhenLoggedIn_ShouldNotCreateNewAdministrator()
         {
             //OurDateForCreatingNewAdministrator
@@ -376,16 +466,24 @@ namespace Tests
             //AssertForNewAdministrator
             string actualNewAdministratorNameIsRequiredErrorMessageText = manageRestaurantAdministrators.GetCreateNewAdministratorNameIsRequiredErrorMessage();
             string expectedNewAdministratorNameIsRequiredErrorMessageText = "Name is required";
-            Assert.AreEqual(expectedNewAdministratorNameIsRequiredErrorMessageText, actualNewAdministratorNameIsRequiredErrorMessageText, $"{expectedNewAdministratorNameIsRequiredErrorMessageText} is not equal for {actualNewAdministratorNameIsRequiredErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+             () => { Assert.AreEqual(expectedNewAdministratorNameIsRequiredErrorMessageText, actualNewAdministratorNameIsRequiredErrorMessageText, $"{expectedNewAdministratorNameIsRequiredErrorMessageText} is not equal for {actualNewAdministratorNameIsRequiredErrorMessageText}"); },
+             "Check error message about name of administrator");
             string actualNewAdministratorMailIsRequiredErrorMessageText = manageRestaurantAdministrators.GetCreateNewAdministratorMailIsRequiredErrorMessage();
             string expectedNewAdministratorMailIsRequiredErrorMessageText = "Mail is required";
-            Assert.AreEqual(expectedNewAdministratorMailIsRequiredErrorMessageText, actualNewAdministratorMailIsRequiredErrorMessageText, $"{expectedNewAdministratorMailIsRequiredErrorMessageText} is not equal for {actualNewAdministratorMailIsRequiredErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+              () => { Assert.AreEqual(expectedNewAdministratorMailIsRequiredErrorMessageText, actualNewAdministratorMailIsRequiredErrorMessageText, $"{expectedNewAdministratorMailIsRequiredErrorMessageText} is not equal for {actualNewAdministratorMailIsRequiredErrorMessageText}"); },
+              "Check error message about mail of administrator");
             string actualNewAdministratorPasswordIsRequiredErrorMessageText = manageRestaurantAdministrators.GetCreateNewAdministratorPasswordIsRequiredErrorMessage();
             string expectedNewAdministratorPasswordIsRequiredErrorMessageText = "Password is required";
-            Assert.AreEqual(expectedNewAdministratorPasswordIsRequiredErrorMessageText, actualNewAdministratorPasswordIsRequiredErrorMessageText, $"{expectedNewAdministratorPasswordIsRequiredErrorMessageText} is not equal for {actualNewAdministratorPasswordIsRequiredErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+              () => { Assert.AreEqual(expectedNewAdministratorPasswordIsRequiredErrorMessageText, actualNewAdministratorPasswordIsRequiredErrorMessageText, $"{expectedNewAdministratorPasswordIsRequiredErrorMessageText} is not equal for {actualNewAdministratorPasswordIsRequiredErrorMessageText}"); },
+              "Check error message about password of  administrator");
             string actualNewAdministratorPhoneNumberIsRequiredErrorMessageText = manageRestaurantAdministrators.GetCreateNewAdministratorPhoneNumberIsRequiredErrorMessage();
             string expectedNewAdministratorPhoneNumberIsRequiredErrorMessageText = "Phone number is required";
-            Assert.AreEqual(expectedNewAdministratorPhoneNumberIsRequiredErrorMessageText, actualNewAdministratorPhoneNumberIsRequiredErrorMessageText, $"{expectedNewAdministratorPhoneNumberIsRequiredErrorMessageText} is not equal for {actualNewAdministratorPhoneNumberIsRequiredErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+              () => { Assert.AreEqual(expectedNewAdministratorPhoneNumberIsRequiredErrorMessageText, actualNewAdministratorPhoneNumberIsRequiredErrorMessageText, $"{expectedNewAdministratorPhoneNumberIsRequiredErrorMessageText} is not equal for {actualNewAdministratorPhoneNumberIsRequiredErrorMessageText}"); },
+              "Check error message about phone number of  administrator");
             Thread.Sleep(2000);
             manageRestaurantAdministrators.SendAdministratorNameTextField(name);
             manageRestaurantAdministrators.SendAdministratorEmailTextField(negativeAdministratorEmail);
@@ -396,7 +494,9 @@ namespace Tests
             //AssertForSubmitCreateNewAdministratorButton
             string actualNewAdministratorSomethingWentWrongErrorMessageText = manageRestaurantAdministrators.GetCreateNewAdministratorSomethingWentWrongErrorMessage();
             string expectedNewAdministratorSomethingWentWrongErrorMessageText = "Something went wrong";
-            Assert.AreEqual(expectedNewAdministratorSomethingWentWrongErrorMessageText, actualNewAdministratorSomethingWentWrongErrorMessageText, $"{expectedNewAdministratorSomethingWentWrongErrorMessageText} is not equal for {actualNewAdministratorSomethingWentWrongErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+              () => { Assert.AreEqual(expectedNewAdministratorSomethingWentWrongErrorMessageText, actualNewAdministratorSomethingWentWrongErrorMessageText, $"{expectedNewAdministratorSomethingWentWrongErrorMessageText} is not equal for {actualNewAdministratorSomethingWentWrongErrorMessageText}"); },
+              "Check error message that something went wrong in create process");
             Thread.Sleep(2000);
             manageRestaurant.ClickProfileLogoButton();
             manageRestaurant.ClickMyRestaurantsButton(); //MyProfileMyRestaurantPage

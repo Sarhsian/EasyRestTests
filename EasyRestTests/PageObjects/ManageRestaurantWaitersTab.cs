@@ -4,6 +4,7 @@ using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Allure.Attributes;
 
 namespace PageObjects
 {
@@ -14,7 +15,6 @@ namespace PageObjects
         {
             driver = webDriver;
         }
-        //All our elements where we use on Waiter tab
         private IWebElement AddWaiterButton => driver.FindElement(By.XPath("//button[@title='Add Waiter']"));
         private IWebElement WaiterNameTextField => driver.FindElement(By.XPath("//input[@name='name']"));
         private IWebElement WaiterEmailTextField => driver.FindElement(By.XPath("//input[@name='email']"));
@@ -26,13 +26,17 @@ namespace PageObjects
         private IWebElement CreateNewWaiterPasswordIsRequiredErrorMessage => driver.FindElement(By.XPath("//p[text()='Password is required']"));
         private IWebElement CreateNewWaiterPhoneNumberIsRequiredErrorMessage => driver.FindElement(By.XPath("//p[text()='Phone number is required']"));
         private IWebElement CreateNewWaiterSomethingWentWrongErrorMessage => driver.FindElement(By.XPath("//p[text()='Something went wrong']"));
-        //Methods for interaction with our elements
-
+        [AllureStep("Click add waiter button")]
         public void ClickAddWaiterButton() => AddWaiterButton.Click();
+        [AllureStep("click submit button, which will be create new waiter to our restaurant")]
         public void ClickSubmitCreateNewWaiterButton() => SubmitCreateNewWaiterButton.Click();
+        [AllureStep("Fill name")]
         public void SendWaiterNameTextField(string text) => WaiterNameTextField.SendKeys(text);
+        [AllureStep("Fill email")]
         public void SendWaiterEmailTextField(string text) => WaiterEmailTextField.SendKeys(text);
+        [AllureStep("Fill password")]
         public void SendWaiterPasswordTextField(string text) => WaiterPasswordTextField.SendKeys(text);
+        [AllureStep("phone number")]
         public void SendWaiterPhoneNumberTextField(string text) => WaiterPhoneNumberTextField.SendKeys(text);
         public int GetRestaurantWaiterInfo()
         {

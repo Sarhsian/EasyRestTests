@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
+using NUnit.Allure.Attributes;
 
 namespace PageObjects
 {
@@ -18,25 +19,19 @@ namespace PageObjects
         private IWebElement PasswordTextField => driver.FindElement(By.XPath("//input[@name='password']"));
         private IWebElement ConfirmPasswordTextField => driver.FindElement(By.XPath("//input[@name='repeated_password']"));
         private IWebElement SubmitButton => driver.FindElement(By.XPath("//button[@type='submit']"));
-        private IWebElement CancelButton => driver.FindElement(By.XPath("//span[text()='Cancel']"));
         private IWebElement EmailIsNotValidErrorMessage => driver.FindElement(By.XPath("//p[text()='Email is not valid']"));
         private IWebElement PasswordErrorMessage => driver.FindElement(By.XPath("//p[text()='Password must have at least 8 characters']"));
         private IWebElement PasswordMismatchErrorMessage => driver.FindElement(By.XPath("//p[text()='Password mismatch']"));
 
-
-
-
-
+        [AllureStep("Fill name")]
         public void SendTextToNameTextField(string text) => NameTextField.SendKeys(text);
-
+        [AllureStep("Fill email")]
         public void SendTextToEmailTextField(string text) => EmailTextField.SendKeys(text);
-
+        [AllureStep("Fill password")]
         public void SendTextToPasswordTextField(string text) => PasswordTextField.SendKeys(text);
-
+        [AllureStep("Confrim password")]
         public void SendTextToConfirmPasswordTextField(string text) => ConfirmPasswordTextField.SendKeys(text);
-
-        public void ClickCancelButton() => CancelButton.Click();
-
+        [AllureStep("Click submit button, which will be create new moderator")]
         public void ClickSubmitButton() => SubmitButton.Click();
         public string GetEmailIsNotValidErrorMessage()
         {

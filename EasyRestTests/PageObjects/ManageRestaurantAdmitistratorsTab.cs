@@ -4,7 +4,7 @@ using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using NUnit.Allure.Attributes;
 
 namespace PageObjects
 {
@@ -15,7 +15,6 @@ namespace PageObjects
         {
             driver = webDriver;
         }
-        //All our elements where we use on Administrator tab
         private IWebElement AddAdministratorButton => driver.FindElement(By.XPath("//button[@title='Add Administrator']"));
         private IWebElement AdministratorNameTextField => driver.FindElement(By.XPath("//input[@name='name']"));
         private IWebElement AdministratorEmailTextField => driver.FindElement(By.XPath("//input[@name='email']"));
@@ -27,14 +26,20 @@ namespace PageObjects
         private IWebElement CreateNewAdministratorPasswordIsRequiredErrorMessage => driver.FindElement(By.XPath("//p[text()='Password is required']"));
         private IWebElement CreateNewAdministratorPhoneNumberIsRequiredErrorMessage => driver.FindElement(By.XPath("//p[text()='Phone number is required']"));
         private IWebElement CreateNewAdministratorSomethingWentWrongErrorMessage => driver.FindElement(By.XPath("//p[text()='Something went wrong']"));
-        //Methods for interaction with our elements
 
+        [AllureStep("Click add new administrator button")]
         public void ClickAddAdministratorButton() => AddAdministratorButton.Click();
+        [AllureStep("click submit button, which will be create new administrator to our restaurant")]
         public void ClickSubmitCreateNewAdministratorButton() => SubmitCreateNewAdministratorButton.Click();
+        [AllureStep("Fill name")]
         public void SendAdministratorNameTextField(string text) => AdministratorNameTextField.SendKeys(text);
+        [AllureStep("Fill email")]
         public void SendAdministratorEmailTextField(string text) => AdministratorEmailTextField.SendKeys(text);
+        [AllureStep("Fill password")]
         public void SendAdministratorPasswordTextField(string text) => AdministratorPasswordTextField.SendKeys(text);
+        [AllureStep("phone number")]
         public void SendAdministratorPhoneNumberTextField(string text) => AdministratorPhoneNumberTextField.SendKeys(text);
+        [AllureStep("Get info about Administrators ")]
         public int GetRestaurantAdministratorInfo()
         {
             List<IWebElement> allAdministratorNames = driver.FindElements(By.XPath("//main//div//ul//li")).ToList();
