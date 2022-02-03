@@ -75,6 +75,13 @@ namespace Tests
         }
 
         [Test, Order(3)]
+        [AllureDescription("Test for admin role, to check the possibility to show info 'Users'=>'Banned'")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Admin", "TestCase ID#0005")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Admin")]
+        [AllureFeature("Users")]
+        [AllureStory("Info")]
         public void PositiveAdminInfoAboutBlockedUsersTest()
         {
             //Arrange
@@ -88,7 +95,9 @@ namespace Tests
 
             //Assert
             int actualResult = adminUsersPage.GetUsersInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} banned users");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.That(actualResult > 0, $"There are {actualResult} banned users"); },
+                "Check the count of banned users");
         }
 
         [Test, Order(4)]
