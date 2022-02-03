@@ -221,6 +221,13 @@ namespace Tests
                "Check the name in the Banned tab");            
         }
         [Test, Order(8)]
+        [AllureDescription("Test for admin role, to check the possibility to show info 'Owners'=>'Banned'")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Admin", "TestCase ID#0006")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Admin")]
+        [AllureFeature("Owners")]
+        [AllureStory("Info")]
         public void PositiveAdminInfoAboutBlockedOwnersTest()
         {
             //Arrange
@@ -234,7 +241,9 @@ namespace Tests
 
             //Assert
             int actualResult = adminOwnersPage.GetUsersInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} banned users");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.That(actualResult > 0, $"There are {actualResult} banned users"); },
+                "Check the count of banned users");
         }
 
         [Test, Order(9)]
@@ -303,7 +312,7 @@ namespace Tests
               "Check the name in the Active tab");            
         }
 
-        [Test, Order(11)]
+       [Test, Order(11)]
         [AllureDescription("Test for admin role, to check info about all restaurant list'")]
         [AllureOwner("Misha Tokmakov")]
         [AllureTag("Admin", "TestCase ID#00009")]

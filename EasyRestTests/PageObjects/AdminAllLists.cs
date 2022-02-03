@@ -90,6 +90,7 @@ namespace PageObjects
             }
             return false;
         }
+        [AllureStep("Get the count of users")]
         public int GetUsersInfo()
         {
             List<IWebElement> allUsersNames = driver.FindElements(By.XPath("//table//tbody//tr//th")).ToList();

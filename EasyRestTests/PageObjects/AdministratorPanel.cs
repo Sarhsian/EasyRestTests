@@ -26,10 +26,15 @@ namespace PageObjects
         private IWebElement FirstWaiterButton => driver.FindElement(By.XPath("//input[@value='42'][1]"));
         private IWebElement ArrowDownSubButton(int num) => driver.FindElement(By.XPath("(//div[contains(@class,'MuiGrid')]//div//div//span[contains(@class,'MuiIcon')])["+num+"]"));
 
+        [AllureStep("Click on Waiting to confirm button")]
         public void ClickWaitingForConfirmTabButton() => WaitingForConfirmTabButton.Click();
+        [AllureStep("Click on first waiter button")]
         public void ClickFirstWaiterButton() => FirstWaiterButton.Click();
+        [AllureStep("Click on accepted tab button")]
         public void ClickAcceptedTabButton() => AcceptedTabButton.Click();
+        [AllureStep("Click on accept button")]
         public void ClickAcceptButton() => AcceptButton.Click();
+        [AllureStep("Click on assign button")]
         public void ClickAssignButton() => AssignButton.Click();
         [AllureStep("Click on AssignedWaiter button")]
         public void ClickAssignedWaiterTabButton() => AssignedWaiterButton.Click();

@@ -12,11 +12,11 @@ namespace Tests
     {
 
         [Test]
-        [AllureDescription("Test for administator role, to check posibility to see information about assigned waiter order")]
+        [AllureDescription("Test for administrator role, to check posibility to see information about assigned waiter order")]
         [AllureOwner("Vitalii")]
         [AllureTag("Administator","TestCase ID#00003")]
         [AllureSeverity(SeverityLevel.normal)]
-        [AllureEpic("Administator")]
+        [AllureEpic("Administrator")]
         [AllureFeature("Assigned waiter")]
         [AllureStory("Check info about order")]
         public void AssignedWaiterTab_WhenLoggedIn_ShouldShowInfoAboutSelectedOrder()
@@ -41,6 +41,13 @@ namespace Tests
         }
 
         [Test]
+        [AllureDescription("Test for administrator role, to check posibility to accept waiting to confirm orders")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Administator", "TestCase ID#00001")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Administrator")]
+        [AllureFeature("Waiting to confirm")]
+        [AllureStory("Confirm order")]
         public void WaitingToConfirm_WhenLoggedIn_ShouldShowMessage_Accepted()
         {
             //Arrange            
@@ -56,10 +63,19 @@ namespace Tests
             administratorPanel.ClickAcceptButton();
             actualText = administratorPanel.GetApprovedMessageText();
             //Assert
-            Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} ");
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} "); },
+                 "Check the text");
         }
 
         [Test]
+        [AllureDescription("Test for administrator role, to check posibility to assign accepted orders")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Administator", "TestCase ID#00002")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Administrator")]
+        [AllureFeature("Accepted")]
+        [AllureStory("Assign order")]
         public void WaitingToAssign_WhenLoggedIn_ShouldShowMessage_AssignedWaiter() 
         {
             //Arrange            
@@ -76,16 +92,17 @@ namespace Tests
             administratorPanel.ClickAssignButton();
             actualText = administratorPanel.GetAssignedMessageText();
             //Assert
-            Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} ");
-
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.That(actualText.Contains(exceptedText), $"{actualText} is not equal {exceptedText} "); },
+                 "Check the text");
         }
 
         [Test]
-        [AllureDescription("Test for administator role, to check posibility to see the information about waiter's orders")]
+        [AllureDescription("Test for administrator role, to check posibility to see the information about waiter's orders")]
         [AllureOwner("Vitalii")]
         [AllureTag("Administator", "TestCase ID#00004")]
         [AllureSeverity(SeverityLevel.normal)]
-        [AllureEpic("Administator")]
+        [AllureEpic("Administrator")]
         [AllureFeature("Waiter")]
         [AllureStory("Check info about order")]
         public void WaiterTab_WhenLoggedIn_ShouldShowInfoAboutOrder()

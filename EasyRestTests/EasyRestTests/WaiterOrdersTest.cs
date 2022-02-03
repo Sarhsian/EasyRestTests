@@ -1,12 +1,24 @@
-﻿using NUnit.Framework;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using PageObjects;
 
 namespace Tests
 {
+	[AllureNUnit]
+	[AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=1420718935")]
 	public class WaiterOrdersTest : BaseTest
 	{
 		[Test]
-		public void StartOrder()
+		[AllureDescription("Start order as waiter when logged in")]
+		[AllureOwner("Vadym")]
+		[AllureTag("Waiter", "TestCase ID#00002")]
+		[AllureSeverity(SeverityLevel.normal)]
+		[AllureEpic("Waiter")]
+		[AllureFeature("Orders")]
+		[AllureStory("Start order")]
+		public void WaiterStartOrder_WhenLoggedIn_ShouldShowSuccessMessage()
 		{
 			//Arrange
 			var signInPage = new SignInPage(driver);
@@ -21,11 +33,20 @@ namespace Tests
 			string actualString = waiterOrdersPage.GetSuccessOrderMessage();
 
 			// Assert
-			Assert.AreEqual(expectedString, actualString, $"{expectedString} is not equal {actualString}");
+			AllureLifecycle.Instance.WrapInStep(
+				 () => { Assert.AreEqual(expectedString, actualString, $"{expectedString} is not equal {actualString}"); },
+				 "Check for text");
 		}
 
 		[Test]
-		public void CloseOrder()
+		[AllureDescription("Close order as waiter when logged in")]
+		[AllureOwner("Vadym")]
+		[AllureTag("Waiter", "TestCase ID#00001")]
+		[AllureSeverity(SeverityLevel.normal)]
+		[AllureEpic("Waiter")]
+		[AllureFeature("Orders")]
+		[AllureStory("Close order")]
+		public void WaiterCloseOrder_WhenLoggedIn_ShouldShowSuccessMessage()
 		{
 			//Arrange
 			var signInPage = new SignInPage(driver);
@@ -40,11 +61,20 @@ namespace Tests
 			string actualString = waiterOrdersPage.GetSuccessOrderMessage();
 
 			// Assert
-			Assert.AreEqual(expectedString, actualString, $"{expectedString} is not equal {actualString}");
+			AllureLifecycle.Instance.WrapInStep(
+				 () => { Assert.AreEqual(expectedString, actualString, $"{expectedString} is not equal {actualString}"); },
+				 "Check for text");
 		}
 
 		[Test]
-		public void GetAllOrderStatus()
+		[AllureDescription("Compare orders from all tab with assigned waiter, in progress and history tabs")]
+		[AllureOwner("Vadym")]
+		[AllureTag("Waiter", "TestCase ID#00003")]
+		[AllureSeverity(SeverityLevel.normal)]
+		[AllureEpic("Waiter")]
+		[AllureFeature("Orders")]
+		[AllureStory("Compare count of all orders")]
+		public void WaiterCompareCountOfAllOrders_WhenLoggedIn_OrdersShouldBeListedOnAllTab()
 		{
 			//Arrange
 			var signInPage = new SignInPage(driver);
@@ -64,7 +94,9 @@ namespace Tests
 			actualOrdersCount += waiterOrdersPage.GetOrdersTabCount();
 
 			// Assert
-			Assert.AreEqual(allOrdersCount, actualOrdersCount, $"{allOrdersCount} is not equal {actualOrdersCount}");
+			AllureLifecycle.Instance.WrapInStep(
+				 () => { Assert.AreEqual(allOrdersCount, actualOrdersCount, $"{allOrdersCount} is not equal {actualOrdersCount}"); },
+				 "Check for text");
 		}
 	}
 }
