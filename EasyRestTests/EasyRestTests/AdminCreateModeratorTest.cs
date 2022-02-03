@@ -9,6 +9,7 @@ using NUnit.Allure.Core;
 namespace Tests
 {
     [AllureNUnit]
+    [AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=298696230")]
     public class AdminCreateModeratorTest : BaseTest
     { 
         public string GetRandomString() //RandomPositiveStringForCreatingModerator
@@ -39,7 +40,14 @@ namespace Tests
             var finalString = new String(stringChars);
             return finalString;
         }
-        [Test, Order(1)] //https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=298696230
+        [Test, Order(1)]
+        [AllureDescription("Test for admin role, to check posibility to create new moderator")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Admin", "TestCase ID#00008")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Admin")]
+        [AllureFeature("Moderators")]
+        [AllureStory("Create")]
         public void AdminAddModerator_WhenLoggedIn_ShouldCreateNewModerator()
         {
             //OurInformationForPositiveCreatingNewModerator
@@ -70,10 +78,19 @@ namespace Tests
             adminModeratorCreatePageObject.SendTextToConfirmPasswordTextField(password);
             adminModeratorCreatePageObject.ClickSubmitButton(); //PositiveModeratorCreating
             int actualResult = adminPanelPageObject.GetModeratorInfo();
-            Assert.That(actualResult > 1, $"There are {actualResult} All moderator");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.That(actualResult > 1, $"There are {actualResult} All moderator"); },
+                "Check new moderator");
         }
 
-        [Test, Order(2)] //https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=298696230
+        [Test, Order(2)]
+        [AllureDescription("Test for admin role, to check negative posibility to create new moderator")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Admin", "TestCase ID#000021")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Admin")]
+        [AllureFeature("Moderators")]
+        [AllureStory("Create")]
         public void AdminAddModerator_WhenLoggedIn_ShouldNotCreateNewModerator()
         {
             //OurInformationForNegativeCreatingNewModerator
@@ -106,13 +123,19 @@ namespace Tests
             //Asserts
             string actualEmailErrorMessageText = adminModeratorCreatePageObject.GetEmailIsNotValidErrorMessage();
             string expectedEmailErrorMessageText = "Email is not valid";
-            Assert.AreEqual(expectedEmailErrorMessageText, actualEmailErrorMessageText, $"{expectedEmailErrorMessageText} is not equal for {actualEmailErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.AreEqual(expectedEmailErrorMessageText, actualEmailErrorMessageText, $"{expectedEmailErrorMessageText} is not equal for {actualEmailErrorMessageText}"); },
+                 "Check error message about email");
             string actualPasswordErrorMessageText = adminModeratorCreatePageObject.GetPasswordErrorMessage();
             string expectedPasswordErrorMessageText = "Password must have at least 8 characters";
-            Assert.AreEqual(expectedPasswordErrorMessageText, actualPasswordErrorMessageText, $"{expectedPasswordErrorMessageText} is not equal for {actualPasswordErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+                 () => { Assert.AreEqual(expectedPasswordErrorMessageText, actualPasswordErrorMessageText, $"{expectedPasswordErrorMessageText} is not equal for {actualPasswordErrorMessageText}"); },
+                 "Check error message about password");
             string actualConfirmPasswordErrorMessageText = adminModeratorCreatePageObject.GetPasswordMismatchErrorMessage();
             string expectedConfirmPasswordErrorMessageText = "Password mismatch";
-            Assert.AreEqual(expectedConfirmPasswordErrorMessageText, actualConfirmPasswordErrorMessageText, $"{expectedConfirmPasswordErrorMessageText} is not equal for {actualConfirmPasswordErrorMessageText}");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.AreEqual(expectedConfirmPasswordErrorMessageText, actualConfirmPasswordErrorMessageText, $"{expectedConfirmPasswordErrorMessageText} is not equal for {actualConfirmPasswordErrorMessageText}"); },
+                "Check error message about confirm password");
         }
     }
 }

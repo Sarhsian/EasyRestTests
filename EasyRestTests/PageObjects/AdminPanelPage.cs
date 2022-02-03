@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Allure.Attributes;
 
 namespace PageObjects
 {
@@ -19,7 +20,7 @@ namespace PageObjects
         private IWebElement UnapprovedRestaurantsListButton => driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'Unapproved')]"));
         private IWebElement ApprovedRestaurantsListButton => driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'Approved')]"));
         private IWebElement ArchivedRestaurantsListButton => driver.FindElement(By.XPath("//button/span/span/span[contains(text(),'Archived')]"));
-        //Our elements on AdminPanelPage
+
         [AllureStep("Click on all restaurants button")]
         public void ClickAllRestaurantsListButton() => AllRestaurantsListButton.Click();
         [AllureStep("Click on unapproved restaurants button")]
@@ -42,7 +43,7 @@ namespace PageObjects
             List<IWebElement> allUsersNames = driver.FindElements(By.XPath("//table//tbody//tr//th")).ToList();
             return allUsersNames.Count;
         }
-        [AllureStep("Get moderators names")]
+        [AllureStep("Get info about moderator")]
         public int GetModeratorInfo()
         {
             List<IWebElement> allUsersNames = driver.FindElements(By.XPath("//table//tbody//tr//th")).ToList();
