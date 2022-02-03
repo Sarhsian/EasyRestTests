@@ -221,6 +221,13 @@ namespace Tests
                "Check the name in the Banned tab");            
         }
         [Test, Order(8)]
+        [AllureDescription("Test for admin role, to check the possibility to show info 'Owners'=>'Banned'")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Admin", "TestCase ID#0006")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Admin")]
+        [AllureFeature("Owners")]
+        [AllureStory("Info")]
         public void PositiveAdminInfoAboutBlockedOwnersTest()
         {
             //Arrange
@@ -234,7 +241,9 @@ namespace Tests
 
             //Assert
             int actualResult = adminOwnersPage.GetUsersInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} banned users");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.That(actualResult > 0, $"There are {actualResult} banned users"); },
+                "Check the count of banned users");
         }
 
         [Test, Order(9)]
@@ -304,6 +313,13 @@ namespace Tests
         }
 
         [Test, Order(11)]
+        [AllureDescription("Test for admin role, to check the possibility to show info 'Restaurants'=>'All'")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Admin", "TestCase ID#0009")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Admin")]
+        [AllureFeature("Restaurants")]
+        [AllureStory("Info")]
         public void AdminRestaurantTab_WhenLoggedIn_ShouldShowInfoAboutAllRestaurant()
         {
             //Arrange
@@ -318,9 +334,18 @@ namespace Tests
             adminPanelPageObject.ClickAllRestaurantsListButton(); //PositiveInfoAboutAllRestaurants 
             //Assert
             int actualResult = adminPanelPageObject.GetRestaurantInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} All restaurants");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.That(actualResult > 0, $"There are {actualResult} All restaurants"); },
+                "Check the count of banned restaurants");
         }
         [Test, Order(12)]
+        [AllureDescription("Test for admin role, to check the possibility to show info 'Restaurants'=>'Unapproved'")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Admin", "TestCase ID#00010")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Admin")]
+        [AllureFeature("Restaurants")]
+        [AllureStory("Info")]
         public void AdminRestaurantTab_WhenLoggedIn_ShouldShowInfoAboutUnapprovedRestaurant()
         {
             //Arrange
@@ -335,9 +360,18 @@ namespace Tests
             adminPanelPageObject.ClickUnapprovedRestaurantsListButton(); //PositiveInfoAboutUnapprovedRestaurants 
                                                                          //Assert
             int actualResult = adminPanelPageObject.GetRestaurantInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} Unapproved restaurants");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.That(actualResult > 0, $"There are {actualResult} Unapproved restaurants"); },
+                "Check the count of banned restaurants");
         }
         [Test, Order(13)]
+        [AllureDescription("Test for admin role, to check the possibility to show info 'Restaurants'=>'Approved'")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Admin", "TestCase ID#00011")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Admin")]
+        [AllureFeature("Restaurants")]
+        [AllureStory("Info")]
         public void AdminRestaurantTab_WhenLoggedIn_ShouldShowInfoAboutApprovedRestaurant()
         {
             //Arrange
@@ -352,9 +386,18 @@ namespace Tests
             adminPanelPageObject.ClickApprovedRestaurantsListButton(); ; //PositiveInfoAboutApprovedRestaurants 
             //Assert
             int actualResult = adminPanelPageObject.GetRestaurantInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} Approved restaurants");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.That(actualResult > 0, $"There are {actualResult} Approved restaurants"); },
+                "Check the count of banned restaurants");
         }
         [Test, Order(14)]
+        [AllureDescription("Test for admin role, to check the possibility to show info 'Restaurants'=>'Archived'")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Admin", "TestCase ID#00012")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureEpic("Admin")]
+        [AllureFeature("Restaurants")]
+        [AllureStory("Info")]
         public void AdminRestaurantTab_WhenLoggedIn_ShouldShowInfoAboutArchivedRestaurant()
         {
             //Arrange
@@ -369,7 +412,9 @@ namespace Tests
             adminPanelPageObject.ClickArchivedRestaurantsListButton(); //PositiveInfoAboutArchivedRestaurants 
             //Assert
             int actualResult = adminPanelPageObject.GetRestaurantInfo();
-            Assert.That(actualResult > 0, $"There are {actualResult} Archived restaurants");
+            AllureLifecycle.Instance.WrapInStep(
+                () => { Assert.That(actualResult > 0, $"There are {actualResult} Archived restaurants"); },
+                "Check the count of banned restaurants");
         }
     }
 }
