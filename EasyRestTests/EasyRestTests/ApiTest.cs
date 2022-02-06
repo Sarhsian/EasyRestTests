@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Tests
 {
-    public class ApiTest
+    public class ApiTest : BaseApiTest
     {
         public string SignInToGetToken(string email, string password, HttpRequest request)
         {            
