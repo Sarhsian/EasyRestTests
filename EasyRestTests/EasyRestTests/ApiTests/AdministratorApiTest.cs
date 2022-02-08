@@ -7,6 +7,38 @@ namespace Tests.ApiTests
     class AdministratorApiTest : BaseApiTest
     {
         [Test]
+        public void AssignedWaiterTab_WhenLoggedIn_ShouldShowInfoAboutSelectedOrder()
+        {
+            //Arrange
+            var request = new HttpRequest();
+            string url = "http://localhost:6543/api/orders";
+
+            //Act
+            request.IgnoreProtocolErrors = true;
+            request.AddHeader("x-auth-token", SignInToGetTokenAsAdministrator(request));
+            request.Get(url);
+
+            //Assert
+            Assert.AreEqual(HttpStatusCode.OK, request.Response.StatusCode, $"OK is not equal for {request.Response.StatusCode}");
+        }
+
+        [Test]
+        public void WaiterTab_WhenLoggedIn_ShouldShowInfoAboutOrder()
+        {
+            //Arrange
+            var request = new HttpRequest();
+            string url = "http://localhost:6543/api/waiters?with_orders=True";
+
+            //Act
+            request.IgnoreProtocolErrors = true;
+            request.AddHeader("x-auth-token", SignInToGetTokenAsAdministrator(request));
+            request.Get(url);
+
+            //Assert
+            Assert.AreEqual(HttpStatusCode.OK, request.Response.StatusCode, $"OK is not equal for {request.Response.StatusCode}");
+        }
+
+        [Test]
         public void WaitingForConfirm_WhenLoggedInAsAdministrator_ShouldAcceptOrder()
         {
             //Arrange
