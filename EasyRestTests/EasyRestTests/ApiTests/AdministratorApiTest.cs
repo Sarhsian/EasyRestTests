@@ -1,12 +1,20 @@
 ﻿using NUnit.Framework;
 using Leaf.xNet;
-using Newtonsoft.Json.Linq;
+using NUnit.Allure.Core;
+using NUnit.Allure.Attributes;
+using Allure.Commons;
 
 namespace Tests.ApiTests
 {
     class AdministratorApiTest : BaseApiTest
     {
         [Test]
+        [AllureDescription("Test for administrator role, to check posibility to see information about assigned waiter order")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Administator", "TestCase ID#00003")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureFeature("Assigned waiter")]
+        [AllureStory("Check info about order")]
         public void AssignedWaiterTab_WhenLoggedIn_ShouldShowInfoAboutSelectedOrder()
         {
             //Arrange
@@ -23,6 +31,12 @@ namespace Tests.ApiTests
         }
 
         [Test]
+        [AllureDescription("Test for administrator role, to check posibility to see the information about waiter's orders")]
+        [AllureOwner("Volodymyr")]
+        [AllureTag("Administator", "TestCase ID#00004")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureFeature("Waiter")]
+        [AllureStory("Check info about order")]
         public void WaiterTab_WhenLoggedIn_ShouldShowInfoAboutOrder()
         {
             //Arrange
@@ -39,6 +53,12 @@ namespace Tests.ApiTests
         }
 
         [Test]
+        [AllureDescription("Test for administrator role, to check posibility to accept waiting to confirm orders")]
+        [AllureOwner("Vitalii")]
+        [AllureTag("Administator", "TestCase ID#00001")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureFeature("Waiting to confirm")]
+        [AllureStory("Confirm order")]
         public void WaitingForConfirm_WhenLoggedInAsAdministrator_ShouldAcceptOrder()
         {
             //Arrange
@@ -54,7 +74,14 @@ namespace Tests.ApiTests
             //Assert
             Assert.AreEqual(HttpStatusCode.OK, request.Response.StatusCode, $"OK is not equal for {request.Response.StatusCode}");
         }
+
         [Test]
+        [AllureDescription("Test for administrator role, to check posibility to assign accepted orders")]
+        [AllureOwner("Vitalii")]
+        [AllureTag("Administator", "TestCase ID#00002")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureFeature("Accepted")]
+        [AllureStory("Assign order")]
         public void WaitingForAssign_WhenLoggedInAsAdministrator_ShouldAssignOrderForWaiter()
         {
             //Arrange
