@@ -6,6 +6,9 @@ using Allure.Commons;
 
 namespace Tests.ApiTests
 {
+    [AllureNUnit]
+    [AllureEpic("Administrator_API")]
+    [AllureSuite("API")]
     class AdministratorApiTest : BaseApiTest
     {
         [Test]
