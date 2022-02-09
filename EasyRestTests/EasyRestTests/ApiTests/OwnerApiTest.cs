@@ -1,12 +1,24 @@
 ﻿using NUnit.Framework;
 using Leaf.xNet;
 using Newtonsoft.Json.Linq;
+using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 
 namespace Tests.ApiTests
 {
+    [AllureNUnit]
+    [AllureEpic("Owner_API")]
+    [AllureSuite("API")]
     class OwnerApiTest : BaseApiTest
     {
         [Test, Order(1)]
+        [AllureDescription("Test for owner role, to check posibility to create restaurant")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Owner", "API", "TestCase ID#00002")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureFeature("Restaurant")]
+        [AllureStory("Create")]
         public void CreateRestaurant_WhenLoggedInAsOwner_ShouldCreateNewRestaurant()
         {
             //Arrange
@@ -24,6 +36,12 @@ namespace Tests.ApiTests
         }
 
         [Test, Order(2)]
+        [AllureDescription("Test for owner role, to check posibility to archive restaurant")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Owner", "API", "TestCase ID#00006")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureFeature("Restaurant")]
+        [AllureStory("Archive")]
         public void ArchieveRestaurant_WhenLoggedInAsOwner_ShouldArchieveRestaurant()
         {
             //Arrange
@@ -41,6 +59,12 @@ namespace Tests.ApiTests
         }
 
         [Test, Order(3)]
+        [AllureDescription("Test for owner role, to check posibility to edit details about restaurant")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Owner", "API", "TestCase ID#00001")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureFeature("Restaurant")]
+        [AllureStory("Edit details")]
         public void EditDetails_WhenLoggedInAsOwner_ShouldEditDetailsAboutRestaurant()
         {
             //Arrange
@@ -58,6 +82,12 @@ namespace Tests.ApiTests
         }
 
         [Test, Order(4)]
+        [AllureDescription("Test for owner role, to check posibility to create menu of restaurant")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Owner", "API", "TestCase ID#00003")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureFeature("Restaurant")]
+        [AllureStory("Create menu")]
         public void CreateMenu_WhenLoggedInAsOwner_ShouldCreteMenuOfRestaurant()
         {
             //Arrange
@@ -75,6 +105,12 @@ namespace Tests.ApiTests
         }
 
         [Test, Order(5)]
+        [AllureDescription("Test for owner role, to check posibility to create new waiter for restaurant")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Owner", "API", "TestCase ID#00004")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureFeature("Restaurant")]
+        [AllureStory("Create waiter")]
         public void CreateWaiter_WhenLoggedInAsOwner_ShouldCreteNewWaiterForRestaurant()
         {
             //Arrange
@@ -92,6 +128,12 @@ namespace Tests.ApiTests
         }
 
         [Test, Order(6)]
+        [AllureDescription("Test for owner role, to check posibility to create new administrator for restaurant")]
+        [AllureOwner("Misha Tokmakov")]
+        [AllureTag("Owner", "API", "TestCase ID#00005")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureFeature("Restaurant")]
+        [AllureStory("Create administrator")]
         public void CreateAdministrator_WhenLoggedInAsOwner_ShouldCreteNewAdministratorForRestaurant()
         {
             //Arrange
