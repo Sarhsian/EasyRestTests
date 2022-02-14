@@ -10,6 +10,7 @@ namespace Tests
 {
     [AllureNUnit]
     [AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=298696230")]
+    [AllureSuite("NUnit")]
     public class AdminCreateModeratorTest : BaseTest
     { 
         public string GetRandomString() //RandomPositiveStringForCreatingModerator

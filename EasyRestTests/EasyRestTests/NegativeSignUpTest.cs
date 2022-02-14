@@ -10,6 +10,7 @@ namespace Tests
 {
     [AllureNUnit]
     [AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=1686602044")]
+    [AllureSuite("NUnit")]
     public class NegativeSignUpTest : BaseTest
     {
         public string GetRandomString()

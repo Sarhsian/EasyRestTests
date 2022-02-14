@@ -8,6 +8,7 @@ namespace Tests
 {
 	[AllureNUnit]
 	[AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=1420718935")]
+	[AllureSuite("NUnit")]
 	public class WaiterOrdersTest : BaseTest
 	{
 		[Test]

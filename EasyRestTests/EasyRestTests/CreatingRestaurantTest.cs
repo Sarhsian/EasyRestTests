@@ -9,6 +9,7 @@ using System.Threading;
 namespace Tests
 {
     [AllureNUnit]
+    [AllureSuite("NUnit")]
     [AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=1134371499")]
     public class CreatingRestaurantTest : BaseTest
     {
