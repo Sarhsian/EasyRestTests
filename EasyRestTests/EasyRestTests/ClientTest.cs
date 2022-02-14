@@ -8,6 +8,7 @@ namespace Tests
 {
     [AllureNUnit]
     [AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=1401539253")]
+    [AllureSuite("NUnit")]
     public class ClientTest : BaseTest
     {
         [Test, Order(1)]

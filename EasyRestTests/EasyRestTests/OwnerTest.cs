@@ -10,6 +10,7 @@ namespace Tests
 {
     [AllureNUnit]
     [AllureLink("https://docs.google.com/spreadsheets/d/1KvQebEOdgZxL8gbtz1mG_5xvF9WzucCWdPmjLLTQuSw/edit#gid=1816686683")]
+    [AllureSuite("NUnit")]
     public class OwnerManageDetailAboutRestaurantTest : BaseTest
     {
         public string GetRandomManageDetailAboutRestaurantString()

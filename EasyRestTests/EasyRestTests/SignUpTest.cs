@@ -1,10 +1,14 @@
 ﻿using NUnit.Framework;
 using PageObjects;
 using System;
-using System.Threading;
+using NUnit.Allure.Core;
+using NUnit.Allure.Attributes;
 
 namespace Tests
 {
+    [AllureNUnit]
+    [AllureEpic("User")]
+    [AllureSuite("NUnit")]
     public class SignUpTest : BaseTest
     {
         public string GetRandomString()
@@ -22,7 +26,8 @@ namespace Tests
             return finalString;
         }
         [Test]
-
+        [AllureFeature("SignUp Page")]
+        [AllureStory("SignUp")]
         public void PositiveSignUpTest()
         {
             string name = GetRandomString();

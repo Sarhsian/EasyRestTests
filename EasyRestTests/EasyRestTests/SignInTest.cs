@@ -1,8 +1,13 @@
 ﻿using NUnit.Framework;
 using PageObjects;
+using NUnit.Allure.Core;
+using NUnit.Allure.Attributes;
 
 namespace Tests
 {
+    [AllureNUnit]
+    [AllureEpic("User")]
+    [AllureSuite("NUnit")]
     public class SignInTest : BaseTest
     {
         /*[Test]
@@ -26,7 +31,8 @@ namespace Tests
         [TestCase("steveadmin@test.com", "1")]
         [TestCase("tanyasanchez@test.com", "1")]
         [TestCase("karenperez@test.com", "1")]
-
+        [AllureFeature("SignIn Page")]
+        [AllureStory("SignIn")]
         public void PositiveSignInTest(string email, string password)
         {
             // Arrange

@@ -1,15 +1,13 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
 using PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 
 namespace Tests
 {
-    
+    [AllureNUnit]
+    [AllureSuite("NUnit")]
+    [AllureEpic("Moderator")]
     public class ModeratorTest : BaseTest
     {
         
